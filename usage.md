@@ -11,7 +11,7 @@
 
 ## Steps to Run Tests
 
-### 1. Start Redis Server and Connect Using Jedis
+### 1. Start Redis Server
 - Start the Redis server using `eloqkv`:
 
     ```sh
