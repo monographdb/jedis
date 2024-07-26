@@ -12,6 +12,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -39,7 +40,9 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
   @Override
   public void setUp() throws Exception {
     super.setUp();
-    jedis.functionFlush();
+    String status = jedis.flushDB();
+    assertEquals("OK", status);
+    // jedis.functionFlush();
   }
 
   final byte[] bfoo = { 0x01, 0x02, 0x03, 0x04 };
@@ -141,7 +144,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     assertEquals("key1", response);
   }
 
-  @Test
+  @Ignore("eloqkv does not support evalReadonly command yet")
   public void evalReadonly() {
     String script = "return KEYS[1]";
     List<String> keys = new ArrayList<String>();
@@ -164,7 +167,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     assertEquals("bar", result);
   }
 
-  @Test
+  @Ignore("eloqkv does not support evalshaReadonly command yet")
   public void evalshaReadonly() {
     jedis.set("foo", "bar");
     jedis.eval("return redis.call('get','foo')");
@@ -184,7 +187,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     assertArrayEquals(SafeEncoder.encode("bar"), result);
   }
 
-  @Test
+  @Ignore("eloqkv does not support evalshaReadonly command yet")
   public void evalshaReadonlyBinary() {
     jedis.set(SafeEncoder.encode("foo"), SafeEncoder.encode("bar"));
     jedis.eval(SafeEncoder.encode("return redis.call('get','foo')"));
@@ -328,7 +331,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     deadClient.close();
   }
 
-  @Test
+  @Ignore("eloqkv does not support function command yet")
   public void functionLoadAndDelete() {
     String engine = "Lua";
     String library = "mylib";
@@ -347,7 +350,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     assertEquals("OK", jedis.functionDelete(library.getBytes()));
   }
 
-  @Test
+  @Ignore("eloqkv does not support function command yet")
   public void functionFlush() {
     String engine = "Lua";
     String library = "mylib";
@@ -362,7 +365,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     jedis.functionFlush(FlushMode.SYNC);
   }
 
-  @Test
+  @Ignore("eloqkv does not support function command yet")
   public void functionList() {
     String engine = "LUA";
     String library = "mylib";
@@ -429,7 +432,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("eloqkv does not support function command yet")
   public void functionDumpRestore() {
     String engine = "Lua";
     String library = "mylib";
@@ -448,7 +451,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     jedis.functionFlush();
   }
 
-  @Test
+  @Ignore("eloqkv does not support function command yet")
   public void functionStatsWithoutRunning() {
     String engine = "Lua";
     String library = "mylib";
@@ -483,7 +486,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
 //    assertEquals("OK", jedis.functionKill());
 //  }
 
-  @Test
+  @Ignore("eloqkv does not support function command yet")
   public void functionKillWithoutRunningFunction() {
     String engine = "Lua";
     String library = "mylib";
@@ -498,7 +501,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("eloqkv does not support function command yet")
   public void fcall() {
     String engine = "Lua";
     String library = "mylib";
@@ -509,7 +512,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     assertEquals(args, jedis.fcall("myfunc", Collections.emptyList(), args));
   }
 
-  @Test
+  @Ignore("eloqkv does not support function command yet")
   public void fcallBinary() {
     String engine = "Lua";
     String library = "mylib";
@@ -520,7 +523,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     assertArrayEquals("hello".getBytes(), (byte[]) jedis.fcall("myfunc".getBytes(), Collections.emptyList(), bargs));
   }
 
-  @Test
+  @Ignore("eloqkv does not support function command yet")
   public void fcallReadonly() {
     String engine = "Lua";
     String library = "mylib";

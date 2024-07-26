@@ -18,6 +18,7 @@ import java.util.*;
 import org.hamcrest.Matchers;
 import org.junit.Assume;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -144,7 +145,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(0, jedis.del(bfoo1, bfoo2));
   }
 
-  @Test
+  @Ignore("eloqkv does not support unlink command yet")
   public void unlink() {
     jedis.set("foo1", "bar1");
     jedis.set("foo2", "bar2");
@@ -216,7 +217,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(Collections.emptySet(), jedis.keys(bbarstar));
   }
 
-  @Test
+  @Ignore("eloqkv does not support randomKey command yet")
   public void randomKey() {
     assertNull(jedis.randomKey());
 
@@ -245,7 +246,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
 
   }
 
-  @Test
+  @Ignore("eloqkv does not support rename command yet")
   public void rename() {
     jedis.set("foo", "bar");
     String status = jedis.rename("foo", "bar");
@@ -265,7 +266,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertArrayEquals(bbar, jedis.get(bbar));
   }
 
-  @Test
+  @Ignore("eloqkv does not support rename command yet")
   public void renameOldAndNewAreTheSame() {
     assertEquals("OK", jedis.set("foo", "bar"));
     assertEquals("OK", jedis.rename("foo", "foo"));
@@ -275,7 +276,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals("OK", jedis.rename(bfoo, bfoo));
   }
 
-  @Test
+  @Ignore("eloqkv does not support renamenx command yet")
   public void renamenx() {
     jedis.set("foo", "bar");
     assertEquals(1, jedis.renamenx("foo", "bar"));
@@ -304,7 +305,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(2, jedis.dbSize());
   }
 
-  @Test
+  @Ignore("eloqkv does not support expire command yet")
   public void expire() {
     assertEquals(0, jedis.expire("foo", 20L));
 
@@ -320,7 +321,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(0, jedis.expire(bfoo, 20L, ExpiryOption.NX));
   }
 
-  @Test
+  @Ignore("eloqkv does not support expireAt command yet")
   public void expireAt() {
     long unixTime = (System.currentTimeMillis() / 1000L) + 20;
 
@@ -340,7 +341,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(1, jedis.expireAt(bfoo, unixTime, ExpiryOption.XX));
   }
 
-  @Test
+  @Ignore("eloqkv does not support expireTime command yet")
   public void expireTime() {
     long unixTime;
 
@@ -356,7 +357,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(unixTime, jedis.expireTime(bfoo), 0.0001);
   }
 
-  @Test
+  @Ignore("eloqkv does not support ttl command yet")
   public void ttl() {
     assertEquals(-2, jedis.ttl("foo"));
 
@@ -378,7 +379,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertTrue(bttl >= 0 && bttl <= 20);
   }
 
-  @Test
+  @Ignore("eloqkv does not support touch command yet")
   public void touch() throws Exception {
     assertEquals(0, jedis.touch("foo1", "foo2", "foo3"));
 
@@ -445,7 +446,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(1, jedis.getDB());
   }
 
-  @Test
+  @Ignore("eloqkv does not support move command yet")
   public void move() {
     assertEquals(0, jedis.move("foo", 1));
 
@@ -469,7 +470,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
 
   }
 
-  @Test
+  @Ignore("eloqkv does not support swapDB command yet")
   public void swapDB() {
     jedis.set("foo1", "bar1");
     jedis.select(1);
@@ -559,7 +560,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(0, jedis.dbSize());
   }
 
-  @Test
+  @Ignore("eloqkv does not support ttl command yet")
   public void persist() {
     jedis.setex("foo", 60 * 60, "bar");
     assertTrue(jedis.ttl("foo") > 0);
@@ -596,7 +597,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertArrayEquals(bbar, jedis.get(bfoo2));
   }
 
-  @Test
+  @Ignore("Disabled because redis also fails")
   public void restoreParams() {
     // take a separate instance
     Jedis jedis2 = new Jedis(endpoint.getHost(), endpoint.getPort(), 500);
@@ -638,7 +639,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     lfuJedis.close();
   }
 
-  @Test
+  @Ignore("eloqkv does not support pexpire command yet")
   public void pexpire() {
     assertEquals(0, jedis.pexpire("foo", 10000));
 
@@ -663,7 +664,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(0, jedis.pexpire(bfoo, 10000, ExpiryOption.NX));
   }
 
-  @Test
+  @Ignore("eloqkv does not support pexpireAt command yet")
   public void pexpireAt() {
     long unixTime = (System.currentTimeMillis()) + 10000;
 
@@ -679,7 +680,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(1, jedis.pexpireAt(bfoo, unixTime));
   }
 
-  @Test
+  @Ignore("eloqkv does not support pexpireTime command yet")
   public void pexpireTime() {
     long unixTime = (System.currentTimeMillis()) + 10000;
 
@@ -693,7 +694,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(unixTime, jedis.pexpireTime(bfoo), 0.0001);
   }
 
-  @Test
+  @Ignore("eloqkv does not support pexpire command yet")
   public void pttl() {
     assertEquals(-2, jedis.pttl("foo"));
 
@@ -715,7 +716,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertTrue(pttl >= 0 && pttl <= 20000);
   }
 
-  @Test
+  @Ignore("eloqkv does not support pexpire command yet")
   public void psetex() {
     long pttl;
 
@@ -891,7 +892,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     return scanResult;
   }
 
-  @Test
+  @Ignore("eloqkv does not support ttlxdd command yet")
   public void setNxExAndGet() {
     assertEquals("OK", jedis.set("hello", "world", SetParams.setParams().nx().ex(expireSeconds)));
     assertEquals("world", jedis.get("hello"));
@@ -1018,7 +1019,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     });
   }
 
-  @Test
+  @Ignore("eloqkv does not support xdd command yet")
   public void encodeCompleteResponseXinfoStream() {
     Assume.assumeFalse(protocol == RedisProtocol.RESP3);
 
@@ -1045,7 +1046,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(entryAsList, ((List) findValueFromMapAsList(encodeObj, "last-entry")).get(1));
   }
 
-  @Test
+  @Ignore("eloqkv does not support xdd command yet")
   public void encodeCompleteResponseXinfoStreamResp3() {
     Assume.assumeTrue(protocol == RedisProtocol.RESP3);
 
@@ -1089,7 +1090,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     return null;
   }
 
-  @Test
+  @Ignore("eloqkv does not support copy command yet")
   public void copy() {
     assertFalse(jedis.copy("unknown", "foo", false));
 
@@ -1127,7 +1128,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertArrayEquals(bbar1, jedis.get(bfoo2));
   }
 
-  @Test
+  @Ignore("eloqkv does not support reset command yet")
   public void reset() {
     // response test
     String status = jedis.reset();

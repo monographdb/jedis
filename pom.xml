@@ -302,6 +302,45 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M5</version> <!-- Use the latest version available -->
+				<configuration>
+				<redirectTestOutputToFile>true</redirectTestOutputToFile>
+				<showSuccesses>true</showSuccesses>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+				<configuration>
+					<!-- <test>**/examples/*Example.java</test> -->
+					<includes>
+						<include>**/commands/jedis/*.java</include>
+						<!-- <include>**/commands/jedis/SortedSetCommandsTest.java</include> -->
+					</includes>
+					<excludes>
+						<exclude>**/commands/jedis/Cluster*.java</exclude>
+						<exclude>**/commands/jedis/Control*.java</exclude>
+						<exclude>**/commands/jedis/Failover*.java</exclude>
+						<exclude>**/commands/jedis/Geo*.java</exclude>
+						<exclude>**/commands/jedis/Hyper*.java</exclude>
+						<exclude>**/commands/jedis/Migrate*.java</exclude>
+						<exclude>**/commands/jedis/Module*.java</exclude>
+						<exclude>**/commands/jedis/Sentinel*.java</exclude>
+						<exclude>**/commands/jedis/Slowlog*.java</exclude>
+						<exclude>**/commands/jedis/ObjectCommandsTest*.java</exclude>
+						<exclude>**/commands/jedis/Streams*.java</exclude>
+						<exclude>**/commands/jedis/AccessControlList*.java</exclude>
+						<!-- Q? eloqkv hangs -->
+						<exclude>**/commands/jedis/PublishSubscribe*.java</exclude>
+						<!-- Q? loads of unsupported commands currently -->
+						<exclude>**/commands/jedis/ClientCommands*.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<profiles>

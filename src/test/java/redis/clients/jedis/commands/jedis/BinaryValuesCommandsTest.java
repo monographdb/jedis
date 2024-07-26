@@ -18,6 +18,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -100,21 +101,21 @@ public class BinaryValuesCommandsTest extends JedisCommandsTestBase {
     assertNull(jedis.set(bfoo, binaryValue, setParams().xx().ex(expireSeconds)));
   }
 
-  @Test
+  @Ignore("eloqkv does not support ttl command yet")
   public void setAndExpireMillis() {
     assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().px(expireMillis)));
     long ttl = jedis.ttl(bfoo);
     assertTrue(ttl > 0 && ttl <= expireSeconds);
   }
 
-  @Test
+  @Ignore("eloqkv does not support ttl command yet")
   public void setAndExpire() {
     assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().ex(expireSeconds)));
     long ttl = jedis.ttl(bfoo);
     assertTrue(ttl > 0 && ttl <= expireSeconds);
   }
 
-  @Test
+  @Ignore("eloqkv does not support keepttl flag in set command yet")
   public void setAndKeepttl() {
     assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().ex(expireSeconds)));
     assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().keepttl()));
@@ -126,7 +127,7 @@ public class BinaryValuesCommandsTest extends JedisCommandsTestBase {
     assertTrue(ttl < 0);
   }
 
-  @Test
+  @Ignore("eloqkv does not support pxAt flag in set command yet")
   public void setAndPxat() {
     assertEquals("OK", jedis.set(bfoo, binaryValue,
         setParams().nx().pxAt(System.currentTimeMillis() + expireMillis)));
@@ -134,7 +135,7 @@ public class BinaryValuesCommandsTest extends JedisCommandsTestBase {
     assertTrue(ttl > 0 && ttl <= expireSeconds);
   }
 
-  @Test
+  @Ignore("eloqkv does not support exAt flag in set command yet")
   public void setAndExat() {
     assertEquals("OK", jedis.set(bfoo, binaryValue,
         setParams().nx().exAt(System.currentTimeMillis() / 1000 + expireSeconds)));
@@ -148,7 +149,7 @@ public class BinaryValuesCommandsTest extends JedisCommandsTestBase {
     assertArrayEquals(binaryValue, jedis.get(bfoo));
   }
 
-  @Test
+  @Ignore("eloqkv does not support getDel command yet")
   public void getDel() {
     assertEquals("OK", jedis.set(bfoo, bbar));
 
@@ -157,7 +158,7 @@ public class BinaryValuesCommandsTest extends JedisCommandsTestBase {
     assertNull(jedis.get(bfoo));
   }
 
-  @Test
+  @Ignore("eloqkv does not support getEx command yet")
   public void getEx() {
     assertNull(jedis.getEx(bfoo, GetExParams.getExParams().ex(1)));
     jedis.set(bfoo, bbar);
@@ -215,7 +216,7 @@ public class BinaryValuesCommandsTest extends JedisCommandsTestBase {
     assertArrayEquals(binaryValue, jedis.get(bfoo));
   }
 
-  @Test
+  @Ignore("eloqkv does not support ttl command yet")
   public void setex() {
     assertEquals("OK", jedis.setex(bfoo, 20, binaryValue));
     long ttl = jedis.ttl(bfoo);

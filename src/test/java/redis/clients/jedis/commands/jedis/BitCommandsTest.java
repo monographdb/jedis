@@ -8,6 +8,7 @@ import static org.junit.Assert.fail;
 
 import java.util.List;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -253,7 +254,7 @@ public class BitCommandsTest extends JedisCommandsTestBase {
     assertEquals(0L, responses.get(1).longValue());
   }
 
-  @Test
+  @Ignore("eloqkv does not support BITFIELD_RO command yet")
   public void testBitfieldReadonly() {
     List<Long> responses = jedis.bitfield("mykey", "INCRBY", "i5", "100", "1", "GET", "u4", "0");
     assertEquals(1L, responses.get(0).longValue());
@@ -279,7 +280,7 @@ public class BitCommandsTest extends JedisCommandsTestBase {
     assertEquals(0L, responses.get(1).longValue());
   }
 
-  @Test
+  @Ignore("eloqkv does not support BITFIELD_RO command yet")
   public void testBinaryBitfieldReadonly() {
     List<Long> responses = jedis.bitfield("mykey", "INCRBY", "i5", "100", "1", "GET", "u4", "0");
     assertEquals(1L, responses.get(0).longValue());

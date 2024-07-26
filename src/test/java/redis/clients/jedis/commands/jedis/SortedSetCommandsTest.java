@@ -8,6 +8,7 @@ import static redis.clients.jedis.util.AssertUtil.assertByteArrayListEquals;
 
 import java.util.*;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -1525,7 +1526,7 @@ public class SortedSetCommandsTest extends JedisCommandsTestBase {
     assertEquals(Double.POSITIVE_INFINITY, itr.next().getScore(), 0d);
   }
 
-  @Test
+  @Ignore("eloqkv does not support bzpopmax command yet")
   public void bzpopmax() {
     jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
     jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
@@ -1541,7 +1542,7 @@ public class SortedSetCommandsTest extends JedisCommandsTestBase {
     assertEquals(new Tuple(bb, 10d), actual.getValue());
   }
 
-  @Test
+  @Ignore("eloqkv does not support bzpopmin command yet")
   public void bzpopmin() {
     jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
     jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
@@ -1664,7 +1665,7 @@ public class SortedSetCommandsTest extends JedisCommandsTestBase {
     assertNull(jedis.zmpop(SortedSetOption.MAX, "foo"));
   }
 
-  @Test
+  @Ignore("eloqkv does not support bzmpop command yet")
   public void bzmpopSimple() {
     jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
     jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());

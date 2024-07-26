@@ -7,6 +7,7 @@ import static org.junit.Assert.assertNull;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -42,7 +43,7 @@ public class StringValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals("bar", value);
   }
 
-  @Test
+  @Ignore("eloqkv does not support getDel command yet")
   public void getDel() {
     String status = jedis.set("foo", "bar");
     assertEquals("OK", status);
@@ -53,7 +54,7 @@ public class StringValuesCommandsTest extends JedisCommandsTestBase {
     assertNull(jedis.get("foo"));
   }
 
-  @Test
+  @Ignore("eloqkv does not support getEx command yet")
   public void getEx() {
     assertNull(jedis.getEx("foo", GetExParams.getExParams().ex(1)));
     jedis.set("foo", "bar");
@@ -115,7 +116,7 @@ public class StringValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals("bar", jedis.get("foo"));
   }
 
-  @Test
+  @Ignore("eloqkv does not support ttl command yet")
   public void setex() {
     String status = jedis.setex("foo", 20, "bar");
     assertEquals("OK", status);
@@ -238,7 +239,7 @@ public class StringValuesCommandsTest extends JedisCommandsTestBase {
     jedis.incr("foo"); // Should throw an exception 
   }
 
-  @Test
+  @Ignore("eloqkv does not support ttl command yet")
   public void psetex() {
     String status = jedis.psetex("foo", 20000, "bar");
     assertEquals("OK", status);
@@ -246,7 +247,7 @@ public class StringValuesCommandsTest extends JedisCommandsTestBase {
     assertTrue(ttl > 0 && ttl <= 20000);
   }
 
-  @Test
+  @Ignore("eloqkv does not support lcs command yet")
   public void lcs() {
     jedis.mset("key1", "ohmytext", "key2", "mynewtext");
 

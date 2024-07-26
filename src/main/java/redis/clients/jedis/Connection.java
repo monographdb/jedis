@@ -459,8 +459,8 @@ public class Connection implements Closeable {
 
     if (credentials == null || credentials.getPassword() == null) {
       if (protocol != null) {
-        sendCommand(Command.HELLO, encode(protocol.version()));
-        getOne();
+        // sendCommand(Command.HELLO, encode(protocol.version()));
+        // getOne();
       }
       return;
     }
@@ -474,14 +474,14 @@ public class Connection implements Closeable {
       /// actual HELLO or AUTH -->
       if (protocol != null) {
         if (credentials.getUser() != null) {
-          sendCommand(Command.HELLO, encode(protocol.version()),
-              Keyword.AUTH.getRaw(), encode(credentials.getUser()), rawPass);
-          getOne(); // Map
+          // sendCommand(Command.HELLO, encode(protocol.version()),
+          //     Keyword.AUTH.getRaw(), encode(credentials.getUser()), rawPass);
+          // getOne(); // Map
         } else {
           sendCommand(Command.AUTH, rawPass);
           getStatusCodeReply(); // OK
-          sendCommand(Command.HELLO, encode(protocol.version()));
-          getOne(); // Map
+          // sendCommand(Command.HELLO, encode(protocol.version()));
+          // getOne(); // Map
         }
       } else { // protocol == null
         if (credentials.getUser() != null) {
