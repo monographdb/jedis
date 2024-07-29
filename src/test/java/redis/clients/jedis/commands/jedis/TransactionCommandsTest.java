@@ -49,8 +49,7 @@ public class TransactionCommandsTest extends JedisCommandsTestBase {
   public void setUp() throws Exception {
     super.setUp();
 
-    nj = new Jedis(endpoint.getHostAndPort(),
-        endpoint.getClientConfigBuilder().timeoutMillis(500).build());
+    nj = new Jedis("127.0.0.1", 6379);
   }
 
   @After

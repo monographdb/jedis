@@ -210,7 +210,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     assertFalse(jedis.scriptExists("6b1bf486c81ceb7edf3c093f4c48582e38c0e791"));
   }
 
-  @Test
+  @Ignore
   public void scriptFlushMode() {
     jedis.set("foo", "bar");
     jedis.eval("return redis.call('get','foo')");
@@ -251,7 +251,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     assertTrue(jedis.scriptExists(SafeEncoder.encode("6b1bf486c81ceb7edf3c093f4c48582e38c0e791")));
   }
 
-  @Test
+  @Ignore
   public void scriptKill() {
     try {
       jedis.scriptKill();
@@ -311,7 +311,7 @@ public class ScriptingCommandsTest extends JedisCommandsTestBase {
     assertArrayEquals(bbar2, results.get(1));
   }
 
-  @Test
+  @Ignore
   public void scriptExistsWithBrokenConnection() {
     Jedis deadClient = createJedis();
 

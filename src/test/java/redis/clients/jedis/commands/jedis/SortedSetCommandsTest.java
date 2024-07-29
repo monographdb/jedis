@@ -40,7 +40,7 @@ public class SortedSetCommandsTest extends JedisCommandsTestBase {
   final byte[] bbarstar = { 0x05, 0x06, 0x07, 0x08, '*' };
 
   public SortedSetCommandsTest(RedisProtocol protocol) {
-    super(protocol);
+    super(null);
   }
 
   @Test

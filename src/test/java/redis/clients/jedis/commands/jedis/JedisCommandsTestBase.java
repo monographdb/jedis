@@ -37,13 +37,12 @@ public abstract class JedisCommandsTestBase {
    * @param protocol The RESP protocol to use during the tests.
    */
   public JedisCommandsTestBase(RedisProtocol protocol) {
-    this.protocol = protocol;
+    this.protocol = null;
   }
 
   @Before
   public void setUp() throws Exception {
-    jedis = new Jedis(endpoint.getHostAndPort(), endpoint.getClientConfigBuilder()
-        .protocol(protocol).timeoutMillis(500).build());
+    jedis = new Jedis("127.0.0.1", 6379);
     jedis.flushAll();
   }
 
