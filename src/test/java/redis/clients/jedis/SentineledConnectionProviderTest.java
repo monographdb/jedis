@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
@@ -35,7 +36,7 @@ public class SentineledConnectionProviderTest {
     sentinels.add(sentinel2);
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void repeatedSentinelPoolInitialization() {
     for (int i = 0; i < 20; ++i) {
 
@@ -67,7 +68,7 @@ public class SentineledConnectionProviderTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkCloseableConnections() throws Exception {
     GenericObjectPoolConfig<Connection> config = new GenericObjectPoolConfig<>();
 
@@ -80,7 +81,7 @@ public class SentineledConnectionProviderTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkResourceIsCloseable() {
     GenericObjectPoolConfig<Connection> config = new GenericObjectPoolConfig<>();
     config.setMaxTotal(1);
@@ -106,7 +107,7 @@ public class SentineledConnectionProviderTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testResetInvalidPassword() {
     DefaultRedisCredentialsProvider credentialsProvider
         = new DefaultRedisCredentialsProvider(new DefaultRedisCredentials(null, "foobared"));
@@ -136,7 +137,7 @@ public class SentineledConnectionProviderTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testResetValidPassword() {
     DefaultRedisCredentialsProvider credentialsProvider
         = new DefaultRedisCredentialsProvider(new DefaultRedisCredentials(null, "wrong password"));

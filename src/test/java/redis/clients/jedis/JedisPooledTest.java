@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
@@ -61,7 +62,7 @@ public class JedisPooledTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void startWithUrlString() {
     try (Jedis j = new Jedis(endpointStandalone1.getHostAndPort())) {
       j.auth(endpointStandalone1.getPassword());
@@ -76,7 +77,7 @@ public class JedisPooledTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void startWithUrl() throws URISyntaxException {
     try (Jedis j = new Jedis(endpointStandalone1.getHostAndPort())) {
       j.auth(endpointStandalone1.getPassword());
@@ -182,7 +183,7 @@ public class JedisPooledTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testResetValidCredentials() {
     DefaultRedisCredentialsProvider credentialsProvider = 
         new DefaultRedisCredentialsProvider(new DefaultRedisCredentials(null, "bad password"));
@@ -200,7 +201,7 @@ public class JedisPooledTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testCredentialsProvider() {
     final AtomicInteger prepareCount = new AtomicInteger();
     final AtomicInteger cleanupCount = new AtomicInteger();

@@ -5,13 +5,14 @@ package io.redis.examples;
 
 //REMOVE_START
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.UnifiedJedis;
 import java.util.List;
 //REMOVE_END
 
 public class TDigestExample {
-    @Test
+	@Ignore("EloqKV does not support tdigest.create")
     public void run(){
         //HIDE_START
         UnifiedJedis unifiedJedis = new UnifiedJedis("redis://127.0.0.1:6379");

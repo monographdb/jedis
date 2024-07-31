@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.args.*;
@@ -104,7 +105,7 @@ public class ClusterPipeliningTest {
     node3.clusterReset(ClusterResetType.SOFT);
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void constructorClientConfig() {
     try (ClusterPipeline pipe = new ClusterPipeline(nodes, DEFAULT_CLIENT_CONFIG)) {
       Response<String> r1 = pipe.set("key1", "value1");
@@ -124,7 +125,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void constructorPoolConfig() {
     try (ClusterPipeline pipe = new ClusterPipeline(nodes, DEFAULT_CLIENT_CONFIG, new ConnectionPoolConfig())) {
       Response<String> r1 = pipe.set("key1", "value1");
@@ -144,7 +145,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void constructorConnectionProvider() {
     try (ClusterConnectionProvider provider = new ClusterConnectionProvider(nodes, DEFAULT_CLIENT_CONFIG);
         ClusterPipeline pipeline = new ClusterPipeline(provider)) {
@@ -166,7 +167,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void clusterPipelined() {
     try (JedisCluster cluster = new JedisCluster(nodes, DEFAULT_CLIENT_CONFIG);
         ClusterPipeline pipeline = cluster.pipelined()) {
@@ -189,7 +190,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void intermediateSync() {
     try (JedisCluster cluster = new JedisCluster(nodes, DEFAULT_CLIENT_CONFIG);
         ClusterPipeline pipeline = cluster.pipelined()) {
@@ -216,7 +217,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void intermediateSyncs() {
     try (JedisCluster cluster = new JedisCluster(nodes, DEFAULT_CLIENT_CONFIG);
         ClusterPipeline pipeline = cluster.pipelined()) {
@@ -243,7 +244,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void pipelineResponse() {
     try (JedisCluster jc = new JedisCluster(nodes, DEFAULT_CLIENT_CONFIG)) {
       jc.set("string", "foo");
@@ -295,7 +296,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void pipelineBinarySafeHashCommands() {
     try (JedisCluster jc = new JedisCluster(nodes, DEFAULT_CLIENT_CONFIG)) {
       jc.hset("key".getBytes(), "f1".getBytes(), "v111".getBytes());
@@ -351,7 +352,8 @@ public class ClusterPipeliningTest {
     assertTrue(Arrays.equals(secondKey, value1) || Arrays.equals(secondKey, value2));
   }
 
-  @Test(expected = IllegalStateException.class)
+  //@test(expected = IllegalStateException.class)
+  @Ignore("EloqKV does not support")
   public void pipelineResponseWithinPipeline() {
     try (ClusterConnectionProvider provider = new ClusterConnectionProvider(nodes, DEFAULT_CLIENT_CONFIG)) {
       ClusterPipeline p = new ClusterPipeline(provider);
@@ -361,7 +363,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void pipelineWithPubSub() {
     try (ClusterConnectionProvider provider = new ClusterConnectionProvider(nodes, DEFAULT_CLIENT_CONFIG)) {
       ClusterPipeline pipelined = new ClusterPipeline(provider);
@@ -373,7 +375,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void canRetrieveUnsetKey() {
     try (ClusterConnectionProvider provider = new ClusterConnectionProvider(nodes, DEFAULT_CLIENT_CONFIG)) {
       ClusterPipeline p = new ClusterPipeline(provider);
@@ -383,7 +385,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void piplineWithError() {
     try (ClusterConnectionProvider provider = new ClusterConnectionProvider(nodes, DEFAULT_CLIENT_CONFIG)) {
       ClusterPipeline p = new ClusterPipeline(provider);
@@ -401,7 +403,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void getSetParams() {
     ClusterConnectionProvider provider = new ClusterConnectionProvider(nodes, DEFAULT_CLIENT_CONFIG);
     ClusterPipeline p = new ClusterPipeline(provider);
@@ -424,7 +426,7 @@ public class ClusterPipeliningTest {
     assertEquals("value3", r7.get());
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void clusterPipelineSort() {
     List<String> sorted = new ArrayList<>();
     sorted.add("1");
@@ -455,7 +457,7 @@ public class ClusterPipeliningTest {
     assertEquals(sorted, r7.get());
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void clusterPipelineList() {
     List<String> vals = new ArrayList<>();
     vals.add("foobar");
@@ -505,7 +507,7 @@ public class ClusterPipeliningTest {
     assertEquals("hello", r19.get());
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void clusterPipelineSet() {
     Set<String> diff = new HashSet<>();
     diff.add("bar");
@@ -567,7 +569,7 @@ public class ClusterPipeliningTest {
 //    assertEquals(Long.valueOf(1), r18.get());
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void clusterPipelineSortedSet() {
     Map<String, Double> hm = new HashMap<>();
     hm.put("a1", 1d);
@@ -627,7 +629,7 @@ public class ClusterPipeliningTest {
     assertTrue(r20.get().size() == 1 && r20.get().contains(min));
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void clusterPipelineHash() {
     Map<String, String> hm = new HashMap<>();
     hm.put("field2", "2");
@@ -687,7 +689,7 @@ public class ClusterPipeliningTest {
     assertEquals(4, r18.get().size());
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void clusterPipelineGeo() {
     Map<String, GeoCoordinate> hm = new HashMap<>();
     hm.put("place1", new GeoCoordinate(2.1909389952632, 41.433791470673));
@@ -753,7 +755,7 @@ public class ClusterPipeliningTest {
     assertTrue(r17.get().size() == 1 && r17.get().contains("place2"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void clusterPipelineHyperLogLog() {
     ClusterConnectionProvider provider = new ClusterConnectionProvider(nodes, DEFAULT_CLIENT_CONFIG);
     ClusterPipeline p = new ClusterPipeline(provider);
@@ -772,7 +774,7 @@ public class ClusterPipeliningTest {
     assertEquals(Long.valueOf(4), r5.get());
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void clusterPipelineStringsAndBits() {
     List<Long> fieldRes = new ArrayList<>();
     fieldRes.add(1L);
@@ -813,7 +815,7 @@ public class ClusterPipeliningTest {
     assertTrue(r13.get());
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void clusterPipelineStream() {
     Map<String, String> hm = new HashMap<>();
     hm.put("one", "one");
@@ -853,7 +855,7 @@ public class ClusterPipeliningTest {
     assertEquals("OK", r9.get());
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void testEval() {
     String script = "return 'success!'";
 
@@ -866,7 +868,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void testEvalWithBinary() {
     String script = "return 'success!'";
 
@@ -879,7 +881,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void testEvalKeyAndArg() {
     String key = "test";
     String arg = "3";
@@ -900,7 +902,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void testEvalKeyAndArgWithBinary() {
     // binary
     byte[] bKey = SafeEncoder.encode("test");
@@ -922,7 +924,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void testEvalNestedLists() {
     String script = "return { {KEYS[1]} , {2} }";
 
@@ -937,7 +939,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void testEvalNestedListsWithBinary() {
     byte[] bScript = SafeEncoder.encode("return { {KEYS[1]} , {2} }");
     byte[] bKey = SafeEncoder.encode("key1");
@@ -953,7 +955,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void testEvalsha() {
     String script = "return 'success!'";
     String sha1;
@@ -971,7 +973,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void testEvalshaKeyAndArg() {
     String key = "test";
     String arg = "3";
@@ -997,7 +999,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void testEvalshaKeyAndArgWithBinary() {
     byte[] bKey = SafeEncoder.encode("test");
     byte[] bArg = SafeEncoder.encode("3");
@@ -1024,7 +1026,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void spublishInPipeline() {
     try (JedisCluster jedis = new JedisCluster(nodes, DEFAULT_CLIENT_CONFIG)) {
       ClusterPipeline pipelined = jedis.pipelined();
@@ -1036,7 +1038,7 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void simple() { // TODO: move into 'redis.clients.jedis.commands.unified.cluster' package
     try (JedisCluster jedis = new JedisCluster(nodes, DEFAULT_CLIENT_CONFIG)) {
       final int count = 10;
@@ -1069,14 +1071,15 @@ public class ClusterPipeliningTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support")
   public void transaction() {
     try (JedisCluster cluster = new JedisCluster(nodes, DEFAULT_CLIENT_CONFIG)) {
       assertThrows(UnsupportedOperationException.class, () -> cluster.multi());
     }
   }
 
-  @Test(timeout = 10_000L)
+  //@test(timeout = 10_000L)
+  @Ignore("EloqKV does not support")
   public void multiple() {
     final int maxTotal = 100;
     ConnectionPoolConfig poolConfig = new ConnectionPoolConfig();

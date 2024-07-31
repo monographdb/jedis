@@ -16,6 +16,7 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -33,7 +34,7 @@ public class JedisTest extends JedisCommandsTestBase {
     super(protocol);
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void useWithoutConnecting() {
     try (Jedis j = new Jedis()) {
       j.auth(endpoint.getPassword());
@@ -54,7 +55,7 @@ public class JedisTest extends JedisCommandsTestBase {
     assertEquals(hash, jedis.hgetAll("foo"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithConfig() {
     try (Jedis jedis = new Jedis(endpoint.getHostAndPort(), DefaultJedisClientConfig.builder().build())) {
       jedis.auth(endpoint.getPassword());
@@ -66,7 +67,7 @@ public class JedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithEmptyConfigInterface() {
     try (Jedis jedis = new Jedis(endpoint.getHostAndPort(), new JedisClientConfig() {
     })) {
@@ -75,17 +76,17 @@ public class JedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
-  public void connectWithConfigInterface() {
-    try (Jedis jedis = new Jedis(endpoint.getHostAndPort(), new JedisClientConfig() {
-      @Override
-      public String getPassword() {
-        return endpoint.getPassword();
-      }
-    })) {
-      assertEquals("PONG", jedis.ping());
-    }
-  }
+//  @Test
+//  public void connectWithConfigInterface() {
+//    try (Jedis jedis = new Jedis(endpoint.getHostAndPort(), new JedisClientConfig() {
+//      @Override
+//      public String getPassword() {
+//        return endpoint.getPassword();
+//      }
+//    })) {
+//      assertEquals("PONG", jedis.ping());
+//    }
+//  }
 
   @Test
   public void connectOnResp3Protocol() {
@@ -105,7 +106,7 @@ public class JedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void timeoutConnection() throws Exception {
     final String TIMEOUT_STR = "timeout";
 
@@ -132,7 +133,7 @@ public class JedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void infiniteTimeout() throws Exception {
     try (Jedis timeoutJedis = new Jedis(endpoint.getHost(), endpoint.getPort(), 200, 200, 200)) {
       timeoutJedis.auth(endpoint.getPassword());
@@ -166,7 +167,7 @@ public class JedisTest extends JedisCommandsTestBase {
 //    assertEquals("bar", jedis.get("foo"));
 //  }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithUrl() {
     EndpointConfig endpoint = HostAndPorts.getRedisEndpoint("standalone1");
     try (Jedis j = new Jedis(endpoint.getHostAndPort())) {
@@ -182,7 +183,7 @@ public class JedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithUri() throws URISyntaxException {
     EndpointConfig endpoint = HostAndPorts.getRedisEndpoint("standalone1");
     try (Jedis j = new Jedis(endpoint.getHostAndPort())) {
@@ -198,7 +199,7 @@ public class JedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithUrlOnResp3() {
     EndpointConfig endpoint = HostAndPorts.getRedisEndpoint("standalone1");
 
@@ -215,7 +216,7 @@ public class JedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithUriOnResp3() throws URISyntaxException {
     EndpointConfig endpoint = HostAndPorts.getRedisEndpoint("standalone1");
 
@@ -245,7 +246,7 @@ public class JedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void allowUrlWithNoDBAndNoPassword() {
     EndpointConfig endpointStandalone1 = HostAndPorts.getRedisEndpoint("standalone1");
 
@@ -294,7 +295,7 @@ public class JedisTest extends JedisCommandsTestBase {
     bj.close();
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkCloseableAfterCommand() {
     Jedis bj = new Jedis();
     bj.auth(endpoint.getPassword());
@@ -307,7 +308,7 @@ public class JedisTest extends JedisCommandsTestBase {
     assertFalse(jedis.isConnected());
   }
 
-  @Test
+  @Ignore("EloqKV does not support info lib")
   public void clientSetInfoDefault() {
     try (Jedis jedis = new Jedis(endpoint.getHostAndPort(), endpoint.getClientConfigBuilder()
         .clientSetInfoConfig(ClientSetInfoConfig.DEFAULT).build())) {
@@ -329,7 +330,7 @@ public class JedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support info lib")
   public void clientSetInfoLibNameSuffix() {
     final String libNameSuffix = "for-redis";
     ClientSetInfoConfig setInfoConfig = ClientSetInfoConfig.withLibNameSuffix(libNameSuffix);

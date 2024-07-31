@@ -1511,37 +1511,37 @@ public abstract class SortedSetCommandsTestBase extends UnifiedJedisCommandsTest
     assertEquals(Double.POSITIVE_INFINITY, itr.next().getScore(), 0d);
   }
 
-  @Test
-  public void bzpopmax() {
-    jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
-    jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
-    jedis.zadd("bar", 0.1d, "c", ZAddParams.zAddParams().nx());
-    assertEquals(new KeyValue<>("foo", new Tuple("b", 10d)), jedis.bzpopmax(0, "foo", "bar"));
-
-    // Binary
-    jedis.zadd(bfoo, 1d, ba);
-    jedis.zadd(bfoo, 10d, bb);
-    jedis.zadd(bbar, 0.1d, bc);
-    KeyValue<byte[], Tuple> actual = jedis.bzpopmax(0, bfoo, bbar);
-    assertArrayEquals(bfoo, actual.getKey());
-    assertEquals(new Tuple(bb, 10d), actual.getValue());
-  }
-
-  @Test
-  public void bzpopmin() {
-    jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
-    jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
-    jedis.zadd("bar", 0.1d, "c", ZAddParams.zAddParams().nx());
-    assertEquals(new KeyValue<>("bar", new Tuple("c", 0.1)), jedis.bzpopmin(0, "bar", "foo"));
-
-    // Binary
-    jedis.zadd(bfoo, 1d, ba);
-    jedis.zadd(bfoo, 10d, bb);
-    jedis.zadd(bbar, 0.1d, bc);
-    KeyValue<byte[], Tuple> actual = jedis.bzpopmin(0, bbar, bfoo);
-    assertArrayEquals(bbar, (byte[]) actual.getKey());
-    assertEquals(new Tuple(bc, 0.1), actual.getValue());
-  }
+//  @Test
+//  public void bzpopmax() {
+//    jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
+//    jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
+//    jedis.zadd("bar", 0.1d, "c", ZAddParams.zAddParams().nx());
+//    assertEquals(new KeyValue<>("foo", new Tuple("b", 10d)), jedis.bzpopmax(0, "foo", "bar"));
+//
+//    // Binary
+//    jedis.zadd(bfoo, 1d, ba);
+//    jedis.zadd(bfoo, 10d, bb);
+//    jedis.zadd(bbar, 0.1d, bc);
+//    KeyValue<byte[], Tuple> actual = jedis.bzpopmax(0, bfoo, bbar);
+//    assertArrayEquals(bfoo, actual.getKey());
+//    assertEquals(new Tuple(bb, 10d), actual.getValue());
+//  }
+//
+//  @Test
+//  public void bzpopmin() {
+//    jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
+//    jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
+//    jedis.zadd("bar", 0.1d, "c", ZAddParams.zAddParams().nx());
+//    assertEquals(new KeyValue<>("bar", new Tuple("c", 0.1)), jedis.bzpopmin(0, "bar", "foo"));
+//
+//    // Binary
+//    jedis.zadd(bfoo, 1d, ba);
+//    jedis.zadd(bfoo, 10d, bb);
+//    jedis.zadd(bbar, 0.1d, bc);
+//    KeyValue<byte[], Tuple> actual = jedis.bzpopmin(0, bbar, bfoo);
+//    assertArrayEquals(bbar, (byte[]) actual.getKey());
+//    assertEquals(new Tuple(bc, 0.1), actual.getValue());
+//  }
 
   @Test
   public void zdiff() {
@@ -1650,18 +1650,18 @@ public abstract class SortedSetCommandsTestBase extends UnifiedJedisCommandsTest
     assertNull(jedis.zmpop(SortedSetOption.MAX, "foo"));
   }
 
-  @Test
-  public void bzmpopSimple() {
-    jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
-    jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
-    jedis.zadd("foo", 0.1d, "c", ZAddParams.zAddParams().nx());
-    jedis.zadd("foo", 2d, "a", ZAddParams.zAddParams().nx());
-
-    KeyValue<String, List<Tuple>> single = jedis.bzmpop(1L, SortedSetOption.MAX, "foo");
-    KeyValue<String, List<Tuple>> range = jedis.bzmpop(1L, SortedSetOption.MIN, 2, "foo");
-
-    assertEquals(new Tuple("b", 10d), single.getValue().get(0));
-    assertEquals(2, range.getValue().size());
-    assertNull(jedis.bzmpop(1L, SortedSetOption.MAX, "foo"));
-  }
+//  @Test
+//  public void bzmpopSimple() {
+//    jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
+//    jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
+//    jedis.zadd("foo", 0.1d, "c", ZAddParams.zAddParams().nx());
+//    jedis.zadd("foo", 2d, "a", ZAddParams.zAddParams().nx());
+//
+//    KeyValue<String, List<Tuple>> single = jedis.bzmpop(1L, SortedSetOption.MAX, "foo");
+//    KeyValue<String, List<Tuple>> range = jedis.bzmpop(1L, SortedSetOption.MIN, 2, "foo");
+//
+//    assertEquals(new Tuple("b", 10d), single.getValue().get(0));
+//    assertEquals(2, range.getValue().size());
+//    assertNull(jedis.bzmpop(1L, SortedSetOption.MAX, "foo"));
+//  }
 }

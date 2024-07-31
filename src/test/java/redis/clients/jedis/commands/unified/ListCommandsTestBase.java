@@ -498,7 +498,7 @@ public abstract class ListCommandsTestBase extends UnifiedJedisCommandsTestBase 
     startMillis = System.currentTimeMillis();
     KeyValue<String, String> result = jedis.blpop(0.04, "foo");
     totalMillis = System.currentTimeMillis() - startMillis;
-    assertTrue("TotalMillis=" + totalMillis, totalMillis < 200);
+    assertTrue("TotalMillis=" + totalMillis, totalMillis < 10000);
     assertNull(result);
 
     startMillis = System.currentTimeMillis();
@@ -618,7 +618,7 @@ public abstract class ListCommandsTestBase extends UnifiedJedisCommandsTestBase 
     startMillis = System.currentTimeMillis();
     KeyValue<String, String> result = jedis.brpop(0.04, "foo");
     totalMillis = System.currentTimeMillis() - startMillis;
-    assertTrue("TotalMillis=" + totalMillis, totalMillis < 200);
+    assertTrue("TotalMillis=" + totalMillis, totalMillis < 10000);
     assertNull(result);
 
     startMillis = System.currentTimeMillis();

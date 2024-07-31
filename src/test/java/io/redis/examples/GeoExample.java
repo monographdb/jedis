@@ -1,6 +1,7 @@
 //EXAMPLE: geo_tutorial
 package io.redis.examples;
 
+import org.junit.Ignore;
 // REMOVE_START
 import org.junit.Test;
 // REMOVE_END
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 import static org.junit.Assert.assertEquals;
 
 public class GeoExample {
-  @Test
+  @Ignore("EloqKV does not support geoadd")
   public void run() {
     try (UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379")) {
       // REMOVE_START

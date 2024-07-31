@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.args.FlushMode;
@@ -145,7 +146,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(totalAfterEvalBinary, equalTo("12"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testEvalReadonlyWithScriptKeysAndArgsList() {
     exec(commandObjects.set("readonlyKey1", "readonlyValue1"));
     exec(commandObjects.set("readonlyKey2", "readonlyValue2"));
@@ -281,7 +282,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(totalAfterEvalBinary, equalTo("12"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testEvalReadonlyWithScriptKeysAndArgsListSha() {
     exec(commandObjects.set("readonlyKey1", "readonlyValue1"));
     exec(commandObjects.set("readonlyKey2", "readonlyValue2"));
@@ -388,7 +389,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(existsAfter, contains(false));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testScriptFlushSampleKeyAndMode() {
     String script = "return 'test script flush'";
     String sha1 = exec(commandObjects.scriptLoad(script));
@@ -436,7 +437,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(existsAfter, contains(false));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testScriptFlushSampleKeyAndModeBinary() {
     String script = "return 'test script flush'";
     String sha1 = exec(commandObjects.scriptLoad(script));
@@ -452,7 +453,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(existsAfter, contains(false));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testScriptKill() {
     JedisException e = assertThrows(JedisException.class,
         () -> exec(commandObjects.scriptKill()));
@@ -467,7 +468,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(e.getMessage(), containsString("No scripts in execution right now."));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testSumValuesFunction() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function('sumValues', function(keys, args)\n" +
@@ -516,7 +517,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(totalAfterFcallBinary, equalTo("60"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testSumValuesFunctionReadonly() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function{function_name='sumValues', callback=function(keys, args)\n" +
@@ -549,7 +550,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(fcallBinary, equalTo(60L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testFunctionDeletion() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function('sumValues', function(keys, args) return 42 end)";
@@ -571,7 +572,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(listResponse, empty());
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testFunctionDeletionBinary() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function('sumValues', function(keys, args) return 42 end)";
@@ -593,7 +594,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(listResponse, empty());
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testFunctionListing() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function('sumValues', function(keys, args) return 42 end)";
@@ -650,7 +651,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(listWithCodeLibraryBinary, hasSize(1));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testFunctionReload() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function('dummy', function(keys, args) return 42 end)";
@@ -671,7 +672,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(resultAfter, equalTo(52L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testFunctionReloadBinary() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function('dummy', function(keys, args) return 42 end)";
@@ -692,7 +693,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(resultAfter, equalTo(52L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testFunctionStats() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function('dummy', function(keys, args) return 42 end)";
@@ -718,7 +719,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(statsBinary, notNullValue());
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testFunctionDumpFlushRestore() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function('sumValues', function(keys, args) return 42 end)";
@@ -751,7 +752,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(list.get(0).getFunctions().get(0), hasEntry("name", "sumValues"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testFunctionDumpFlushRestoreWithPolicy() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function('sumValues', function(keys, args) return 42 end)";
@@ -784,7 +785,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(list.get(0).getFunctions().get(0), hasEntry("name", "sumValues"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testFunctionFlushWithMode() {
     String luaScript = "#!lua name=mylib\n" +
         "redis.register_function('sumValues', function(keys, args) return 42 end)";
@@ -806,7 +807,7 @@ public class CommandObjectsScriptingCommandsTest extends CommandObjectsStandalon
     assertThat(list, empty());
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testFunctionKill() {
     JedisException e = assertThrows(JedisException.class,
         () -> exec(commandObjects.functionKill()));

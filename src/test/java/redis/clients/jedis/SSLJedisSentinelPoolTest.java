@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class SSLJedisSentinelPoolTest {
@@ -24,7 +25,7 @@ public class SSLJedisSentinelPoolTest {
     sentinels.add(HostAndPorts.getSentinelServers().get(4));
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void sentinelWithoutSslConnectsToRedisWithSsl() {
 
     DefaultJedisClientConfig masterConfig = DefaultJedisClientConfig.builder()
@@ -44,7 +45,7 @@ public class SSLJedisSentinelPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void sentinelWithSslConnectsToRedisWithoutSsl() {
 
     DefaultJedisClientConfig masterConfig = DefaultJedisClientConfig.builder()
@@ -64,7 +65,7 @@ public class SSLJedisSentinelPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void sentinelWithSslConnectsToRedisWithSsl() {
 
     DefaultJedisClientConfig masterConfig = DefaultJedisClientConfig.builder()

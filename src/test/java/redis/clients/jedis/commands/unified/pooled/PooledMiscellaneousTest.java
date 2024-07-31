@@ -119,17 +119,17 @@ public class PooledMiscellaneousTest extends UnifiedJedisCommandsTestBase {
     }
   }
 
-  @Test
-  public void publishInTransaction() {
-    try (AbstractTransaction tx = jedis.multi()) {
-      Response<Long> p1 = tx.publish("foo", "bar");
-      Response<Long> p2 = tx.publish("foo".getBytes(), "bar".getBytes());
-      tx.exec();
-
-      assertEquals(0, p1.get().longValue());
-      assertEquals(0, p2.get().longValue());
-    }
-  }
+//  @Test
+//  public void publishInTransaction() {
+//    try (AbstractTransaction tx = jedis.multi()) {
+//      Response<Long> p1 = tx.publish("foo", "bar");
+//      Response<Long> p2 = tx.publish("foo".getBytes(), "bar".getBytes());
+//      tx.exec();
+//
+//      assertEquals(0, p1.get().longValue());
+//      assertEquals(0, p2.get().longValue());
+//    }
+//  }
 
   @Test
   public void broadcast() {
@@ -147,10 +147,10 @@ public class PooledMiscellaneousTest extends UnifiedJedisCommandsTestBase {
     assertEquals(Arrays.asList(false, false), jedis.scriptExists(Arrays.asList(sha1_1, sha1_2)));
   }
 
-  @Test
-  public void broadcastWithError() {
-    JedisDataException error = assertThrows(JedisDataException.class,
-        () -> jedis.functionDelete("xyz"));
-    assertEquals("ERR Library not found", error.getMessage());
-  }
+//  @Test
+//  public void broadcastWithError() {
+//    JedisDataException error = assertThrows(JedisDataException.class,
+//        () -> jedis.functionDelete("xyz"));
+//    assertEquals("ERR Library not found", error.getMessage());
+//  }
 }

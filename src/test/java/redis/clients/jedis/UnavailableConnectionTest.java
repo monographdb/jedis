@@ -7,6 +7,7 @@ import static org.junit.Assert.fail;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
@@ -47,7 +48,8 @@ public class UnavailableConnectionTest {
     threadForBrokenJedis1.start();
   }
 
-  @Test(timeout = 5000)
+  //@Test(timeout = 5000)
+  @Ignore("EloqKV does not support auth")
   public void testAvoidQuitInDestroyObjectForBrokenConnection() throws InterruptedException {
     threadForBrokenJedis1.join();
     assertFalse(threadForBrokenJedis1.isAlive());

@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
@@ -31,7 +32,7 @@ public class JedisSentinelPoolTest {
     sentinels.add(sentinel2.toString());
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void repeatedSentinelPoolInitialization() {
 
     for (int i = 0; i < 20; ++i) {
@@ -61,7 +62,7 @@ public class JedisSentinelPoolTest {
     pool.destroy();
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkCloseableConnections() throws Exception {
     GenericObjectPoolConfig<Jedis> config = new GenericObjectPoolConfig<>();
 
@@ -76,7 +77,7 @@ public class JedisSentinelPoolTest {
     assertTrue(pool.isClosed());
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void returnResourceShouldResetState() {
     GenericObjectPoolConfig<Jedis> config = new GenericObjectPoolConfig<>();
     config.setMaxTotal(1);
@@ -99,7 +100,7 @@ public class JedisSentinelPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkResourceIsCloseable() {
     GenericObjectPoolConfig<Jedis> config = new GenericObjectPoolConfig<>();
     config.setMaxTotal(1);
@@ -122,7 +123,7 @@ public class JedisSentinelPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void customClientName() {
     GenericObjectPoolConfig<Jedis> config = new GenericObjectPoolConfig<>();
     config.setMaxTotal(1);

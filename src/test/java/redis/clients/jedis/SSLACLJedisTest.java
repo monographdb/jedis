@@ -11,6 +11,7 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.*;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.util.RedisVersionUtil;
@@ -35,7 +36,7 @@ public class SSLACLJedisTest {
         RedisVersionUtil.checkRedisMajorVersionNumber(6, endpoint));
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithSsl() {
     try (Jedis jedis = new Jedis(endpoint.getHost(), endpoint.getPort(), true)) {
       jedis.auth(endpoint.getUsername(), endpoint.getPassword());
@@ -43,7 +44,7 @@ public class SSLACLJedisTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithConfig() {
     try (Jedis jedis = new Jedis(endpoint.getHostAndPort(),
         DefaultJedisClientConfig.builder().ssl(true).build())) {
@@ -52,7 +53,7 @@ public class SSLACLJedisTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithUrl() {
     // The "rediss" scheme instructs jedis to open a SSL/TLS connection.
     try (Jedis jedis = new Jedis(
@@ -65,7 +66,7 @@ public class SSLACLJedisTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithUri() {
     // The "rediss" scheme instructs jedis to open a SSL/TLS connection.
     try (Jedis jedis = new Jedis(

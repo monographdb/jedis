@@ -2,12 +2,13 @@
 package io.redis.examples;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.UnifiedJedis;
 
 public class HyperLogLogExample {
 
-    @Test
+	@Ignore("EloqKV does not support pfadd")
     public void run() {
         // HIDE_START
         UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379");

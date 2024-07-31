@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.providers.ShardedConnectionProvider;
 import redis.clients.jedis.util.Hashing;
@@ -29,7 +30,7 @@ public class ShardedPipelineTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void shardedPipelineSync() {
     try (ShardedConnectionProvider provider = new ShardedConnectionProvider(shards, DEFAULT_CLIENT_CONFIG)) {
       ShardedPipeline shardedPipeline = new ShardedPipeline(provider);
@@ -51,7 +52,7 @@ public class ShardedPipelineTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void constructorClientConfig() {
     try (ShardedPipeline pipe = new ShardedPipeline(shards, DEFAULT_CLIENT_CONFIG)) {
       Response<String> r1 = pipe.set("key1", "value1");
@@ -71,7 +72,7 @@ public class ShardedPipelineTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void constructorPoolConfig() {
     try (ShardedPipeline pipe = new ShardedPipeline(shards, DEFAULT_CLIENT_CONFIG, DEFAULT_POOL_CONFIG,
         Hashing.MURMUR_HASH, JedisSharding.DEFAULT_KEY_TAG_PATTERN)) {

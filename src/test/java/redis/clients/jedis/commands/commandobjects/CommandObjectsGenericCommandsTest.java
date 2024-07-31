@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.RedisProtocol;
@@ -65,7 +66,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(existsNonExistingBytes, equalTo(false));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPersist() {
     String key1 = "persistKey1";
     byte[] key2 = "persistKey2".getBytes();
@@ -117,7 +118,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(nonExistingKeyType, equalTo("none"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testDumpAndRestore() {
     String key = "dumpRestoreKey";
     String value = "value";
@@ -159,7 +160,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(ttlAfterSecondRestore, greaterThan(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testDumpAndRestoreBinary() {
     byte[] key = "dumpRestoreKey".getBytes();
     byte[] value = "value".getBytes();
@@ -201,7 +202,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(ttlAfterSecondRestore, greaterThan(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testExpireAndExpireTime() {
     String key = "expireKey";
     String value = "value";
@@ -220,7 +221,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(expireTimeAfter, greaterThan(System.currentTimeMillis() / 1000));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testExpireAndExpireTimeBinary() {
     byte[] key = "expireKey".getBytes();
     byte[] value = "value".getBytes();
@@ -239,7 +240,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(expireTimeAfter, greaterThan(System.currentTimeMillis() / 1000));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testExpireWithExpiryOption() {
     String key = "expireWithOptionKey";
     String value = "value";
@@ -262,7 +263,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(expireTimeAfter, greaterThan(System.currentTimeMillis() / 1000));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testExpireWithExpiryOptionTimeBinary() {
     byte[] key = "expireWithOptionKey".getBytes();
     byte[] value = "value".getBytes();
@@ -285,7 +286,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(expireTimeAfter, greaterThan(System.currentTimeMillis() / 1000));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPexpireAndPexpireTime() {
     String key = "pexpireKey";
     String value = "value";
@@ -304,7 +305,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(pexpireTimeAfter, greaterThan(System.currentTimeMillis()));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPexpireAndPexpireTimeBinary() {
     byte[] key = "pexpireKey".getBytes();
     byte[] value = "value".getBytes();
@@ -323,7 +324,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(pexpireTimeAfter, greaterThan(System.currentTimeMillis()));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPexpireWithOptionsAndPexpireTime() {
     String key = "pexpireWithOptionsKey";
     String value = "value";
@@ -348,7 +349,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(pexpireWithXx, equalTo(1L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPexpireWithOptionsAndPexpireTimeBinary() {
     byte[] key = "pexpireWithOptionsKey".getBytes();
     byte[] value = "value".getBytes();
@@ -373,7 +374,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(pexpireWithXx, equalTo(1L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testExpireAtAndExpireTime() {
     String key = "expireAtKey";
     String value = "value";
@@ -398,7 +399,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(expireTimeAfterPast, equalTo(-2L)); // Key does not exist
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testExpireAtAndExpireTimeBinary() {
     byte[] key = "expireAtKey".getBytes();
     byte[] value = "value".getBytes();
@@ -423,7 +424,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(expireTimeAfterPast, equalTo(-2L)); // Key does not exist
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testExpireAtWithOptionsAndExpireTime() {
     String key = "expireAtWithOptionsKey";
     String value = "value";
@@ -455,7 +456,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(expireTimeAfterNxAgain, equalTo(laterFutureExpireTime));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testExpireAtWithOptionsAndExpireTimeBinary() {
     byte[] key = "expireAtWithOptionsKey".getBytes();
     byte[] value = "value".getBytes();
@@ -487,7 +488,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(expireTimeAfterNxAgain, equalTo(laterFutureExpireTime));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPexpireAtAndPexpireTime() {
     String key = "pexpireAtKey";
     String value = "value";
@@ -511,7 +512,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(pexpireTimeAfterPast, equalTo(-2L)); // Key does not exist
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPexpireAtAndPexpireTimeBinary() {
     byte[] key = "pexpireAtKey".getBytes();
     byte[] value = "value".getBytes();
@@ -535,7 +536,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(pexpireTimeAfterPast, equalTo(-2L)); // Key does not exist
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPexpireAtWithOptionsAndPexpireTime() {
     String key = "pexpireAtWithOptionsKey";
     String value = "value";
@@ -567,7 +568,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(pexpireTimeAfterNxAgain, equalTo(laterFutureTimestampMillis));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPexpireAtWithOptionsAndPexpireTimeBinary() {
     byte[] key = "pexpireAtWithOptionsKey".getBytes();
     byte[] value = "value".getBytes();
@@ -599,7 +600,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(pexpireTimeAfterNxAgain, equalTo(laterFutureTimestampMillis));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testTtl() {
     String key = "ttlKey";
     String value = "value";
@@ -613,7 +614,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(ttl, greaterThan(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testTtlBinary() {
     byte[] key = "ttlKey".getBytes();
     byte[] value = "value".getBytes();
@@ -627,7 +628,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(ttl, greaterThan(1L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPttl() {
     String key = "pttlKey";
     String value = "value";
@@ -641,7 +642,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(pttl, greaterThan(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPttlBinary() {
     byte[] key = "pttlKey".getBytes();
     byte[] value = "value".getBytes();
@@ -655,7 +656,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(pttl, greaterThan(1L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testTouch() {
     String key = "touchKey";
 
@@ -668,7 +669,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(touchNonExistent, equalTo(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testTouchBinary() {
     byte[] key = "touchKey".getBytes();
 
@@ -681,7 +682,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(touchNonExistent, equalTo(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testTouchMultiple() {
     String key1 = "touchMultiKey1";
     String key2 = "touchMultiKey2";
@@ -694,7 +695,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(touch, equalTo(2L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testTouchMultipleBinary() {
     byte[] key1 = "touchMultiKey1".getBytes();
     byte[] key2 = "touchMultiKey2".getBytes();
@@ -899,7 +900,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(exists, equalTo(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testUnlink() {
     String key = "unlinkKey";
 
@@ -912,7 +913,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(exists, equalTo(false));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testUnlinkBinary() {
     byte[] key = "unlinkKey".getBytes();
 
@@ -925,7 +926,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(exists, equalTo(false));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testUnlinkMultiple() {
     String key1 = "key1ToUnlink";
     String key2 = "key2ToUnlink";
@@ -940,7 +941,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(exists, equalTo(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testUnlinkMultipleBinary() {
     byte[] key1 = "key1ToUnlink".getBytes();
     byte[] key2 = "key2ToUnlink".getBytes();
@@ -955,7 +956,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(exists, equalTo(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testCopyWithStringKeys() {
     String srcKey = "sourceKey";
     String dstKey = "destinationKey";
@@ -991,7 +992,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(dstAfterReplace, equalTo(otherValue));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testCopyWithBinaryKeys() {
     byte[] srcKey = "sourceKey".getBytes();
     byte[] dstKey = "destinationKey".getBytes();
@@ -1027,7 +1028,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(dstAfterReplace, equalTo(otherValue));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testCopyToDb() {
     String srcKey = "sourceKey";
     String dstKey = "destinationKey";
@@ -1053,7 +1054,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertKeyExists(dstDB, dstKey, "initialValue");
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testCopyToDbBinary() {
     String srcKey = "sourceKey";
     String dstKey = "destinationKey";
@@ -1089,7 +1090,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testRenameWithStringKeys() {
     String oldKey = "oldKeyName";
     String newKey = "newKeyName";
@@ -1113,7 +1114,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(newValue, equalTo(value));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testRenameWithBinaryKeys() {
     byte[] oldKey = "oldKeyName".getBytes();
     byte[] newKey = "newKeyName".getBytes();
@@ -1137,7 +1138,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(newValue, equalTo(value));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testRenamenx() {
     String oldKey = "oldKeyToRenameNX";
     String newKey = "newKeyForRenameNX";
@@ -1163,7 +1164,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(anotherKeyStillExists, equalTo(value));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testRenamenxBinary() {
     byte[] oldKey = "oldKeyToRenameNX".getBytes();
     byte[] newKey = "newKeyForRenameNX".getBytes();
@@ -1189,7 +1190,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(anotherKeyStillExists, equalTo(value));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testDbSize() {
     Long initialSize = exec(commandObjects.dbSize());
     assertThat(initialSize, greaterThanOrEqualTo(0L));
@@ -1395,7 +1396,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(collectedKeys, not(hasItem(listKey)));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testRandomKey() {
     String key1 = "testKey1";
     String key2 = "testKey2";
@@ -1408,7 +1409,7 @@ public class CommandObjectsGenericCommandsTest extends CommandObjectsStandaloneT
     assertThat(randomKey, anyOf(equalTo(key1), equalTo(key2)));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testRandomBinaryKey() {
     byte[] key1 = "testKey1".getBytes();
     byte[] key2 = "testKey2".getBytes();

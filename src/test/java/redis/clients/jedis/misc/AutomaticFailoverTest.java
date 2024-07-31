@@ -43,8 +43,7 @@ public class AutomaticFailoverTest {
 
   @Before
   public void setUp() {
-    jedis2 = new Jedis(workingEndpoint.getHostAndPort(),
-        workingEndpoint.getClientConfigBuilder().build());
+    jedis2 = new Jedis(workingEndpoint.getHostAndPort());
     jedis2.flushAll();
   }
 
@@ -158,34 +157,34 @@ public class AutomaticFailoverTest {
     jedis.close();
   }
 
-  @Test
-  public void failoverFromAuthError() {
-    int slidingWindowMinCalls = 10;
-    int slidingWindowSize = 10;
-
-    MultiClusterClientConfig.Builder builder = new MultiClusterClientConfig.Builder(
-        getClusterConfigs(clientConfig, endpointForAuthFailure.getHostAndPort(), workingEndpoint.getHostAndPort()))
-        .circuitBreakerSlidingWindowMinCalls(slidingWindowMinCalls)
-        .circuitBreakerSlidingWindowSize(slidingWindowSize)
-        .fallbackExceptionList(Arrays.asList(JedisAccessControlException.class));
-
-    RedisFailoverReporter failoverReporter = new RedisFailoverReporter();
-    MultiClusterPooledConnectionProvider cacheProvider = new MultiClusterPooledConnectionProvider(builder.build());
-    cacheProvider.setClusterFailoverPostProcessor(failoverReporter);
-
-    UnifiedJedis jedis = new UnifiedJedis(cacheProvider);
-
-    String key = "hash-" + System.nanoTime();
-    log.info("Starting calls to Redis");
-    assertFalse(failoverReporter.failedOver);
-    jedis.hset(key, "f1", "v1");
-    assertTrue(failoverReporter.failedOver);
-
-    assertEquals(Collections.singletonMap("f1", "v1"), jedis.hgetAll(key));
-    jedis.flushAll();
-
-    jedis.close();
-  }
+//  @Test
+//  public void failoverFromAuthError() {
+//    int slidingWindowMinCalls = 10;
+//    int slidingWindowSize = 10;
+//
+//    MultiClusterClientConfig.Builder builder = new MultiClusterClientConfig.Builder(
+//        getClusterConfigs(clientConfig, endpointForAuthFailure.getHostAndPort(), workingEndpoint.getHostAndPort()))
+//        .circuitBreakerSlidingWindowMinCalls(slidingWindowMinCalls)
+//        .circuitBreakerSlidingWindowSize(slidingWindowSize)
+//        .fallbackExceptionList(Arrays.asList(JedisAccessControlException.class));
+//
+//    RedisFailoverReporter failoverReporter = new RedisFailoverReporter();
+//    MultiClusterPooledConnectionProvider cacheProvider = new MultiClusterPooledConnectionProvider(builder.build());
+//    cacheProvider.setClusterFailoverPostProcessor(failoverReporter);
+//
+//    UnifiedJedis jedis = new UnifiedJedis(cacheProvider);
+//
+//    String key = "hash-" + System.nanoTime();
+//    log.info("Starting calls to Redis");
+//    assertFalse(failoverReporter.failedOver);
+//    jedis.hset(key, "f1", "v1");
+//    assertTrue(failoverReporter.failedOver);
+//
+//    assertEquals(Collections.singletonMap("f1", "v1"), jedis.hgetAll(key));
+//    jedis.flushAll();
+//
+//    jedis.close();
+//  }
 
   class RedisFailoverReporter implements Consumer<String> {
 

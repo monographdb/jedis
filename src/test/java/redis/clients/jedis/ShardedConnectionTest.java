@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.exceptions.JedisDataException;
 
@@ -37,7 +38,7 @@ public class ShardedConnectionTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support m-s")
   public void checkConnections() {
     try (JedisSharding jedis = new JedisSharding(shards, clientConfig)) {
       jedis.set("foo", "bar");
@@ -78,7 +79,7 @@ public class ShardedConnectionTest {
 //    }
 //  }
 
-  @Test
+  @Ignore("EloqKV does not support M-S")
   public void checkFailedJedisServer() {
     try (JedisSharding jedis = new JedisSharding(shards)) {
       try {
@@ -90,7 +91,7 @@ public class ShardedConnectionTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support M-S")
   public void checkResourceIsCloseable() throws URISyntaxException {
     GenericObjectPoolConfig<Connection> poolConfig = new GenericObjectPoolConfig<>();
     poolConfig.setMaxTotal(1);

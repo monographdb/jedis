@@ -3,6 +3,8 @@ package redis.clients.jedis;
 import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.newsclub.net.unix.AFUNIXSocket;
 import org.newsclub.net.unix.AFUNIXSocketAddress;
@@ -12,14 +14,14 @@ import static org.junit.Assert.assertEquals;
 
 public class UdsTest {
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void jedisConnectsToUds() {
     try (Jedis jedis = new Jedis(new UdsJedisSocketFactory())) {
       assertEquals("PONG", jedis.ping());
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void jedisConnectsToUdsResp3() {
     try (Jedis jedis = new Jedis(new UdsJedisSocketFactory(),
         DefaultJedisClientConfig.builder().resp3().build())) {
@@ -27,14 +29,14 @@ public class UdsTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void unifiedJedisConnectsToUds() {
     try (UnifiedJedis jedis = new UnifiedJedis(new UdsJedisSocketFactory())) {
       assertEquals("PONG", jedis.ping());
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void unifiedJedisConnectsToUdsResp3() {
     try (UnifiedJedis jedis = new UnifiedJedis(new UdsJedisSocketFactory(),
         DefaultJedisClientConfig.builder().resp3().build())) {

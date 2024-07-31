@@ -4,11 +4,12 @@
 package io.redis.examples;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.UnifiedJedis;
 
 public class CuckooFilterExample {
-    @Test
+    @Ignore("EloqKV does not support cfReserve")
     public void run() {
         UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379");
         // HIDE_END

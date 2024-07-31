@@ -23,6 +23,7 @@ import java.util.UUID;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -224,7 +225,7 @@ public class PipeliningTest extends JedisCommandsTestBase {
     assertTrue(Arrays.equals(secondKey, value1) || Arrays.equals(secondKey, value2));
   }
 
-  @Test
+  @Ignore("EloqKV does not support swapdb")
   public void pipelineSelect() {
     jedis.set("foo", "bar");
     jedis.swapDB(0, 1);
@@ -316,7 +317,7 @@ public class PipeliningTest extends JedisCommandsTestBase {
     assertEquals(result, "3");
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void waitReplicas() {
     Pipeline p = jedis.pipelined();
     p.set("wait", "replicas");
@@ -331,7 +332,7 @@ public class PipeliningTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void waitAof() {
     Pipeline p = jedis.pipelined();
     p.set("wait", "aof");
@@ -543,7 +544,7 @@ public class PipeliningTest extends JedisCommandsTestBase {
     jedis2.close();
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testCloseable() throws IOException {
     // we need to test with fresh instance of Jedis
     Jedis jedis2 = new Jedis(endpoint.getHost(), endpoint.getPort(), 500);
@@ -561,7 +562,7 @@ public class PipeliningTest extends JedisCommandsTestBase {
     jedis2.close();
   }
 
-  @Test
+  @Ignore("EloqKV does not support time")
   public void time() {
     Pipeline p = jedis.pipelined();
 
@@ -573,7 +574,7 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems(timeResponseMatcher));
   }
 
-  @Test
+  @Ignore("EloqKV does not support dbsize")
   public void dbSize() {
     Pipeline p = jedis.pipelined();
 
@@ -585,7 +586,7 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems(0L, "OK", 1L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support move")
   public void move() {
     Pipeline p = jedis.pipelined();
 
@@ -600,7 +601,7 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems(0L, "OK", 1L, null, "OK", "bar"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support move")
   public void moveBinary() {
     Pipeline p = jedis.pipelined();
 
@@ -633,7 +634,7 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems("OK", "bar", "OK", null, "OK", "OK", null, "OK", "bar"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support copy")
   public void copyToAnotherDb() {
     Pipeline p = jedis.pipelined();
 
@@ -654,7 +655,7 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems(false, "OK", true, "bar", "OK", "bar", "OK", "OK", false, "baz", "bar"));
   }
 
-  @Test
+  @Ignore("EloqKV does not support copy")
   public void copyToAnotherDbBinary() {
     Pipeline p = jedis.pipelined();
 

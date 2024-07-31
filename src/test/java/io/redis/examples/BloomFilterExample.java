@@ -6,11 +6,13 @@ package io.redis.examples;
 import redis.clients.jedis.UnifiedJedis;
 import org.junit.Test;
 import org.junit.Assert;
+import org.junit.Ignore;
+
 import java.util.List;
 
 public class BloomFilterExample {
 
-    @Test
+	@Ignore("EloqKV does not support bf.reserve")
     public void run() {
         UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379");
         // HIDE_END

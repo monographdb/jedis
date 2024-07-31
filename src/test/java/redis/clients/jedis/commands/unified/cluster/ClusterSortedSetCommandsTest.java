@@ -150,24 +150,24 @@ public class ClusterSortedSetCommandsTest extends SortedSetCommandsTestBase {
     assertEquals(Collections.singletonList(new Tuple("a", new Double(7))),
         jedis.zrangeWithScores("dst{:}", 0, 100));
   }
-
-  @Test
-  @Override
-  public void bzpopmax() {
-    jedis.zadd("f{:}oo", 1d, "a", ZAddParams.zAddParams().nx());
-    jedis.zadd("f{:}oo", 10d, "b", ZAddParams.zAddParams().nx());
-    jedis.zadd("b{:}ar", 0.1d, "c", ZAddParams.zAddParams().nx());
-    assertEquals(new KeyValue<>("f{:}oo", new Tuple("b", 10d)), jedis.bzpopmax(0, "f{:}oo", "b{:}ar"));
-  }
-
-  @Test
-  @Override
-  public void bzpopmin() {
-    jedis.zadd("fo{:}o", 1d, "a", ZAddParams.zAddParams().nx());
-    jedis.zadd("fo{:}o", 10d, "b", ZAddParams.zAddParams().nx());
-    jedis.zadd("ba{:}r", 0.1d, "c", ZAddParams.zAddParams().nx());
-    assertEquals(new KeyValue<>("ba{:}r", new Tuple("c", 0.1d)), jedis.bzpopmin(0, "ba{:}r", "fo{:}o"));
-  }
+//
+//  @Test
+//  @Override
+//  public void bzpopmax() {
+//    jedis.zadd("f{:}oo", 1d, "a", ZAddParams.zAddParams().nx());
+//    jedis.zadd("f{:}oo", 10d, "b", ZAddParams.zAddParams().nx());
+//    jedis.zadd("b{:}ar", 0.1d, "c", ZAddParams.zAddParams().nx());
+//    assertEquals(new KeyValue<>("f{:}oo", new Tuple("b", 10d)), jedis.bzpopmax(0, "f{:}oo", "b{:}ar"));
+//  }
+//
+//  @Test
+//  @Override
+//  public void bzpopmin() {
+//    jedis.zadd("fo{:}o", 1d, "a", ZAddParams.zAddParams().nx());
+//    jedis.zadd("fo{:}o", 10d, "b", ZAddParams.zAddParams().nx());
+//    jedis.zadd("ba{:}r", 0.1d, "c", ZAddParams.zAddParams().nx());
+//    assertEquals(new KeyValue<>("ba{:}r", new Tuple("c", 0.1d)), jedis.bzpopmin(0, "ba{:}r", "fo{:}o"));
+//  }
 
   @Test
   @Override

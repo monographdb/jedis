@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.exceptions.JedisDataException;
 import redis.clients.jedis.util.SafeEncoder;
@@ -277,7 +278,7 @@ public class TransactionV2Test {
     assertEquals("1", SafeEncoder.encode((byte[]) x.get()));
   }
 
-  @Test
+  @Ignore("EloqKV does not support Transaction")
   public void zrevrangebyscore() {
     nj.zadd("foo", 1.0d, "a");
     nj.zadd("foo", 2.0d, "b");

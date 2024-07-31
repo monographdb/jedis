@@ -11,6 +11,7 @@ import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.JedisDataException;
@@ -44,7 +45,7 @@ public class JedisSentinelTest {
     ensureRemoved(REMOVE_MASTER_NAME);
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void sentinel() {
     Jedis j = new Jedis(sentinel);
 
@@ -75,7 +76,7 @@ public class JedisSentinelTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void sentinelFailover() throws InterruptedException {
     Jedis j = new Jedis(sentinelForFailover);
     Jedis j2 = new Jedis(sentinelForFailover);
@@ -98,7 +99,7 @@ public class JedisSentinelTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void sentinelMonitor() {
     Jedis j = new Jedis(sentinel);
 
@@ -119,7 +120,7 @@ public class JedisSentinelTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void sentinelRemove() {
     Jedis j = new Jedis(sentinel);
 
@@ -142,7 +143,7 @@ public class JedisSentinelTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void sentinelSet() {
     Jedis j = new Jedis(sentinel);
 

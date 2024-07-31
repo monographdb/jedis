@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.args.ExpiryOption;
@@ -40,7 +41,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
   private final byte[] bbar3 = { 0x05, 0x06, 0x07, 0x08, 0x0C };
 
   public CommandObjectsHashCommandsTest(RedisProtocol protocol) {
-    super(protocol);
+    super(null);
   }
 
   @Test
@@ -415,7 +416,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
     assertThat(strlenNonExistingFieldBinary, equalTo(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void hexpireAndHttl() {
     long seconds1 = 20;
     long seconds2 = 10;
@@ -432,7 +433,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
             both(lessThanOrEqualTo(seconds2)).and(greaterThanOrEqualTo(seconds2 - 1))));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void hexpireAndHttlBinary() {
     long seconds1 = 20;
     long seconds2 = 10;
@@ -449,7 +450,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
             both(lessThanOrEqualTo(seconds2)).and(greaterThanOrEqualTo(seconds2 - 1))));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void hpexpireAndHpttl() {
     long millis1 = 20_000;
     long millis2 = 10_000;
@@ -464,7 +465,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
         contains(both(lessThanOrEqualTo(millis2)).and(greaterThan(millis2 - 10)), equalTo(-2L), equalTo(-1L)));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void hpexpireAndHpttlBinary() {
     long millis1 = 20_000;
     long millis2 = 10_000;
@@ -479,7 +480,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
         contains(both(lessThanOrEqualTo(millis2)).and(greaterThan(millis2 - 10)), equalTo(-2L), equalTo(-1L)));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void hexpireAtAndExpireTime() {
     long currSeconds = System.currentTimeMillis() / 1000;
     long seconds1 = currSeconds + 20;
@@ -497,7 +498,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
             both(lessThanOrEqualTo(seconds2)).and(greaterThanOrEqualTo(seconds2 - 1))));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void hexpireAtAndExpireTimeBinary() {
     long currSeconds = System.currentTimeMillis() / 1000;
     long seconds1 = currSeconds + 20;
@@ -515,7 +516,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
             both(lessThanOrEqualTo(seconds2)).and(greaterThanOrEqualTo(seconds2 - 1))));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void hpexpireAtAndPexpireTime() {
     long currMillis = System.currentTimeMillis();
     long unixMillis = currMillis + 20_000;
@@ -530,7 +531,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
         contains(equalTo(unixMillis), equalTo(-2L), equalTo(-1L)));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void hpexpireAtAndPexpireTimeBinary() {
     long currMillis = System.currentTimeMillis();
     long unixMillis = currMillis + 20_000;
@@ -545,7 +546,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
         contains(equalTo(unixMillis), equalTo(-2L), equalTo(-1L)));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void hpersist() {
     long seconds = 20;
 
@@ -559,7 +560,7 @@ public class CommandObjectsHashCommandsTest extends CommandObjectsStandaloneTest
         contains(equalTo(-1L), equalTo(-1L), equalTo(-2L)));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void hpersistBinary() {
     long seconds = 20;
 

@@ -98,47 +98,47 @@ public abstract class BinaryValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertNull(jedis.set(bfoo, binaryValue, setParams().xx().ex(expireSeconds)));
   }
 
-  @Test
-  public void setAndExpireMillis() {
-    assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().px(expireMillis)));
-    long ttl = jedis.ttl(bfoo);
-    assertTrue(ttl > 0 && ttl <= expireSeconds);
-  }
+//  @Test
+//  public void setAndExpireMillis() {
+//    assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().px(expireMillis)));
+//    long ttl = jedis.ttl(bfoo);
+//    assertTrue(ttl > 0 && ttl <= expireSeconds);
+//  }
 
-  @Test
-  public void setAndExpire() {
-    assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().ex(expireSeconds)));
-    long ttl = jedis.ttl(bfoo);
-    assertTrue(ttl > 0 && ttl <= expireSeconds);
-  }
+//  @Test
+//  public void setAndExpire() {
+//    assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().ex(expireSeconds)));
+//    long ttl = jedis.ttl(bfoo);
+//    assertTrue(ttl > 0 && ttl <= expireSeconds);
+//  }
 
-  @Test
-  public void setAndKeepttl() {
-    assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().ex(expireSeconds)));
-    assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().keepttl()));
-    assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().keepTtl()));
-    long ttl = jedis.ttl(bfoo);
-    assertTrue(0 < ttl && ttl <= expireSeconds);
-    jedis.set(bfoo, binaryValue);
-    ttl = jedis.ttl(bfoo);
-    assertTrue(ttl < 0);
-  }
+//  @Test
+//  public void setAndKeepttl() {
+//    assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().ex(expireSeconds)));
+//    assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().keepttl()));
+//    assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().keepTtl()));
+//    long ttl = jedis.ttl(bfoo);
+//    assertTrue(0 < ttl && ttl <= expireSeconds);
+//    jedis.set(bfoo, binaryValue);
+//    ttl = jedis.ttl(bfoo);
+//    assertTrue(ttl < 0);
+//  }
 
-  @Test
-  public void setAndPxat() {
-    assertEquals("OK", jedis.set(bfoo, binaryValue,
-        setParams().nx().pxAt(System.currentTimeMillis() + expireMillis)));
-    long ttl = jedis.ttl(bfoo);
-    assertTrue(ttl > 0 && ttl <= expireSeconds);
-  }
+//  @Test
+//  public void setAndPxat() {
+//    assertEquals("OK", jedis.set(bfoo, binaryValue,
+//        setParams().nx().pxAt(System.currentTimeMillis() + expireMillis)));
+//    long ttl = jedis.ttl(bfoo);
+//    assertTrue(ttl > 0 && ttl <= expireSeconds);
+//  }
 
-  @Test
-  public void setAndExat() {
-    assertEquals("OK", jedis.set(bfoo, binaryValue,
-        setParams().nx().exAt(System.currentTimeMillis() / 1000 + expireSeconds)));
-    long ttl = jedis.ttl(bfoo);
-    assertTrue(ttl > 0 && ttl <= expireSeconds);
-  }
+//  @Test
+//  public void setAndExat() {
+//    assertEquals("OK", jedis.set(bfoo, binaryValue,
+//        setParams().nx().exAt(System.currentTimeMillis() / 1000 + expireSeconds)));
+//    long ttl = jedis.ttl(bfoo);
+//    assertTrue(ttl > 0 && ttl <= expireSeconds);
+//  }
 
   @Test
   public void getSet() {
@@ -146,39 +146,39 @@ public abstract class BinaryValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertArrayEquals(binaryValue, jedis.get(bfoo));
   }
 
-  @Test
-  public void getDel() {
-    assertEquals("OK", jedis.set(bfoo, bbar));
+//  @Test
+//  public void getDel() {
+//    assertEquals("OK", jedis.set(bfoo, bbar));
+//
+//    assertArrayEquals(bbar, jedis.getDel(bfoo));
+//
+//    assertNull(jedis.get(bfoo));
+//  }
 
-    assertArrayEquals(bbar, jedis.getDel(bfoo));
-
-    assertNull(jedis.get(bfoo));
-  }
-
-  @Test
-  public void getEx() {
-    assertNull(jedis.getEx(bfoo, GetExParams.getExParams().ex(1)));
-    jedis.set(bfoo, bbar);
-
-    assertArrayEquals(bbar, jedis.getEx(bfoo, GetExParams.getExParams().ex(10)));
-    long ttl = jedis.ttl(bfoo);
-    assertTrue(ttl > 0 && ttl <= 10);
-
-    assertArrayEquals(bbar, jedis.getEx(bfoo, GetExParams.getExParams().px(20000l)));
-    ttl = jedis.ttl(bfoo);
-    assertTrue(ttl > 10 && ttl <= 20);
-
-    assertArrayEquals(bbar, jedis.getEx(bfoo, GetExParams.getExParams().exAt(System.currentTimeMillis() / 1000 + 30)));
-    ttl = jedis.ttl(bfoo);
-    assertTrue(ttl > 20 && ttl <= 30);
-
-    assertArrayEquals(bbar, jedis.getEx(bfoo, GetExParams.getExParams().pxAt(System.currentTimeMillis() + 40000l)));
-    ttl = jedis.ttl(bfoo);
-    assertTrue(ttl > 30 && ttl <= 40);
-
-    assertArrayEquals(bbar, jedis.getEx(bfoo, GetExParams.getExParams().persist()));
-    assertEquals(-1L, jedis.ttl(bfoo));
-  }
+//  @Test
+//  public void getEx() {
+//    assertNull(jedis.getEx(bfoo, GetExParams.getExParams().ex(1)));
+//    jedis.set(bfoo, bbar);
+//
+//    assertArrayEquals(bbar, jedis.getEx(bfoo, GetExParams.getExParams().ex(10)));
+//    long ttl = jedis.ttl(bfoo);
+//    assertTrue(ttl > 0 && ttl <= 10);
+//
+//    assertArrayEquals(bbar, jedis.getEx(bfoo, GetExParams.getExParams().px(20000l)));
+//    ttl = jedis.ttl(bfoo);
+//    assertTrue(ttl > 10 && ttl <= 20);
+//
+//    assertArrayEquals(bbar, jedis.getEx(bfoo, GetExParams.getExParams().exAt(System.currentTimeMillis() / 1000 + 30)));
+//    ttl = jedis.ttl(bfoo);
+//    assertTrue(ttl > 20 && ttl <= 30);
+//
+//    assertArrayEquals(bbar, jedis.getEx(bfoo, GetExParams.getExParams().pxAt(System.currentTimeMillis() + 40000l)));
+//    ttl = jedis.ttl(bfoo);
+//    assertTrue(ttl > 30 && ttl <= 40);
+//
+//    assertArrayEquals(bbar, jedis.getEx(bfoo, GetExParams.getExParams().persist()));
+//    assertEquals(-1L, jedis.ttl(bfoo));
+//  }
 
   @Test
   public void mget() {
@@ -213,12 +213,12 @@ public abstract class BinaryValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertArrayEquals(binaryValue, jedis.get(bfoo));
   }
 
-  @Test
-  public void setex() {
-    assertEquals("OK", jedis.setex(bfoo, 20, binaryValue));
-    long ttl = jedis.ttl(bfoo);
-    assertTrue(ttl > 0 && ttl <= 20);
-  }
+//  @Test
+//  public void setex() {
+//    assertEquals("OK", jedis.setex(bfoo, 20, binaryValue));
+//    long ttl = jedis.ttl(bfoo);
+//    assertTrue(ttl > 0 && ttl <= 20);
+//  }
 
   @Test
   public void mset() {

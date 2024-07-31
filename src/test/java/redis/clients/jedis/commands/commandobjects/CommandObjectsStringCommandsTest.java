@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.nullValue;
 
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.params.GetExParams;
@@ -117,7 +118,7 @@ public class CommandObjectsStringCommandsTest extends CommandObjectsStandaloneTe
     assertThat(getAfterDecrBy, equalTo("7".getBytes()));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testGetOperations() {
     String key = "testGet";
     String value = "value";
@@ -147,7 +148,7 @@ public class CommandObjectsStringCommandsTest extends CommandObjectsStandaloneTe
     assertThat(ttlAfterGetEx, greaterThan(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testGetOperationsBinary() {
     byte[] key = "testGetBytes".getBytes();
     byte[] value = "value".getBytes();
@@ -297,7 +298,7 @@ public class CommandObjectsStringCommandsTest extends CommandObjectsStandaloneTe
     assertThat(getAfterIncrByFloat, equalTo("8.5".getBytes()));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testLcs() {
     String keyA = "keyA";
     String keyB = "keyB";
@@ -337,7 +338,7 @@ public class CommandObjectsStringCommandsTest extends CommandObjectsStandaloneTe
     assertThat(match2.getB().getEnd(), equalTo(3L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testLcsBinary() {
     byte[] keyA = "keyA".getBytes();
     byte[] keyB = "keyB".getBytes();
@@ -437,7 +438,7 @@ public class CommandObjectsStringCommandsTest extends CommandObjectsStandaloneTe
     assertThat(mgetAfterMsetNxAfterDel, contains("new1".getBytes(), "new2".getBytes()));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPsetexPttl() {
     String key = "tempKey";
     long milliseconds = 1000L;
@@ -449,7 +450,7 @@ public class CommandObjectsStringCommandsTest extends CommandObjectsStandaloneTe
     assertThat(pttl, greaterThan(0L));
   }
 
-  @Test
+  @Ignore("EloqKV does not support the command")
   public void testPsetexPttlBinary() {
     byte[] key = "tempKey".getBytes();
     long milliseconds = 1000L;

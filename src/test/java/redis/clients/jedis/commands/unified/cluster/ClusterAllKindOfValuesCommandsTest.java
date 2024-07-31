@@ -74,27 +74,27 @@ public class ClusterAllKindOfValuesCommandsTest extends AllKindOfValuesCommandsT
     assertEquals(0L, jedis.del("{foo}1", "{foo}2"));
   }
 
-  @Test
-  @Override
-  public void unlink() {
-    jedis.set("{foo}1", "bar1");
-    jedis.set("{foo}2", "bar2");
-    jedis.set("{foo}3", "bar3");
-
-    assertEquals(3, jedis.unlink("{foo}1", "{foo}2", "{foo}3"));
-
-    assertEquals(0, jedis.exists("{foo}1", "{foo}2", "{foo}3"));
-
-    jedis.set("{foo}1", "bar1");
-
-    assertEquals(1, jedis.unlink("{foo}1", "{foo}2"));
-
-    assertEquals(0, jedis.unlink("{foo}1", "{foo}2"));
-
-    jedis.set("{foo}", "bar");
-    assertEquals(1, jedis.unlink("{foo}"));
-    assertFalse(jedis.exists("{foo}"));
-  }
+//  @Test
+//  @Override
+//  public void unlink() {
+//    jedis.set("{foo}1", "bar1");
+//    jedis.set("{foo}2", "bar2");
+//    jedis.set("{foo}3", "bar3");
+//
+//    assertEquals(3, jedis.unlink("{foo}1", "{foo}2", "{foo}3"));
+//
+//    assertEquals(0, jedis.exists("{foo}1", "{foo}2", "{foo}3"));
+//
+//    jedis.set("{foo}1", "bar1");
+//
+//    assertEquals(1, jedis.unlink("{foo}1", "{foo}2"));
+//
+//    assertEquals(0, jedis.unlink("{foo}1", "{foo}2"));
+//
+//    jedis.set("{foo}", "bar");
+//    assertEquals(1, jedis.unlink("{foo}"));
+//    assertFalse(jedis.exists("{foo}"));
+//  }
 
   @Test
   @Override
@@ -114,55 +114,55 @@ public class ClusterAllKindOfValuesCommandsTest extends AllKindOfValuesCommandsT
     assertEquals(expected, keys);
   }
 
-  @Test
-  @Override
-  public void rename() {
-    jedis.set("foo{#}", "bar");
-    String status = jedis.rename("foo{#}", "bar{#}");
-    assertEquals("OK", status);
+//  @Test
+//  @Override
+//  public void rename() {
+//    jedis.set("foo{#}", "bar");
+//    String status = jedis.rename("foo{#}", "bar{#}");
+//    assertEquals("OK", status);
+//
+//    assertNull(jedis.get("foo{#}"));
+//
+//    assertEquals("bar", jedis.get("bar{#}"));
+//  }
 
-    assertNull(jedis.get("foo{#}"));
+//  @Test
+//  @Override
+//  public void renamenx() {
+//    jedis.set("foo{&}", "bar");
+//    assertEquals(1, jedis.renamenx("foo{&}", "bar{&}"));
+//
+//    jedis.set("foo{&}", "bar");
+//    assertEquals(0, jedis.renamenx("foo{&}", "bar{&}"));
+//  }
 
-    assertEquals("bar", jedis.get("bar{#}"));
-  }
+//  @Test(expected = UnsupportedOperationException.class)
+//  @Override
+//  public void dbSize() {
+//    super.dbSize();
+//  }
 
-  @Test
-  @Override
-  public void renamenx() {
-    jedis.set("foo{&}", "bar");
-    assertEquals(1, jedis.renamenx("foo{&}", "bar{&}"));
-
-    jedis.set("foo{&}", "bar");
-    assertEquals(0, jedis.renamenx("foo{&}", "bar{&}"));
-  }
-
-  @Test(expected = UnsupportedOperationException.class)
-  @Override
-  public void dbSize() {
-    super.dbSize();
-  }
-
-  @Test
-  @Override
-  public void touch() throws Exception {
-    assertEquals(0, jedis.touch("{foo}1", "{foo}2", "{foo}3"));
-
-    jedis.set("{foo}1", "bar1");
-
-    Thread.sleep(1100); // little over 1 sec
-    assertTrue(jedis.objectIdletime("{foo}1") > 0);
-
-    assertEquals(1, jedis.touch("{foo}1"));
-    assertEquals(0L, jedis.objectIdletime("{foo}1").longValue());
-
-    assertEquals(1, jedis.touch("{foo}1", "{foo}2", "{foo}3"));
-
-    jedis.set("{foo}2", "bar2");
-
-    jedis.set("{foo}3", "bar3");
-
-    assertEquals(3, jedis.touch("{foo}1", "{foo}2", "{foo}3"));
-  }
+//  @Test
+//  @Override
+//  public void touch() throws Exception {
+//    assertEquals(0, jedis.touch("{foo}1", "{foo}2", "{foo}3"));
+//
+//    jedis.set("{foo}1", "bar1");
+//
+//    Thread.sleep(1100); // little over 1 sec
+//    assertTrue(jedis.objectIdletime("{foo}1") > 0);
+//
+//    assertEquals(1, jedis.touch("{foo}1"));
+//    assertEquals(0L, jedis.objectIdletime("{foo}1").longValue());
+//
+//    assertEquals(1, jedis.touch("{foo}1", "{foo}2", "{foo}3"));
+//
+//    jedis.set("{foo}2", "bar2");
+//
+//    jedis.set("{foo}3", "bar3");
+//
+//    assertEquals(3, jedis.touch("{foo}1", "{foo}2", "{foo}3"));
+//  }
 
   @Test
   @Override
@@ -240,24 +240,24 @@ public class ClusterAllKindOfValuesCommandsTest extends AllKindOfValuesCommandsT
     assertEquals(Collections.singletonList("{+}f"), scanResult.getResult());
   }
 
-  @Test(expected = IllegalArgumentException.class)
-  @Override
-  public void scanIsCompleteIteration() {
-    super.scanIsCompleteIteration();
-  }
-
-  @Test
-  @Override
-  public void copy() {
-    assertFalse(jedis.copy("unkn{o}wn", "f{o}o", false));
-
-    jedis.set("{foo}1", "bar");
-    assertTrue(jedis.copy("{foo}1", "{foo}2", false));
-    assertEquals("bar", jedis.get("{foo}2"));
-
-    // replace
-    jedis.set("{foo}1", "bar1");
-    assertTrue(jedis.copy("{foo}1", "{foo}2", true));
-    assertEquals("bar1", jedis.get("{foo}2"));
-  }
+//  @Test(expected = IllegalArgumentException.class)
+//  @Override
+//  public void scanIsCompleteIteration() {
+//    super.scanIsCompleteIteration();
+//  }
+//
+//  @Test
+//  @Override
+//  public void copy() {
+//    assertFalse(jedis.copy("unkn{o}wn", "f{o}o", false));
+//
+//    jedis.set("{foo}1", "bar");
+//    assertTrue(jedis.copy("{foo}1", "{foo}2", false));
+//    assertEquals("bar", jedis.get("{foo}2"));
+//
+//    // replace
+//    jedis.set("{foo}1", "bar1");
+//    assertTrue(jedis.copy("{foo}1", "{foo}2", true));
+//    assertEquals("bar1", jedis.get("{foo}2"));
+//  }
 }

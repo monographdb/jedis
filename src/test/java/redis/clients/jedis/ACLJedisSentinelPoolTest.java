@@ -9,6 +9,7 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
@@ -49,7 +50,7 @@ public class ACLJedisSentinelPoolTest {
     return hostAndPorts.stream().map(hap -> hap.toString()).collect(Collectors.toSet());
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void repeatedSentinelPoolInitialization() {
 
     for (int i = 0; i < 20; ++i) {
@@ -62,7 +63,7 @@ public class ACLJedisSentinelPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void repeatedSentinelPoolInitializationWithConfig() {
 
     for (int i = 0; i < 20; ++i) {
@@ -83,7 +84,8 @@ public class ACLJedisSentinelPoolTest {
     }
   }
 
-  @Test(expected = JedisConnectionException.class)
+  //@Test(expected = JedisConnectionException.class)
+  @Ignore("EloqKV does not support auth")
   public void initializeWithNotAvailableSentinelsShouldThrowException() {
 
     GenericObjectPoolConfig<Jedis> poolConfig = new GenericObjectPoolConfig<>();
@@ -101,7 +103,8 @@ public class ACLJedisSentinelPoolTest {
     pool.destroy();
   }
 
-  @Test(expected = JedisException.class)
+  //@Test(expected = JedisException.class)
+  @Ignore("EloqKV does not support auth")
   public void initializeWithNotMonitoredMasterNameShouldThrowException() {
 
     GenericObjectPoolConfig<Jedis> poolConfig = new GenericObjectPoolConfig<>();
@@ -119,7 +122,7 @@ public class ACLJedisSentinelPoolTest {
     pool.destroy();
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkCloseableConnections() throws Exception {
     GenericObjectPoolConfig<Jedis> config = new GenericObjectPoolConfig<>();
 
@@ -133,7 +136,7 @@ public class ACLJedisSentinelPoolTest {
     assertTrue(pool.isClosed());
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void returnResourceShouldResetState() {
     GenericObjectPoolConfig<Jedis> config = new GenericObjectPoolConfig<>();
     config.setMaxTotal(1);
@@ -157,7 +160,7 @@ public class ACLJedisSentinelPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkResourceIsCloseable() {
     GenericObjectPoolConfig<Jedis> config = new GenericObjectPoolConfig<>();
     config.setMaxTotal(1);
@@ -177,7 +180,7 @@ public class ACLJedisSentinelPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void customClientName() {
     GenericObjectPoolConfig<Jedis> config = new GenericObjectPoolConfig<>();
     config.setMaxTotal(1);

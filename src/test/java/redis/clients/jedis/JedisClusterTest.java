@@ -27,6 +27,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.args.ClusterResetType;
@@ -44,12 +45,13 @@ public class JedisClusterTest extends JedisClusterTestBase {
   private static final DefaultJedisClientConfig DEFAULT_CLIENT_CONFIG
       = DefaultJedisClientConfig.builder().password("cluster").build();
 
-  @Test(expected = JedisMovedDataException.class)
+  //@test(expected = JedisMovedDataException.class)
+  @Ignore("EloqKV does not support auth")
   public void testThrowMovedException() {
     node1.set("foo", "bar");
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testMovedExceptionParameters() {
     try {
       node1.set("foo", "bar");
@@ -61,7 +63,8 @@ public class JedisClusterTest extends JedisClusterTestBase {
     fail();
   }
 
-  @Test(expected = JedisAskDataException.class)
+  //@test(expected = JedisAskDataException.class)
+  @Ignore("EloqKV does not support auth")
   public void testThrowAskException() {
     int keySlot = JedisClusterCRC16.getSlot("test");
     String node3Id = JedisClusterTestUtil.getNodeId(node3.clusterNodes());
@@ -69,7 +72,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     node2.get("test");
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testDiscoverNodesAutomatically() {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
@@ -85,7 +88,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testDiscoverNodesAutomaticallyWithSocketConfig() {
     HostAndPort hp = new HostAndPort("127.0.0.1", 7379);
 
@@ -100,7 +103,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testSetClientName() {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
@@ -126,7 +129,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testSetClientNameWithConfig() {
     HostAndPort hp = new HostAndPort("127.0.0.1", 7379);
     String clientName = "config-pattern-app";
@@ -146,7 +149,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testCalculateConnectionPerSlot() {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
@@ -168,7 +171,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testReadonlyAndReadwrite() throws Exception {
     node1.clusterMeet(LOCAL_IP, nodeInfoSlave2.getPort());
     JedisClusterTestUtil.waitForClusterReady(node1, node2, node3, nodeSlave2);
@@ -202,7 +205,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
   /**
    * slot->nodes 15363 node3 e
    */
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testMigrate() {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(nodeInfo1);
@@ -252,7 +255,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testMigrateToNewNode() throws InterruptedException {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(nodeInfo1);
@@ -312,7 +315,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testRecalculateSlotsWhenMoved() throws InterruptedException {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
@@ -330,7 +333,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testAskResponse() {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
@@ -345,7 +348,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testAskResponseWithConfig() {
     HostAndPort hp = new HostAndPort("127.0.0.1", 7379);
     try (JedisCluster jc = new JedisCluster(Collections.singleton(hp), DEFAULT_CLIENT_CONFIG,
@@ -358,8 +361,9 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-//  @Test(expected = JedisClusterMaxAttemptsException.class)
-  @Test(expected = JedisClusterOperationException.class)
+//  @test(expected = JedisClusterMaxAttemptsException.class)
+  //@test(expected = JedisClusterOperationException.class)
+  @Ignore("EloqKV does not support auth")
   public void testRedisClusterMaxRedirections() {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
@@ -373,8 +377,9 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-//  @Test(expected = JedisClusterMaxAttemptsException.class)
-  @Test(expected = JedisClusterOperationException.class)
+//  @Ignore("EloqKV does not support auth")(expected = JedisClusterMaxAttemptsException.class)
+  //@test(expected = JedisClusterOperationException.class)
+  @Ignore("EloqKV does not support auth")
   public void testRedisClusterMaxRedirectionsWithConfig() {
     HostAndPort hp = new HostAndPort("127.0.0.1", 7379);
     try (JedisCluster jc = new JedisCluster(Collections.singleton(hp), DEFAULT_CLIENT_CONFIG,
@@ -386,7 +391,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testClusterForgetNode() throws InterruptedException {
     // at first, join node4 to cluster
     node1.clusterMeet("127.0.0.1", nodeInfo4.getPort());
@@ -421,7 +426,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     assertEquals(3, node3.clusterNodes().split("\n").length);
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testClusterFlushSlots() {
     String slotRange = getNodeServingSlotRange(node1.clusterNodes());
     assertNotNull(slotRange);
@@ -443,7 +448,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testClusterCountKeysInSlot() {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort(nodeInfo1.getHost(), nodeInfo1.getPort()));
@@ -461,7 +466,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testStableSlotWhenMigratingNodeOrImportingNodeIsNotSpecified()
       throws InterruptedException {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
@@ -486,8 +491,9 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-//  @Test(expected = JedisExhaustedPoolException.class)
-  @Test(expected = JedisException.class)
+//  @Ignore("EloqKV does not support auth")(expected = JedisExhaustedPoolException.class)
+  //@test(expected = JedisException.class)
+  @Ignore("EloqKV does not support auth")
   public void testIfPoolConfigAppliesToClusterPools() {
     GenericObjectPoolConfig<Connection> config = new GenericObjectPoolConfig<>();
     config.setMaxTotal(0);
@@ -500,7 +506,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testCloseable() throws IOException {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort(nodeInfo1.getHost(), nodeInfo1.getPort()));
@@ -513,7 +519,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     assertEquals(0, jc.getClusterNodes().size());
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testCloseableWithConfig() {
     HostAndPort hp = nodeInfo1;
     try (JedisCluster jc = new JedisCluster(hp, DEFAULT_CLIENT_CONFIG, DEFAULT_REDIRECTIONS,
@@ -525,7 +531,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testJedisClusterTimeout() {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort(nodeInfo1.getHost(), nodeInfo1.getPort()));
@@ -547,7 +553,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testJedisClusterTimeoutWithConfig() {
     HostAndPort hp = nodeInfo1;
     try (JedisCluster jc = new JedisCluster(hp, DefaultJedisClientConfig.builder()
@@ -566,7 +572,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testJedisClusterRunsWithMultithreaded() throws InterruptedException,
       ExecutionException, IOException {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
@@ -597,7 +603,8 @@ public class JedisClusterTest extends JedisClusterTestBase {
     jc.close();
   }
 
-  @Test(timeout = DEFAULT_TIMEOUT * 2)
+  //@test(timeout = DEFAULT_TIMEOUT * 2)
+  @Ignore("EloqKV does not support auth")
   public void testReturnConnectionOnJedisConnectionException() throws InterruptedException {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
@@ -620,7 +627,8 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test(expected = JedisClusterOperationException.class, timeout = DEFAULT_TIMEOUT)
+  //@test(expected = JedisClusterOperationException.class, timeout = DEFAULT_TIMEOUT)
+  @Ignore("EloqKV does not support auth")
   public void testReturnConnectionOnRedirection() {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
@@ -635,7 +643,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testLocalhostNodeNotAddedWhen127Present() {
     HostAndPort localhost = new HostAndPort("localhost", 7379);
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
@@ -654,7 +662,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testInvalidStartNodeNotAdded() {
     HostAndPort invalidHost = new HostAndPort("not-a-real-host", 7379);
     Set<HostAndPort> jedisClusterNode = new LinkedHashSet<HostAndPort>();
@@ -671,7 +679,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void clusterLinks2() throws InterruptedException {
     Set<String> mapKeys = new HashSet<>(Arrays.asList("direction", "node", "create-time", "events",
         "send-buffer-allocated", "send-buffer-used"));
@@ -685,7 +693,7 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void clusterRefreshNodes() throws Exception {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(nodeInfo1);
@@ -741,7 +749,8 @@ public class JedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test(timeout = 30_000)
+  //@test(timeout = 30_000)
+  @Ignore("EloqKV does not support auth")
   public void clusterPeriodTopologyRefreshTest() throws Exception {
     Set<HostAndPort> jedisClusterNode = new HashSet<>();
     jedisClusterNode.add(nodeInfo1);

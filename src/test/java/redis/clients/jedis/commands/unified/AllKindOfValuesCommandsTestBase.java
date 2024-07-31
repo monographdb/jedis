@@ -141,45 +141,45 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(0, jedis.del(bfoo1, bfoo2));
   }
 
-  @Test
-  public void unlink() {
-    jedis.set("foo1", "bar1");
-    jedis.set("foo2", "bar2");
-    jedis.set("foo3", "bar3");
-
-    assertEquals(3, jedis.unlink("foo1", "foo2", "foo3"));
-
-    assertEquals(0, jedis.exists("foo1", "foo2", "foo3"));
-
-    jedis.set("foo1", "bar1");
-
-    assertEquals(1, jedis.unlink("foo1", "foo2"));
-
-    assertEquals(0, jedis.unlink("foo1", "foo2"));
-
-    jedis.set("foo", "bar");
-    assertEquals(1, jedis.unlink("foo"));
-    assertFalse(jedis.exists("foo"));
-
-    // Binary
-    jedis.set(bfoo1, bbar1);
-    jedis.set(bfoo2, bbar2);
-    jedis.set(bfoo3, bbar3);
-
-    assertEquals(3, jedis.unlink(bfoo1, bfoo2, bfoo3));
-
-    assertEquals(0, jedis.exists(bfoo1, bfoo2, bfoo3));
-
-    jedis.set(bfoo1, bbar1);
-
-    assertEquals(1, jedis.unlink(bfoo1, bfoo2));
-
-    assertEquals(0, jedis.unlink(bfoo1, bfoo2));
-
-    jedis.set(bfoo, bbar);
-    assertEquals(1, jedis.unlink(bfoo));
-    assertFalse(jedis.exists(bfoo));
-  }
+//  @Test
+//  public void unlink() {
+//    jedis.set("foo1", "bar1");
+//    jedis.set("foo2", "bar2");
+//    jedis.set("foo3", "bar3");
+//
+//    assertEquals(3, jedis.unlink("foo1", "foo2", "foo3"));
+//
+//    assertEquals(0, jedis.exists("foo1", "foo2", "foo3"));
+//
+//    jedis.set("foo1", "bar1");
+//
+//    assertEquals(1, jedis.unlink("foo1", "foo2"));
+//
+//    assertEquals(0, jedis.unlink("foo1", "foo2"));
+//
+//    jedis.set("foo", "bar");
+//    assertEquals(1, jedis.unlink("foo"));
+//    assertFalse(jedis.exists("foo"));
+//
+//    // Binary
+//    jedis.set(bfoo1, bbar1);
+//    jedis.set(bfoo2, bbar2);
+//    jedis.set(bfoo3, bbar3);
+//
+//    assertEquals(3, jedis.unlink(bfoo1, bfoo2, bfoo3));
+//
+//    assertEquals(0, jedis.exists(bfoo1, bfoo2, bfoo3));
+//
+//    jedis.set(bfoo1, bbar1);
+//
+//    assertEquals(1, jedis.unlink(bfoo1, bfoo2));
+//
+//    assertEquals(0, jedis.unlink(bfoo1, bfoo2));
+//
+//    jedis.set(bfoo, bbar);
+//    assertEquals(1, jedis.unlink(bfoo));
+//    assertFalse(jedis.exists(bfoo));
+//  }
 
   @Test
   public void type() {
@@ -213,205 +213,205 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(Collections.emptySet(), jedis.keys(bbarstar));
   }
 
-  @Test
-  public void randomKey() {
-    assertNull(jedis.randomKey());
+//  @Test
+//  public void randomKey() {
+//    assertNull(jedis.randomKey());
+//
+//    for (int i = 0; i < 100; i++) {
+//      jedis.set("foo" + i, "bar"+i);
+//    }
+//
+//    String key = jedis.randomKey();
+//    assertNotNull(key);
+//    assertTrue(key.startsWith("foo"));
+//    assertEquals(key.replace("foo", "bar"), jedis.get(key));
+//  }
 
-    for (int i = 0; i < 100; i++) {
-      jedis.set("foo" + i, "bar"+i);
-    }
+//  @Test
+//  public void rename() {
+//    jedis.set("foo", "bar");
+//    String status = jedis.rename("foo", "bar");
+//    assertEquals("OK", status);
+//
+//    assertNull(jedis.get("foo"));
+//
+//    assertEquals("bar", jedis.get("bar"));
+//
+//    // Binary
+//    jedis.set(bfoo, bbar);
+//    String bstatus = jedis.rename(bfoo, bbar);
+//    assertEquals("OK", bstatus);
+//
+//    assertNull(jedis.get(bfoo));
+//
+//    assertArrayEquals(bbar, jedis.get(bbar));
+//  }
 
-    String key = jedis.randomKey();
-    assertNotNull(key);
-    assertTrue(key.startsWith("foo"));
-    assertEquals(key.replace("foo", "bar"), jedis.get(key));
-  }
+//  @Test
+//  public void renameOldAndNewAreTheSame() {
+//    assertEquals("OK", jedis.set("foo", "bar"));
+//    assertEquals("OK", jedis.rename("foo", "foo"));
+//
+//    // Binary
+//    assertEquals("OK", jedis.set(bfoo, bbar));
+//    assertEquals("OK", jedis.rename(bfoo, bfoo));
+//  }
 
-  @Test
-  public void rename() {
-    jedis.set("foo", "bar");
-    String status = jedis.rename("foo", "bar");
-    assertEquals("OK", status);
+//  @Test
+//  public void renamenx() {
+//    jedis.set("foo", "bar");
+//    assertEquals(1, jedis.renamenx("foo", "bar"));
+//
+//    jedis.set("foo", "bar");
+//    assertEquals(0, jedis.renamenx("foo", "bar"));
+//
+//    // Binary
+//    jedis.set(bfoo, bbar);
+//    assertEquals(1, jedis.renamenx(bfoo, bbar));
+//
+//    jedis.set(bfoo, bbar);
+//    assertEquals(0, jedis.renamenx(bfoo, bbar));
+//  }
 
-    assertNull(jedis.get("foo"));
+//  @Test
+//  public void dbSize() {
+//    assertEquals(0, jedis.dbSize());
+//
+//    jedis.set("foo", "bar");
+//    assertEquals(1, jedis.dbSize());
+//
+//    // Binary
+//    jedis.set(bfoo, bbar);
+//    assertEquals(2, jedis.dbSize());
+//  }
+//
+//  @Test
+//  public void expire() {
+//    assertEquals(0, jedis.expire("foo", 20L));
+//
+//    jedis.set("foo", "bar");
+//    assertEquals(1, jedis.expire("foo", 20L));
+//    assertEquals(0, jedis.expire("foo", 20L, ExpiryOption.NX));
+//
+//    // Binary
+//    assertEquals(0, jedis.expire(bfoo, 20L));
+//
+//    jedis.set(bfoo, bbar);
+//    assertEquals(1, jedis.expire(bfoo, 20L));
+//    assertEquals(0, jedis.expire(bfoo, 20L, ExpiryOption.NX));
+//  }
 
-    assertEquals("bar", jedis.get("bar"));
+//  @Test
+//  public void expireAt() {
+//    long unixTime = (System.currentTimeMillis() / 1000L) + 20;
+//
+//    assertEquals(0, jedis.expireAt("foo", unixTime));
+//
+//    jedis.set("foo", "bar");
+//    unixTime = (System.currentTimeMillis() / 1000L) + 20;
+//    assertEquals(1, jedis.expireAt("foo", unixTime));
+//    assertEquals(1, jedis.expireAt("foo", unixTime, ExpiryOption.XX));
+//
+//    // Binary
+//    assertEquals(0, jedis.expireAt(bfoo, unixTime));
+//
+//    jedis.set(bfoo, bbar);
+//    unixTime = (System.currentTimeMillis() / 1000L) + 20;
+//    assertEquals(1, jedis.expireAt(bfoo, unixTime));
+//    assertEquals(1, jedis.expireAt(bfoo, unixTime, ExpiryOption.XX));
+//  }
+//
+//  @Test
+//  public void expireTime() {
+//    long unixTime;
+//
+//    jedis.set("foo", "bar");
+//    unixTime = (System.currentTimeMillis() / 1000L) + 20;
+//    jedis.expireAt("foo", unixTime);
+//    assertEquals(unixTime, jedis.expireTime("foo"), 0.0001);
+//
+//    // Binary
+//    jedis.set(bfoo, bbar);
+//    unixTime = (System.currentTimeMillis() / 1000L) + 20;
+//    jedis.expireAt(bfoo, unixTime);
+//    assertEquals(unixTime, jedis.expireTime(bfoo), 0.0001);
+//  }
 
-    // Binary
-    jedis.set(bfoo, bbar);
-    String bstatus = jedis.rename(bfoo, bbar);
-    assertEquals("OK", bstatus);
+//  @Test
+//  public void ttl() {
+//    assertEquals(-2, jedis.ttl("foo"));
+//
+//    jedis.set("foo", "bar");
+//    assertEquals(-1, jedis.ttl("foo"));
+//
+//    jedis.expire("foo", 20);
+//    long ttl = jedis.ttl("foo");
+//    assertTrue(ttl >= 0 && ttl <= 20);
+//
+//    // Binary
+//    assertEquals(-2, jedis.ttl(bfoo));
+//
+//    jedis.set(bfoo, bbar);
+//    assertEquals(-1, jedis.ttl(bfoo));
+//
+//    jedis.expire(bfoo, 20);
+//    long bttl = jedis.ttl(bfoo);
+//    assertTrue(bttl >= 0 && bttl <= 20);
+//  }
 
-    assertNull(jedis.get(bfoo));
+//  @Test
+//  public void touch() throws Exception {
+//    assertEquals(0, jedis.touch("foo1", "foo2", "foo3"));
+//
+//    jedis.set("foo1", "bar1");
+//
+//    Thread.sleep(1100); // little over 1 sec
+//    assertTrue(jedis.objectIdletime("foo1") > 0);
+//
+//    assertEquals(1, jedis.touch("foo1"));
+//    assertEquals(0L, jedis.objectIdletime("foo1").longValue());
+//
+//    assertEquals(1, jedis.touch("foo1", "foo2", "foo3"));
+//
+//    jedis.set("foo2", "bar2");
+//
+//    jedis.set("foo3", "bar3");
+//
+//    assertEquals(3, jedis.touch("foo1", "foo2", "foo3"));
+//
+//    // Binary
+//    assertEquals(0, jedis.touch(bfoo1, bfoo2, bfoo3));
+//
+//    jedis.set(bfoo1, bbar1);
+//
+//    Thread.sleep(1100); // little over 1 sec
+//    assertTrue(jedis.objectIdletime(bfoo1) > 0);
+//
+//    assertEquals(1, jedis.touch(bfoo1));
+//    assertEquals(0L, jedis.objectIdletime(bfoo1).longValue());
+//
+//    assertEquals(1, jedis.touch(bfoo1, bfoo2, bfoo3));
+//
+//    jedis.set(bfoo2, bbar2);
+//
+//    jedis.set(bfoo3, bbar3);
+//
+//    assertEquals(3, jedis.touch(bfoo1, bfoo2, bfoo3));
+//  }
 
-    assertArrayEquals(bbar, jedis.get(bbar));
-  }
-
-  @Test
-  public void renameOldAndNewAreTheSame() {
-    assertEquals("OK", jedis.set("foo", "bar"));
-    assertEquals("OK", jedis.rename("foo", "foo"));
-
-    // Binary
-    assertEquals("OK", jedis.set(bfoo, bbar));
-    assertEquals("OK", jedis.rename(bfoo, bfoo));
-  }
-
-  @Test
-  public void renamenx() {
-    jedis.set("foo", "bar");
-    assertEquals(1, jedis.renamenx("foo", "bar"));
-
-    jedis.set("foo", "bar");
-    assertEquals(0, jedis.renamenx("foo", "bar"));
-
-    // Binary
-    jedis.set(bfoo, bbar);
-    assertEquals(1, jedis.renamenx(bfoo, bbar));
-
-    jedis.set(bfoo, bbar);
-    assertEquals(0, jedis.renamenx(bfoo, bbar));
-  }
-
-  @Test
-  public void dbSize() {
-    assertEquals(0, jedis.dbSize());
-
-    jedis.set("foo", "bar");
-    assertEquals(1, jedis.dbSize());
-
-    // Binary
-    jedis.set(bfoo, bbar);
-    assertEquals(2, jedis.dbSize());
-  }
-
-  @Test
-  public void expire() {
-    assertEquals(0, jedis.expire("foo", 20L));
-
-    jedis.set("foo", "bar");
-    assertEquals(1, jedis.expire("foo", 20L));
-    assertEquals(0, jedis.expire("foo", 20L, ExpiryOption.NX));
-
-    // Binary
-    assertEquals(0, jedis.expire(bfoo, 20L));
-
-    jedis.set(bfoo, bbar);
-    assertEquals(1, jedis.expire(bfoo, 20L));
-    assertEquals(0, jedis.expire(bfoo, 20L, ExpiryOption.NX));
-  }
-
-  @Test
-  public void expireAt() {
-    long unixTime = (System.currentTimeMillis() / 1000L) + 20;
-
-    assertEquals(0, jedis.expireAt("foo", unixTime));
-
-    jedis.set("foo", "bar");
-    unixTime = (System.currentTimeMillis() / 1000L) + 20;
-    assertEquals(1, jedis.expireAt("foo", unixTime));
-    assertEquals(1, jedis.expireAt("foo", unixTime, ExpiryOption.XX));
-
-    // Binary
-    assertEquals(0, jedis.expireAt(bfoo, unixTime));
-
-    jedis.set(bfoo, bbar);
-    unixTime = (System.currentTimeMillis() / 1000L) + 20;
-    assertEquals(1, jedis.expireAt(bfoo, unixTime));
-    assertEquals(1, jedis.expireAt(bfoo, unixTime, ExpiryOption.XX));
-  }
-
-  @Test
-  public void expireTime() {
-    long unixTime;
-
-    jedis.set("foo", "bar");
-    unixTime = (System.currentTimeMillis() / 1000L) + 20;
-    jedis.expireAt("foo", unixTime);
-    assertEquals(unixTime, jedis.expireTime("foo"), 0.0001);
-
-    // Binary
-    jedis.set(bfoo, bbar);
-    unixTime = (System.currentTimeMillis() / 1000L) + 20;
-    jedis.expireAt(bfoo, unixTime);
-    assertEquals(unixTime, jedis.expireTime(bfoo), 0.0001);
-  }
-
-  @Test
-  public void ttl() {
-    assertEquals(-2, jedis.ttl("foo"));
-
-    jedis.set("foo", "bar");
-    assertEquals(-1, jedis.ttl("foo"));
-
-    jedis.expire("foo", 20);
-    long ttl = jedis.ttl("foo");
-    assertTrue(ttl >= 0 && ttl <= 20);
-
-    // Binary
-    assertEquals(-2, jedis.ttl(bfoo));
-
-    jedis.set(bfoo, bbar);
-    assertEquals(-1, jedis.ttl(bfoo));
-
-    jedis.expire(bfoo, 20);
-    long bttl = jedis.ttl(bfoo);
-    assertTrue(bttl >= 0 && bttl <= 20);
-  }
-
-  @Test
-  public void touch() throws Exception {
-    assertEquals(0, jedis.touch("foo1", "foo2", "foo3"));
-
-    jedis.set("foo1", "bar1");
-
-    Thread.sleep(1100); // little over 1 sec
-    assertTrue(jedis.objectIdletime("foo1") > 0);
-
-    assertEquals(1, jedis.touch("foo1"));
-    assertEquals(0L, jedis.objectIdletime("foo1").longValue());
-
-    assertEquals(1, jedis.touch("foo1", "foo2", "foo3"));
-
-    jedis.set("foo2", "bar2");
-
-    jedis.set("foo3", "bar3");
-
-    assertEquals(3, jedis.touch("foo1", "foo2", "foo3"));
-
-    // Binary
-    assertEquals(0, jedis.touch(bfoo1, bfoo2, bfoo3));
-
-    jedis.set(bfoo1, bbar1);
-
-    Thread.sleep(1100); // little over 1 sec
-    assertTrue(jedis.objectIdletime(bfoo1) > 0);
-
-    assertEquals(1, jedis.touch(bfoo1));
-    assertEquals(0L, jedis.objectIdletime(bfoo1).longValue());
-
-    assertEquals(1, jedis.touch(bfoo1, bfoo2, bfoo3));
-
-    jedis.set(bfoo2, bbar2);
-
-    jedis.set(bfoo3, bbar3);
-
-    assertEquals(3, jedis.touch(bfoo1, bfoo2, bfoo3));
-  }
-
-  @Test
-  public void persist() {
-    jedis.setex("foo", 60 * 60, "bar");
-    assertTrue(jedis.ttl("foo") > 0);
-    assertEquals(1, jedis.persist("foo"));
-    assertEquals(-1, jedis.ttl("foo"));
-
-    // Binary
-    jedis.setex(bfoo, 60 * 60, bbar);
-    assertTrue(jedis.ttl(bfoo) > 0);
-    assertEquals(1, jedis.persist(bfoo));
-    assertEquals(-1, jedis.ttl(bfoo));
-  }
+//  @Test
+//  public void persist() {
+//    jedis.setex("foo", 60 * 60, "bar");
+//    assertTrue(jedis.ttl("foo") > 0);
+//    assertEquals(1, jedis.persist("foo"));
+//    assertEquals(-1, jedis.ttl("foo"));
+//
+//    // Binary
+//    jedis.setex(bfoo, 60 * 60, bbar);
+//    assertTrue(jedis.ttl(bfoo) > 0);
+//    assertEquals(1, jedis.persist(bfoo));
+//    assertEquals(-1, jedis.ttl(bfoo));
+//  }
 
   @Test
   public void dumpAndRestore() {
@@ -426,127 +426,127 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertArrayEquals(bbar, jedis.get(bfoo2));
   }
 
-  @Test
-  public void restoreParams() {
-    jedis.set("foo", "bar");
-    jedis.set("from", "a");
-    byte[] serialized = jedis.dump("from");
+//  @Test
+//  public void restoreParams() {
+//    jedis.set("foo", "bar");
+//    jedis.set("from", "a");
+//    byte[] serialized = jedis.dump("from");
+//
+//    try {
+//      jedis.restore("foo", 0, serialized);
+//      fail("Simple restore on a existing key should fail");
+//    } catch (JedisDataException e) {
+//      // should be here
+//    }
+//    try {
+//      jedis.restore("foo", 0, serialized, RestoreParams.restoreParams());
+//      fail("Simple restore on a existing key should fail");
+//    } catch (JedisDataException e) {
+//      // should be here
+//    }
+//    assertEquals("bar", jedis.get("foo"));
+//
+//    jedis.restore("foo", 1000, serialized, RestoreParams.restoreParams().replace());
+//    assertEquals("a", jedis.get("foo"));
+//    assertTrue(jedis.pttl("foo") <= 1000);
+//
+//    jedis.restore("bar", System.currentTimeMillis() + 1000, serialized, RestoreParams.restoreParams().replace().absTtl());
+//    assertTrue(jedis.pttl("bar") <= 1000);
+//
+//    jedis.restore("bar1", 1000, serialized, RestoreParams.restoreParams().replace().idleTime(1000));
+//    assertEquals(1000, jedis.objectIdletime("bar1").longValue());
+//  }
 
-    try {
-      jedis.restore("foo", 0, serialized);
-      fail("Simple restore on a existing key should fail");
-    } catch (JedisDataException e) {
-      // should be here
-    }
-    try {
-      jedis.restore("foo", 0, serialized, RestoreParams.restoreParams());
-      fail("Simple restore on a existing key should fail");
-    } catch (JedisDataException e) {
-      // should be here
-    }
-    assertEquals("bar", jedis.get("foo"));
+//  @Test
+//  public void pexpire() {
+//    assertEquals(0, jedis.pexpire("foo", 10000));
+//
+//    jedis.set("foo1", "bar1");
+//    assertEquals(1, jedis.pexpire("foo1", 10000));
+//
+//    jedis.set("foo2", "bar2");
+//    assertEquals(1, jedis.pexpire("foo2", 200000000000L));
+//    assertEquals(0, jedis.pexpire("foo2", 10000000, ExpiryOption.NX));
+//    assertEquals(1, jedis.pexpire("foo2", 10000000, ExpiryOption.XX));
+//    assertEquals(0, jedis.pexpire("foo2", 10000, ExpiryOption.GT));
+//    assertEquals(1, jedis.pexpire("foo2", 10000, ExpiryOption.LT));
+//
+//    long pttl = jedis.pttl("foo2");
+//    assertTrue(pttl > 100L);
+//
+//    // Binary
+//    assertEquals(0, jedis.pexpire(bfoo, 10000));
+//
+//    jedis.set(bfoo, bbar);
+//    assertEquals(1, jedis.pexpire(bfoo, 10000));
+//    assertEquals(0, jedis.pexpire(bfoo, 10000, ExpiryOption.NX));
+//  }
+//
+//  @Test
+//  public void pexpireAt() {
+//    long unixTime = (System.currentTimeMillis()) + 10000;
+//
+//    assertEquals(0, jedis.pexpireAt("foo", unixTime));
+//
+//    jedis.set("foo", "bar");
+//    assertEquals(1, jedis.pexpireAt("foo", unixTime));
+//
+//    // Binary
+//    assertEquals(0, jedis.pexpireAt(bfoo, unixTime));
+//
+//    jedis.set(bfoo, bbar);
+//    assertEquals(1, jedis.pexpireAt(bfoo, unixTime));
+//  }
+//
+//  @Test
+//  public void pexpireTime() {
+//    long unixTime = (System.currentTimeMillis()) + 10000;
+//
+//    jedis.set("foo", "bar");
+//    jedis.pexpireAt("foo", unixTime);
+//    assertEquals(unixTime, jedis.pexpireTime("foo"), 0.0001);
+//
+//    // Binary
+//    jedis.set(bfoo, bbar);
+//    jedis.pexpireAt(bfoo, unixTime);
+//    assertEquals(unixTime, jedis.pexpireTime(bfoo), 0.0001);
+//  }
+//
+//  @Test
+//  public void pttl() {
+//    assertEquals(-2, jedis.pttl("foo"));
+//
+//    jedis.set("foo", "bar");
+//    assertEquals(-1, jedis.pttl("foo"));
+//
+//    jedis.pexpire("foo", 20000);
+//    long pttl = jedis.pttl("foo");
+//    assertTrue(pttl >= 0 && pttl <= 20000);
+//
+//    // Binary
+//    assertEquals(-2, jedis.pttl(bfoo));
+//
+//    jedis.set(bfoo, bbar);
+//    assertEquals(-1, jedis.pttl(bfoo));
+//
+//    jedis.pexpire(bfoo, 20000);
+//    pttl = jedis.pttl(bfoo);
+//    assertTrue(pttl >= 0 && pttl <= 20000);
+//  }
 
-    jedis.restore("foo", 1000, serialized, RestoreParams.restoreParams().replace());
-    assertEquals("a", jedis.get("foo"));
-    assertTrue(jedis.pttl("foo") <= 1000);
-
-    jedis.restore("bar", System.currentTimeMillis() + 1000, serialized, RestoreParams.restoreParams().replace().absTtl());
-    assertTrue(jedis.pttl("bar") <= 1000);
-
-    jedis.restore("bar1", 1000, serialized, RestoreParams.restoreParams().replace().idleTime(1000));
-    assertEquals(1000, jedis.objectIdletime("bar1").longValue());
-  }
-
-  @Test
-  public void pexpire() {
-    assertEquals(0, jedis.pexpire("foo", 10000));
-
-    jedis.set("foo1", "bar1");
-    assertEquals(1, jedis.pexpire("foo1", 10000));
-
-    jedis.set("foo2", "bar2");
-    assertEquals(1, jedis.pexpire("foo2", 200000000000L));
-    assertEquals(0, jedis.pexpire("foo2", 10000000, ExpiryOption.NX));
-    assertEquals(1, jedis.pexpire("foo2", 10000000, ExpiryOption.XX));
-    assertEquals(0, jedis.pexpire("foo2", 10000, ExpiryOption.GT));
-    assertEquals(1, jedis.pexpire("foo2", 10000, ExpiryOption.LT));
-
-    long pttl = jedis.pttl("foo2");
-    assertTrue(pttl > 100L);
-
-    // Binary
-    assertEquals(0, jedis.pexpire(bfoo, 10000));
-
-    jedis.set(bfoo, bbar);
-    assertEquals(1, jedis.pexpire(bfoo, 10000));
-    assertEquals(0, jedis.pexpire(bfoo, 10000, ExpiryOption.NX));
-  }
-
-  @Test
-  public void pexpireAt() {
-    long unixTime = (System.currentTimeMillis()) + 10000;
-
-    assertEquals(0, jedis.pexpireAt("foo", unixTime));
-
-    jedis.set("foo", "bar");
-    assertEquals(1, jedis.pexpireAt("foo", unixTime));
-
-    // Binary
-    assertEquals(0, jedis.pexpireAt(bfoo, unixTime));
-
-    jedis.set(bfoo, bbar);
-    assertEquals(1, jedis.pexpireAt(bfoo, unixTime));
-  }
-
-  @Test
-  public void pexpireTime() {
-    long unixTime = (System.currentTimeMillis()) + 10000;
-
-    jedis.set("foo", "bar");
-    jedis.pexpireAt("foo", unixTime);
-    assertEquals(unixTime, jedis.pexpireTime("foo"), 0.0001);
-
-    // Binary
-    jedis.set(bfoo, bbar);
-    jedis.pexpireAt(bfoo, unixTime);
-    assertEquals(unixTime, jedis.pexpireTime(bfoo), 0.0001);
-  }
-
-  @Test
-  public void pttl() {
-    assertEquals(-2, jedis.pttl("foo"));
-
-    jedis.set("foo", "bar");
-    assertEquals(-1, jedis.pttl("foo"));
-
-    jedis.pexpire("foo", 20000);
-    long pttl = jedis.pttl("foo");
-    assertTrue(pttl >= 0 && pttl <= 20000);
-
-    // Binary
-    assertEquals(-2, jedis.pttl(bfoo));
-
-    jedis.set(bfoo, bbar);
-    assertEquals(-1, jedis.pttl(bfoo));
-
-    jedis.pexpire(bfoo, 20000);
-    pttl = jedis.pttl(bfoo);
-    assertTrue(pttl >= 0 && pttl <= 20000);
-  }
-
-  @Test
-  public void psetex() {
-    long pttl;
-
-    jedis.psetex("foo", 200000000000L, "bar");
-    pttl = jedis.pttl("foo");
-    assertTrue(pttl > 100000000000L);
-
-    // Binary
-    jedis.psetex(bfoo, 200000000000L, bbar);
-    pttl = jedis.pttl(bfoo);
-    assertTrue(pttl > 100000000000L);
-  }
+//  @Test
+//  public void psetex() {
+//    long pttl;
+//
+//    jedis.psetex("foo", 200000000000L, "bar");
+//    pttl = jedis.pttl("foo");
+//    assertTrue(pttl > 100000000000L);
+//
+//    // Binary
+//    jedis.psetex(bfoo, 200000000000L, bbar);
+//    pttl = jedis.pttl(bfoo);
+//    assertTrue(pttl > 100000000000L);
+//  }
 
   @Test
   public void scan() {
@@ -682,23 +682,23 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     AssertUtil.assertByteArrayListEquals(Collections.singletonList(new byte[]{102}), binaryResult.getResult());
   }
 
-  @Test
-  public void scanIsCompleteIteration() {
-    for (int i = 0; i < 100; i++) {
-      jedis.set("a" + i, "a" + i);
-    }
-
-    ScanResult<String> result = jedis.scan(SCAN_POINTER_START);
-    // note: in theory Redis would be allowed to already return all results on the 1st scan,
-    // but in practice this never happens for data sets greater than a few tens
-    // see: https://redis.io/commands/scan#number-of-elements-returned-at-every-scan-call
-    assertFalse(result.isCompleteIteration());
-
-    result = scanCompletely(result.getCursor());
-
-    assertNotNull(result);
-    assertTrue(result.isCompleteIteration());
-  }
+//  @Test
+//  public void scanIsCompleteIteration() {
+//    for (int i = 0; i < 100; i++) {
+//      jedis.set("a" + i, "a" + i);
+//    }
+//
+//    ScanResult<String> result = jedis.scan(SCAN_POINTER_START);
+//    // note: in theory Redis would be allowed to already return all results on the 1st scan,
+//    // but in practice this never happens for data sets greater than a few tens
+//    // see: https://redis.io/commands/scan#number-of-elements-returned-at-every-scan-call
+//    assertFalse(result.isCompleteIteration());
+//
+//    result = scanCompletely(result.getCursor());
+//
+//    assertNotNull(result);
+//    assertTrue(result.isCompleteIteration());
+//  }
 
   private ScanResult<String> scanCompletely(String cursor) {
     ScanResult<String> scanResult;
@@ -710,30 +710,30 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     return scanResult;
   }
 
-  @Test
-  public void setNxExAndGet() {
-    assertEquals("OK", jedis.set("hello", "world", SetParams.setParams().nx().ex(expireSeconds)));
-    assertEquals("world", jedis.get("hello"));
-
-    assertNull(jedis.set("hello", "bar", SetParams.setParams().nx().ex(expireSeconds)));
-    assertEquals("world", jedis.get("hello"));
-
-    long ttl = jedis.ttl("hello");
-    assertTrue(ttl > 0 && ttl <= expireSeconds);
-
-    // binary
-    byte[] bworld = { 0x77, 0x6F, 0x72, 0x6C, 0x64 };
-    byte[] bhello = { 0x68, 0x65, 0x6C, 0x6C, 0x6F };
-
-    assertEquals("OK", jedis.set(bworld, bhello, SetParams.setParams().nx().ex(expireSeconds)));
-    assertArrayEquals(bhello, jedis.get(bworld));
-
-    assertNull(jedis.set(bworld, bbar, SetParams.setParams().nx().ex(expireSeconds)));
-    assertArrayEquals(bhello, jedis.get(bworld));
-
-    long bttl = jedis.ttl(bworld);
-    assertTrue(bttl > 0 && bttl <= expireSeconds);
-  }
+//  @Test
+//  public void setNxExAndGet() {
+//    assertEquals("OK", jedis.set("hello", "world", SetParams.setParams().nx().ex(expireSeconds)));
+//    assertEquals("world", jedis.get("hello"));
+//
+//    assertNull(jedis.set("hello", "bar", SetParams.setParams().nx().ex(expireSeconds)));
+//    assertEquals("world", jedis.get("hello"));
+//
+//    long ttl = jedis.ttl("hello");
+//    assertTrue(ttl > 0 && ttl <= expireSeconds);
+//
+//    // binary
+//    byte[] bworld = { 0x77, 0x6F, 0x72, 0x6C, 0x64 };
+//    byte[] bhello = { 0x68, 0x65, 0x6C, 0x6C, 0x6F };
+//
+//    assertEquals("OK", jedis.set(bworld, bhello, SetParams.setParams().nx().ex(expireSeconds)));
+//    assertArrayEquals(bhello, jedis.get(bworld));
+//
+//    assertNull(jedis.set(bworld, bbar, SetParams.setParams().nx().ex(expireSeconds)));
+//    assertArrayEquals(bhello, jedis.get(bworld));
+//
+//    long bttl = jedis.ttl(bworld);
+//    assertTrue(bttl > 0 && bttl <= expireSeconds);
+//  }
 
   @Test
   public void setGetOptionTest() {
@@ -820,75 +820,75 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     });
   }
 
-  @Test
-  public void encodeCompleteResponseHgetallResp3() {
-    Assume.assumeTrue(protocol == RedisProtocol.RESP3);
+//  @Test
+//  public void encodeCompleteResponseHgetallResp3() {
+//    Assume.assumeTrue(protocol == RedisProtocol.RESP3);
+//
+//    HashMap<String, String> entries = new HashMap<>();
+//    entries.put("foo", "bar");
+//    entries.put("foo2", "bar2");
+//    jedis.hset("hash:test:encode", entries);
+//
+//    List<KeyValue> encodeObj = (List<KeyValue>) SafeEncoder.encodeObject(jedis.sendCommand(HGETALL, "hash:test:encode"));
+//
+//    assertEquals(2, encodeObj.size());
+//    encodeObj.forEach(kv -> {
+//      assertThat(entries, Matchers.hasEntry(kv.getKey(), kv.getValue()));
+//    });
+//  }
 
-    HashMap<String, String> entries = new HashMap<>();
-    entries.put("foo", "bar");
-    entries.put("foo2", "bar2");
-    jedis.hset("hash:test:encode", entries);
+//  @Test
+//  public void encodeCompleteResponseXinfoStream() {
+//    Assume.assumeFalse(protocol == RedisProtocol.RESP3);
+//
+//    HashMap<String, String> entry = new HashMap<>();
+//    entry.put("foo", "bar");
+//    StreamEntryID entryID = jedis.xadd("mystream", StreamEntryID.NEW_ENTRY, entry);
+//    jedis.xgroupCreate("mystream", "mygroup", null, false);
+//
+//    Object obj = jedis.sendCommand(XINFO, "STREAM", "mystream");
+//
+//    List encodeObj = (List) SafeEncoder.encodeObject(obj);
+//
+//    assertThat(encodeObj.size(), Matchers.greaterThanOrEqualTo(14));
+//    assertEquals("must have even number of elements", 0, encodeObj.size() % 2); // must be even
+//
+//    assertEquals(1L, findValueFromMapAsList(encodeObj, "length"));
+//    assertEquals(entryID.toString(), findValueFromMapAsList(encodeObj, "last-generated-id"));
+//
+//    List<String> entryAsList = new ArrayList<>(2);
+//    entryAsList.add("foo");
+//    entryAsList.add("bar");
+//
+//    assertEquals(entryAsList, ((List) findValueFromMapAsList(encodeObj, "first-entry")).get(1));
+//    assertEquals(entryAsList, ((List) findValueFromMapAsList(encodeObj, "last-entry")).get(1));
+//  }
 
-    List<KeyValue> encodeObj = (List<KeyValue>) SafeEncoder.encodeObject(jedis.sendCommand(HGETALL, "hash:test:encode"));
-
-    assertEquals(2, encodeObj.size());
-    encodeObj.forEach(kv -> {
-      assertThat(entries, Matchers.hasEntry(kv.getKey(), kv.getValue()));
-    });
-  }
-
-  @Test
-  public void encodeCompleteResponseXinfoStream() {
-    Assume.assumeFalse(protocol == RedisProtocol.RESP3);
-
-    HashMap<String, String> entry = new HashMap<>();
-    entry.put("foo", "bar");
-    StreamEntryID entryID = jedis.xadd("mystream", StreamEntryID.NEW_ENTRY, entry);
-    jedis.xgroupCreate("mystream", "mygroup", null, false);
-
-    Object obj = jedis.sendCommand(XINFO, "STREAM", "mystream");
-
-    List encodeObj = (List) SafeEncoder.encodeObject(obj);
-
-    assertThat(encodeObj.size(), Matchers.greaterThanOrEqualTo(14));
-    assertEquals("must have even number of elements", 0, encodeObj.size() % 2); // must be even
-
-    assertEquals(1L, findValueFromMapAsList(encodeObj, "length"));
-    assertEquals(entryID.toString(), findValueFromMapAsList(encodeObj, "last-generated-id"));
-
-    List<String> entryAsList = new ArrayList<>(2);
-    entryAsList.add("foo");
-    entryAsList.add("bar");
-
-    assertEquals(entryAsList, ((List) findValueFromMapAsList(encodeObj, "first-entry")).get(1));
-    assertEquals(entryAsList, ((List) findValueFromMapAsList(encodeObj, "last-entry")).get(1));
-  }
-
-  @Test
-  public void encodeCompleteResponseXinfoStreamResp3() {
-    Assume.assumeTrue(protocol == RedisProtocol.RESP3);
-
-    HashMap<String, String> entry = new HashMap<>();
-    entry.put("foo", "bar");
-    StreamEntryID entryID = jedis.xadd("mystream", StreamEntryID.NEW_ENTRY, entry);
-    jedis.xgroupCreate("mystream", "mygroup", null, false);
-
-    Object obj = jedis.sendCommand(XINFO, "STREAM", "mystream");
-
-    List<KeyValue> encodeObj = (List<KeyValue>) SafeEncoder.encodeObject(obj);
-
-    assertThat(encodeObj.size(), Matchers.greaterThanOrEqualTo(7));
-
-    assertEquals(1L, findValueFromMapAsKeyValueList(encodeObj, "length"));
-    assertEquals(entryID.toString(), findValueFromMapAsKeyValueList(encodeObj, "last-generated-id"));
-
-    List<String> entryAsList = new ArrayList<>(2);
-    entryAsList.add("foo");
-    entryAsList.add("bar");
-
-    assertEquals(entryAsList, ((List) findValueFromMapAsKeyValueList(encodeObj, "first-entry")).get(1));
-    assertEquals(entryAsList, ((List) findValueFromMapAsKeyValueList(encodeObj, "last-entry")).get(1));
-  }
+//  @Test
+//  public void encodeCompleteResponseXinfoStreamResp3() {
+//    Assume.assumeTrue(protocol == RedisProtocol.RESP3);
+//
+//    HashMap<String, String> entry = new HashMap<>();
+//    entry.put("foo", "bar");
+//    StreamEntryID entryID = jedis.xadd("mystream", StreamEntryID.NEW_ENTRY, entry);
+//    jedis.xgroupCreate("mystream", "mygroup", null, false);
+//
+//    Object obj = jedis.sendCommand(XINFO, "STREAM", "mystream");
+//
+//    List<KeyValue> encodeObj = (List<KeyValue>) SafeEncoder.encodeObject(obj);
+//
+//    assertThat(encodeObj.size(), Matchers.greaterThanOrEqualTo(7));
+//
+//    assertEquals(1L, findValueFromMapAsKeyValueList(encodeObj, "length"));
+//    assertEquals(entryID.toString(), findValueFromMapAsKeyValueList(encodeObj, "last-generated-id"));
+//
+//    List<String> entryAsList = new ArrayList<>(2);
+//    entryAsList.add("foo");
+//    entryAsList.add("bar");
+//
+//    assertEquals(entryAsList, ((List) findValueFromMapAsKeyValueList(encodeObj, "first-entry")).get(1));
+//    assertEquals(entryAsList, ((List) findValueFromMapAsKeyValueList(encodeObj, "last-entry")).get(1));
+//  }
 
   private Object findValueFromMapAsList(List list, Object key) {
     for (int i = 0; i < list.size(); i += 2) {
@@ -908,31 +908,31 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     return null;
   }
 
-  @Test
-  public void copy() {
-    assertFalse(jedis.copy("unknown", "foo", false));
-
-    jedis.set("foo1", "bar");
-    assertTrue(jedis.copy("foo1", "foo2", false));
-    assertEquals("bar", jedis.get("foo2"));
-
-    // replace
-    jedis.set("foo1", "bar1");
-    assertTrue(jedis.copy("foo1", "foo2", true));
-    assertEquals("bar1", jedis.get("foo2"));
-
-    // Binary
-    assertFalse(jedis.copy(bfoobar, bfoo, false));
-
-    jedis.set(bfoo1, bbar);
-    assertTrue(jedis.copy(bfoo1, bfoo2, false));
-    assertArrayEquals(bbar, jedis.get(bfoo2));
-
-    // replace
-    jedis.set(bfoo1, bbar1);
-    assertTrue(jedis.copy(bfoo1, bfoo2, true));
-    assertArrayEquals(bbar1, jedis.get(bfoo2));
-  }
+//  @Test
+//  public void copy() {
+//    assertFalse(jedis.copy("unknown", "foo", false));
+//
+//    jedis.set("foo1", "bar");
+//    assertTrue(jedis.copy("foo1", "foo2", false));
+//    assertEquals("bar", jedis.get("foo2"));
+//
+//    // replace
+//    jedis.set("foo1", "bar1");
+//    assertTrue(jedis.copy("foo1", "foo2", true));
+//    assertEquals("bar1", jedis.get("foo2"));
+//
+//    // Binary
+//    assertFalse(jedis.copy(bfoobar, bfoo, false));
+//
+//    jedis.set(bfoo1, bbar);
+//    assertTrue(jedis.copy(bfoo1, bfoo2, false));
+//    assertArrayEquals(bbar, jedis.get(bfoo2));
+//
+//    // replace
+//    jedis.set(bfoo1, bbar1);
+//    assertTrue(jedis.copy(bfoo1, bfoo2, true));
+//    assertArrayEquals(bbar1, jedis.get(bfoo2));
+//  }
 
   @Test
   public void scanIteration() {

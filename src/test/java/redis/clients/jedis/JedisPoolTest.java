@@ -14,6 +14,7 @@ import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.InvalidURIException;
@@ -26,7 +27,7 @@ public class JedisPoolTest {
 
   private static final EndpointConfig endpointStandalone1 = HostAndPorts.getRedisEndpoint("standalone1");
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkConnections() {
     JedisPool pool = new JedisPool(new JedisPoolConfig(), endpointStandalone0.getHost(), endpointStandalone0.getPort(), 2000);
     try (Jedis jedis = pool.getResource()) {
@@ -38,7 +39,7 @@ public class JedisPoolTest {
     assertTrue(pool.isClosed());
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkResourceWithConfig() {
     try (JedisPool pool = new JedisPool(HostAndPorts.getRedisEndpoint("standalone7-with-lfu-policy").getHostAndPort(),
         DefaultJedisClientConfig.builder().socketTimeoutMillis(5000).build())) {
@@ -51,7 +52,7 @@ public class JedisPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkCloseableConnections() throws Exception {
     JedisPool pool = new JedisPool(new JedisPoolConfig(), endpointStandalone0.getHost(), endpointStandalone0.getPort(), 2000);
     try (Jedis jedis = pool.getResource()) {
@@ -63,7 +64,7 @@ public class JedisPoolTest {
     assertTrue(pool.isClosed());
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkConnectionWithDefaultHostAndPort() {
     JedisPool pool = new JedisPool(new JedisPoolConfig());
     try (Jedis jedis = pool.getResource()) {
@@ -94,7 +95,7 @@ public class JedisPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void checkPoolRepairedWhenJedisIsBroken() {
     JedisPool pool = new JedisPool(new JedisPoolConfig(), endpointStandalone0.getHost(), endpointStandalone0.getPort());
     try (Jedis jedis = pool.getResource()) {
@@ -111,7 +112,8 @@ public class JedisPoolTest {
     assertTrue(pool.isClosed());
   }
 
-  @Test(expected = JedisException.class)
+  //@Test(expected = JedisException.class)
+  @Ignore("EloqKV does not support auth")
   public void checkPoolOverflow() {
     GenericObjectPoolConfig<Jedis> config = new GenericObjectPoolConfig<>();
     config.setMaxTotal(1);
@@ -152,7 +154,7 @@ public class JedisPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void startWithUrlString() {
     try (Jedis j = new Jedis(endpointStandalone1.getHostAndPort())) {
       j.auth(endpointStandalone1.getPassword());
@@ -168,7 +170,7 @@ public class JedisPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void startWithUrl() throws URISyntaxException {
     try (Jedis j = new Jedis(endpointStandalone1.getHostAndPort())) {
       j.auth(endpointStandalone1.getPassword());
@@ -327,7 +329,7 @@ public class JedisPoolTest {
     assertEquals(0, pool.getNumActive());
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void getNumActiveReturnsTheCorrectNumber() {
     try (JedisPool pool = new JedisPool(new JedisPoolConfig(), endpointStandalone0.getHost(), endpointStandalone0.getPort(), 2000)) {
       Jedis jedis = pool.getResource();
@@ -360,7 +362,7 @@ public class JedisPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void closeResourceTwice() {
     try (JedisPool pool = new JedisPool(new JedisPoolConfig(), endpointStandalone0.getHost(), endpointStandalone0.getPort(), 2000)) {
       Jedis j = pool.getResource();
@@ -388,7 +390,7 @@ public class JedisPoolTest {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testCloseConnectionOnMakeObject() {
     JedisPoolConfig config = new JedisPoolConfig();
     config.setTestOnBorrow(true);

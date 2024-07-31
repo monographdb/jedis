@@ -10,7 +10,7 @@
     "password": "foobared",
     "tls": true,
     "endpoints": [
-      "rediss://localhost:6390"
+      "rediss://localhost:6379"
     ]
   },
   "standalone0-acl": {
@@ -26,7 +26,7 @@
     "password": "fizzbuzz",
     "tls": true,
     "endpoints": [
-      "rediss://localhost:6390"
+      "rediss://localhost:6379"
     ]
   },
   "standalone1": {
@@ -34,7 +34,7 @@
     "password": "foobared",
     "tls": false,
     "endpoints": [
-      "redis://localhost:6380"
+      "redis://localhost:6379"
     ]
   },
   "standalone2-primary": {
@@ -42,7 +42,7 @@
     "password": "foobared",
     "tls": false,
     "endpoints": [
-      "redis://localhost:6381"
+      "redis://localhost:6379"
     ]
   },
   "standalone3-replica-of-standalone2": {
@@ -50,7 +50,7 @@
     "password": "foobared",
     "tls": false,
     "endpoints": [
-      "redis://localhost:6382"
+      "redis://localhost:6379"
     ]
   },
   "standalone4-replica-of-standalone1": {
@@ -58,7 +58,7 @@
     "password": "foobared",
     "tls": false,
     "endpoints": [
-      "redis://localhost:6383"
+      "redis://localhost:6379"
     ]
   },
   "standalone5-primary": {
@@ -66,7 +66,7 @@
     "password": "foobared",
     "tls": false,
     "endpoints": [
-      "redis://localhost:6384"
+      "redis://localhost:6379"
     ]
   },
   "standalone6-replica-of-standalone5": {
@@ -74,7 +74,7 @@
     "password": "foobared",
     "tls": false,
     "endpoints": [
-      "redis://localhost:6385"
+      "redis://localhost:6379"
     ]
   },
   "standalone7-with-lfu-policy": {
@@ -82,25 +82,25 @@
     "password": "foobared",
     "tls": false,
     "endpoints": [
-      "redis://localhost:6386"
+      "redis://localhost:6379"
     ]
   },
   "standalone9": {
     "tls": false,
     "endpoints": [
-      "redis://localhost:6388"
+      "redis://localhost:6379"
     ]
   },
   "standalone10-replica-of-standalone9": {
     "tls": false,
     "endpoints": [
-      "redis://localhost:6389"
+      "redis://localhost:6379"
     ]
   },
   "modules-docker": {
     "tls": false,
     "endpoints": [
-      "redis://localhost:6479"
+      "redis://localhost:6379"
     ]
   }
 }

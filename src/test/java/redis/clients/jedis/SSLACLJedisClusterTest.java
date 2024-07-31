@@ -12,6 +12,7 @@ import javax.net.ssl.SSLSocketFactory;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.JedisClusterOperationException;
@@ -54,7 +55,7 @@ public class SSLACLJedisClusterTest extends JedisClusterTestBase {
                             "default", "cluster", true)));
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testSSLDiscoverNodesAutomatically() {
     try (JedisCluster jc = new JedisCluster(Collections.singleton(new HostAndPort("localhost", 8379)),
         DefaultJedisClientConfig.builder().user("default").password("cluster").ssl(true)
@@ -79,7 +80,7 @@ public class SSLACLJedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void testSSLWithoutPortMap() {
     try (JedisCluster jc = new JedisCluster(Collections.singleton(new HostAndPort("localhost", 8379)),
         DefaultJedisClientConfig.builder().user("default").password("cluster").ssl(true).build(),
@@ -93,7 +94,7 @@ public class SSLACLJedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectByIpAddress() {
     try (JedisCluster jc = new JedisCluster(new HostAndPort("127.0.0.1", 7379),
         DefaultJedisClientConfig.builder().user("default").password("cluster").ssl(true)
@@ -103,7 +104,7 @@ public class SSLACLJedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectToNodesFailsWithSSLParametersAndNoHostMapping() {
     final SSLParameters sslParameters = new SSLParameters();
     sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
@@ -122,7 +123,7 @@ public class SSLACLJedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectToNodesSucceedsWithSSLParametersAndHostMapping() {
     final SSLParameters sslParameters = new SSLParameters();
     sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
@@ -135,7 +136,7 @@ public class SSLACLJedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectByIpAddressFailsWithSSLParameters() {
     final SSLParameters sslParameters = new SSLParameters();
     sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
@@ -153,7 +154,7 @@ public class SSLACLJedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithCustomHostNameVerifier() {
     HostnameVerifier hostnameVerifier = new BasicHostnameVerifier();
     HostnameVerifier localhostVerifier = new LocalhostVerifier();
@@ -193,7 +194,7 @@ public class SSLACLJedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithCustomSocketFactory() throws Exception {
     final SSLSocketFactory sslSocketFactory = SSLJedisTest.createTrustStoreSslSocketFactory();
 
@@ -205,7 +206,7 @@ public class SSLACLJedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void connectWithEmptyTrustStore() throws Exception {
     final SSLSocketFactory sslSocketFactory = SSLJedisTest.createTrustNoOneSslSocketFactory();
 
@@ -221,7 +222,7 @@ public class SSLACLJedisClusterTest extends JedisClusterTestBase {
     }
   }
 
-  @Test
+  @Ignore("EloqKV does not support auth")
   public void defaultHostAndPortUsedIfMapReturnsNull() {
     HostAndPortMapper nullHostAndPortMap = (HostAndPort hostAndPort) -> null;
 

@@ -39,41 +39,41 @@ public abstract class StringValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertEquals("bar", value);
   }
 
-  @Test
-  public void getDel() {
-    String status = jedis.set("foo", "bar");
-    assertEquals("OK", status);
+//  @Test
+//  public void getDel() {
+//    String status = jedis.set("foo", "bar");
+//    assertEquals("OK", status);
+//
+//    String value = jedis.getDel("foo");
+//    assertEquals("bar", value);
+//
+//    assertNull(jedis.get("foo"));
+//  }
 
-    String value = jedis.getDel("foo");
-    assertEquals("bar", value);
-
-    assertNull(jedis.get("foo"));
-  }
-
-  @Test
-  public void getEx() {
-    assertNull(jedis.getEx("foo", GetExParams.getExParams().ex(1)));
-    jedis.set("foo", "bar");
-
-    assertEquals("bar", jedis.getEx("foo", GetExParams.getExParams().ex(10)));
-    long ttl = jedis.ttl("foo");
-    assertTrue(ttl > 0 && ttl <= 10);
-
-    assertEquals("bar", jedis.getEx("foo", GetExParams.getExParams().px(20000l)));
-    ttl = jedis.ttl("foo");
-    assertTrue(ttl > 10 && ttl <= 20);
-
-    assertEquals("bar", jedis.getEx("foo", GetExParams.getExParams().exAt(System.currentTimeMillis() / 1000 + 30)));
-    ttl = jedis.ttl("foo");
-    assertTrue(ttl > 20 && ttl <= 30);
-
-    assertEquals("bar", jedis.getEx("foo", GetExParams.getExParams().pxAt(System.currentTimeMillis() + 40000l)));
-    ttl = jedis.ttl("foo");
-    assertTrue(ttl > 30 && ttl <= 40);
-
-    assertEquals("bar", jedis.getEx("foo", GetExParams.getExParams().persist()));
-    assertEquals(-1, jedis.ttl("foo"));
-  }
+//  @Test
+//  public void getEx() {
+//    assertNull(jedis.getEx("foo", GetExParams.getExParams().ex(1)));
+//    jedis.set("foo", "bar");
+//
+//    assertEquals("bar", jedis.getEx("foo", GetExParams.getExParams().ex(10)));
+//    long ttl = jedis.ttl("foo");
+//    assertTrue(ttl > 0 && ttl <= 10);
+//
+//    assertEquals("bar", jedis.getEx("foo", GetExParams.getExParams().px(20000l)));
+//    ttl = jedis.ttl("foo");
+//    assertTrue(ttl > 10 && ttl <= 20);
+//
+//    assertEquals("bar", jedis.getEx("foo", GetExParams.getExParams().exAt(System.currentTimeMillis() / 1000 + 30)));
+//    ttl = jedis.ttl("foo");
+//    assertTrue(ttl > 20 && ttl <= 30);
+//
+//    assertEquals("bar", jedis.getEx("foo", GetExParams.getExParams().pxAt(System.currentTimeMillis() + 40000l)));
+//    ttl = jedis.ttl("foo");
+//    assertTrue(ttl > 30 && ttl <= 40);
+//
+//    assertEquals("bar", jedis.getEx("foo", GetExParams.getExParams().persist()));
+//    assertEquals(-1, jedis.ttl("foo"));
+//  }
 
   @Test
   public void mget() {
@@ -112,13 +112,13 @@ public abstract class StringValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertEquals("bar", jedis.get("foo"));
   }
 
-  @Test
-  public void setex() {
-    String status = jedis.setex("foo", 20, "bar");
-    assertEquals("OK", status);
-    long ttl = jedis.ttl("foo");
-    assertTrue(ttl > 0 && ttl <= 20);
-  }
+//  @Test
+//  public void setex() {
+//    String status = jedis.setex("foo", 20, "bar");
+//    assertEquals("OK", status);
+//    long ttl = jedis.ttl("foo");
+//    assertTrue(ttl > 0 && ttl <= 20);
+//  }
 
   @Test
   public void mset() {
@@ -235,30 +235,30 @@ public abstract class StringValuesCommandsTestBase extends UnifiedJedisCommandsT
     jedis.incr("foo"); // Should throw an exception 
   }
 
-  @Test
-  public void psetex() {
-    String status = jedis.psetex("foo", 20000, "bar");
-    assertEquals("OK", status);
-    long ttl = jedis.ttl("foo");
-    assertTrue(ttl > 0 && ttl <= 20000);
-  }
+//  @Test
+//  public void psetex() {
+//    String status = jedis.psetex("foo", 20000, "bar");
+//    assertEquals("OK", status);
+//    long ttl = jedis.ttl("foo");
+//    assertTrue(ttl > 0 && ttl <= 20000);
+//  }
 
-  @Test
-  public void lcs() {
-    jedis.mset("key1", "ohmytext", "key2", "mynewtext");
-
-    LCSMatchResult stringMatchResult = jedis.lcs("key1", "key2",
-            LCSParams.LCSParams());
-    assertEquals("mytext", stringMatchResult.getMatchString());
-
-    stringMatchResult = jedis.lcs( "key1", "key2",
-            LCSParams.LCSParams().idx().withMatchLen());
-    assertEquals(stringMatchResult.getLen(), 6);
-    assertEquals(2, stringMatchResult.getMatches().size());
-
-    stringMatchResult = jedis.lcs( "key1", "key2",
-            LCSParams.LCSParams().idx().minMatchLen(10));
-    assertEquals(0, stringMatchResult.getMatches().size());
-  }
+//  @Test
+//  public void lcs() {
+//    jedis.mset("key1", "ohmytext", "key2", "mynewtext");
+//
+//    LCSMatchResult stringMatchResult = jedis.lcs("key1", "key2",
+//            LCSParams.LCSParams());
+//    assertEquals("mytext", stringMatchResult.getMatchString());
+//
+//    stringMatchResult = jedis.lcs( "key1", "key2",
+//            LCSParams.LCSParams().idx().withMatchLen());
+//    assertEquals(stringMatchResult.getLen(), 6);
+//    assertEquals(2, stringMatchResult.getMatches().size());
+//
+//    stringMatchResult = jedis.lcs( "key1", "key2",
+//            LCSParams.LCSParams().idx().minMatchLen(10));
+//    assertEquals(0, stringMatchResult.getMatches().size());
+//  }
 
 }

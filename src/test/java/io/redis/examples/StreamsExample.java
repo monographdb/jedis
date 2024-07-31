@@ -6,6 +6,7 @@ import redis.clients.jedis.StreamEntryID;
 import redis.clients.jedis.UnifiedJedis;
 //HIDE_END
 
+import org.junit.Ignore;
 //REMOVE_START
 import org.junit.Test;
 import redis.clients.jedis.exceptions.JedisDataException;
@@ -19,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 
 public class StreamsExample {
 
-  @Test
+  @Ignore("EloqKV does not support xadd")
   public void run(){
 
     //HIDE_START

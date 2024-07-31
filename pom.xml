@@ -296,7 +296,15 @@
 				<configuration>
 					<!-- <test>**/examples/*Example.java</test> -->
 					<includes>
-						<include>**/commands/jedis/*.java</include>
+					    <include>**/io/redis/examples/*.java</include>
+					    <include>**/redis/clients/jedis/*.java</include>
+					    <include>**/redis/clients/jedis/collections/*.java</include>
+					    <include>**/redis/clients/jedis/commands/commandobjects/*.java</include>
+						<include>**/redis/clients/jedis/commands/jedis/*.java</include>
+						<include>**/redis/clients/jedis/commands/unified/pipeline/*.java</include>
+						<include>**/redis/clients/jedis/commands/unified/pooled/*.java</include>
+						<include>**/redis/clients/jedis/exceptions/*.java</include>
+												
 						<!-- <include>**/commands/jedis/SortedSetCommandsTest.java</include> -->
 					</includes>
 					<excludes>
