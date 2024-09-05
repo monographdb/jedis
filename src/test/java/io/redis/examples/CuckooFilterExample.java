@@ -4,11 +4,13 @@
 package io.redis.examples;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.UnifiedJedis;
 
 public class CuckooFilterExample {
-    @Test
+    // @Test
+    @Ignore("Unsupport command cf.*")
     public void run() {
         UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379");
         // HIDE_END

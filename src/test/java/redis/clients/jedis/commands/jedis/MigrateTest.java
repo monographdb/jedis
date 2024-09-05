@@ -8,6 +8,7 @@ import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -17,6 +18,7 @@ import redis.clients.jedis.exceptions.JedisDataException;
 import redis.clients.jedis.params.MigrateParams;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands migrate")
 public class MigrateTest extends JedisCommandsTestBase {
 
   private static final byte[] bfoo = { 0x01, 0x02, 0x03 };

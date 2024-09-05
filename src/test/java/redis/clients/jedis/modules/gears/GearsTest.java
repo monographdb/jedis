@@ -4,6 +4,7 @@ import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -32,6 +33,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport command tfunction")
 public class GearsTest extends RedisModuleCommandsTestBase {
 
   private static final String BAD_FUNCTION = "All Your Base Are Belong to Us";

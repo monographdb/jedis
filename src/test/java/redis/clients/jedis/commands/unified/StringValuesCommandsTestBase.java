@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.RedisProtocol;
@@ -50,7 +52,8 @@ public abstract class StringValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertNull(jedis.get("foo"));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command getex")
   public void getEx() {
     assertNull(jedis.getEx("foo", GetExParams.getExParams().ex(1)));
     jedis.set("foo", "bar");
@@ -112,7 +115,8 @@ public abstract class StringValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertEquals("bar", jedis.get("foo"));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command setex")
   public void setex() {
     String status = jedis.setex("foo", 20, "bar");
     assertEquals("OK", status);
@@ -235,7 +239,8 @@ public abstract class StringValuesCommandsTestBase extends UnifiedJedisCommandsT
     jedis.incr("foo"); // Should throw an exception 
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command psetex")
   public void psetex() {
     String status = jedis.psetex("foo", 20000, "bar");
     assertEquals("OK", status);
@@ -243,7 +248,8 @@ public abstract class StringValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertTrue(ttl > 0 && ttl <= 20000);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command lcs")
   public void lcs() {
     jedis.mset("key1", "ohmytext", "key2", "mynewtext");
 

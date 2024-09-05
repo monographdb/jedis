@@ -2,6 +2,7 @@ package redis.clients.jedis.commands.jedis;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -10,6 +11,7 @@ import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.util.SafeEncoder;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands pfadd, pf*")
 public class HyperLogLogCommandsTest extends JedisCommandsTestBase {
 
   public HyperLogLogCommandsTest(RedisProtocol protocol) {

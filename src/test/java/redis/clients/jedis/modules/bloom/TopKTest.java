@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -15,6 +16,7 @@ import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands topk.*")
 public class TopKTest extends RedisModuleCommandsTestBase {
 
   @BeforeClass

@@ -26,16 +26,16 @@ public final class HostAndPorts {
     sentinelHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_SENTINEL_PORT + 3));
     sentinelHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_SENTINEL_PORT + 4));
 
+    clusterHostAndPortList.add(new HostAndPort("localhost", 6379));
     clusterHostAndPortList.add(new HostAndPort("localhost", 7379));
-    clusterHostAndPortList.add(new HostAndPort("localhost", 7380));
-    clusterHostAndPortList.add(new HostAndPort("localhost", 7381));
+    clusterHostAndPortList.add(new HostAndPort("localhost", 8379));
     clusterHostAndPortList.add(new HostAndPort("localhost", 7382));
     clusterHostAndPortList.add(new HostAndPort("localhost", 7383));
     clusterHostAndPortList.add(new HostAndPort("localhost", 7384));
 
-    stableClusterHostAndPortList.add(new HostAndPort("localhost", 7479));
-    stableClusterHostAndPortList.add(new HostAndPort("localhost", 7480));
-    stableClusterHostAndPortList.add(new HostAndPort("localhost", 7481));
+    stableClusterHostAndPortList.add(new HostAndPort("localhost", 6379));
+    stableClusterHostAndPortList.add(new HostAndPort("localhost", 7379));
+    stableClusterHostAndPortList.add(new HostAndPort("localhost", 8379));
   }
 
   public static EndpointConfig getRedisEndpoint(String endpointName) {

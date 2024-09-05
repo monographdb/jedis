@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -21,6 +22,7 @@ import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
  * Tests for the Count-Min-Sketch Implementation
  */
 @RunWith(Parameterized.class)
+@Ignore("Unsupport command cms.*")
 public class CMSTest extends RedisModuleCommandsTestBase {
 
   @BeforeClass

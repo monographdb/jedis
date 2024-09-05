@@ -11,12 +11,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.hamcrest.Matchers;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.HostAndPorts;
 
+@Ignore("Unsupport replica")
 public class SentinelCommandsTest {
 
   protected static final String MASTER_NAME = "mymaster";

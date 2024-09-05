@@ -23,6 +23,7 @@ import java.util.UUID;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -224,7 +225,8 @@ public class PipeliningTest extends JedisCommandsTestBase {
     assertTrue(Arrays.equals(secondKey, value1) || Arrays.equals(secondKey, value2));
   }
 
-  @Test
+  // @Test
+  @Ignore("Unsupport command swapdb")
   public void pipelineSelect() {
     jedis.set("foo", "bar");
     jedis.swapDB(0, 1);
@@ -316,7 +318,8 @@ public class PipeliningTest extends JedisCommandsTestBase {
     assertEquals(result, "3");
   }
 
-  @Test
+  // @Test
+  @Ignore("Unsupport replica")
   public void waitReplicas() {
     Pipeline p = jedis.pipelined();
     p.set("wait", "replicas");
@@ -331,7 +334,8 @@ public class PipeliningTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+  // @Test
+  @Ignore("Unsupport replica")
   public void waitAof() {
     Pipeline p = jedis.pipelined();
     p.set("wait", "aof");
@@ -561,7 +565,8 @@ public class PipeliningTest extends JedisCommandsTestBase {
     jedis2.close();
   }
 
-  @Test
+  // @Test
+  @Ignore("Unsupport command time")
   public void time() {
     Pipeline p = jedis.pipelined();
 
@@ -573,7 +578,8 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems(timeResponseMatcher));
   }
 
-  @Test
+  // @Test
+  @Ignore("Unsupport command dbsize")
   public void dbSize() {
     Pipeline p = jedis.pipelined();
 
@@ -585,7 +591,8 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems(0L, "OK", 1L));
   }
 
-  @Test
+  // @Test
+  @Ignore("Unsupport command move")
   public void move() {
     Pipeline p = jedis.pipelined();
 
@@ -600,7 +607,8 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems(0L, "OK", 1L, null, "OK", "bar"));
   }
 
-  @Test
+  // @Test
+  @Ignore("Unsupport command move")
   public void moveBinary() {
     Pipeline p = jedis.pipelined();
 
@@ -615,7 +623,8 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems(0L, "OK", 1L, null, "OK", bbar));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command swapdb")
   public void swapDb() {
     Pipeline p = jedis.pipelined();
 
@@ -633,7 +642,8 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems("OK", "bar", "OK", null, "OK", "OK", null, "OK", "bar"));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command copy")
   public void copyToAnotherDb() {
     Pipeline p = jedis.pipelined();
 
@@ -654,7 +664,8 @@ public class PipeliningTest extends JedisCommandsTestBase {
         hasItems(false, "OK", true, "bar", "OK", "bar", "OK", "OK", false, "baz", "bar"));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command copy")
   public void copyToAnotherDbBinary() {
     Pipeline p = jedis.pipelined();
 

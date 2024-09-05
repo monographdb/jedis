@@ -31,6 +31,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.RedisProtocol;
@@ -624,7 +625,8 @@ public abstract class HashesCommandsTestBase extends UnifiedJedisCommandsTestBas
     bactual.forEach(e -> assertArrayEquals(bhash.get(e.getKey()), e.getValue()));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands hexpire")
   public void hexpireAndHttl() {
     long seconds1 = 20;
     long seconds2 = 10;
@@ -641,7 +643,8 @@ public abstract class HashesCommandsTestBase extends UnifiedJedisCommandsTestBas
             both(lessThanOrEqualTo(seconds2)).and(greaterThanOrEqualTo(seconds2 - 1))));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands hexpire")
   public void hexpireAndHttlBinary() {
     long seconds1 = 20;
     long seconds2 = 10;
@@ -658,7 +661,8 @@ public abstract class HashesCommandsTestBase extends UnifiedJedisCommandsTestBas
             both(lessThanOrEqualTo(seconds2)).and(greaterThanOrEqualTo(seconds2 - 1))));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands hexpire")
   public void hpexpireAndHpttl() {
     long millis1 = 20_000;
     long millis2 = 10_000;
@@ -673,7 +677,8 @@ public abstract class HashesCommandsTestBase extends UnifiedJedisCommandsTestBas
         contains(both(lessThanOrEqualTo(millis2)).and(greaterThan(millis2 - 10)), equalTo(-2L), equalTo(-1L)));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands hpexpire")
   public void hpexpireAndHpttlBinary() {
     long millis1 = 20_000;
     long millis2 = 10_000;
@@ -688,7 +693,8 @@ public abstract class HashesCommandsTestBase extends UnifiedJedisCommandsTestBas
         contains(both(lessThanOrEqualTo(millis2)).and(greaterThan(millis2 - 10)), equalTo(-2L), equalTo(-1L)));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands hexpireat")
   public void hexpireAtAndExpireTime() {
     long currSeconds = System.currentTimeMillis() / 1000;
     long seconds1 = currSeconds + 20;
@@ -706,7 +712,8 @@ public abstract class HashesCommandsTestBase extends UnifiedJedisCommandsTestBas
             both(lessThanOrEqualTo(seconds2)).and(greaterThanOrEqualTo(seconds2 - 1))));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands hexpireat")
   public void hexpireAtAndExpireTimeBinary() {
     long currSeconds = System.currentTimeMillis() / 1000;
     long seconds1 = currSeconds + 20;
@@ -724,7 +731,8 @@ public abstract class HashesCommandsTestBase extends UnifiedJedisCommandsTestBas
             both(lessThanOrEqualTo(seconds2)).and(greaterThanOrEqualTo(seconds2 - 1))));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands hpexpireat")
   public void hpexpireAtAndPexpireTime() {
     long currMillis = System.currentTimeMillis();
     long unixMillis = currMillis + 20_000;
@@ -739,7 +747,8 @@ public abstract class HashesCommandsTestBase extends UnifiedJedisCommandsTestBas
         contains(equalTo(unixMillis), equalTo(-2L), equalTo(-1L)));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands hexpireat")
   public void hpexpireAtAndPexpireTimeBinary() {
     long currMillis = System.currentTimeMillis();
     long unixMillis = currMillis + 20_000;
@@ -754,7 +763,8 @@ public abstract class HashesCommandsTestBase extends UnifiedJedisCommandsTestBas
         contains(equalTo(unixMillis), equalTo(-2L), equalTo(-1L)));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands hexpire")
   public void hpersist() {
     long seconds = 20;
 
@@ -768,7 +778,8 @@ public abstract class HashesCommandsTestBase extends UnifiedJedisCommandsTestBas
         contains(equalTo(-1L), equalTo(-1L), equalTo(-2L)));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands hexpire")
   public void hpersistBinary() {
     long seconds = 20;
 

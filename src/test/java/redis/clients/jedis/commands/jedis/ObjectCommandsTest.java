@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -18,6 +19,7 @@ import redis.clients.jedis.exceptions.JedisDataException;
 import redis.clients.jedis.util.SafeEncoder;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport command object")
 public class ObjectCommandsTest extends JedisCommandsTestBase {
 
   private final String key = "mylist";

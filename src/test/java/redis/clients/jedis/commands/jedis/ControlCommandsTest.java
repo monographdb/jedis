@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -42,6 +43,7 @@ import redis.clients.jedis.util.KeyValue;
 import redis.clients.jedis.util.SafeEncoder;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport command")
 public class ControlCommandsTest extends JedisCommandsTestBase {
 
   public ControlCommandsTest(RedisProtocol redisProtocol) {

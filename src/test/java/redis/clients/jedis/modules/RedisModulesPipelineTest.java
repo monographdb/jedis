@@ -16,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Assume;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -30,6 +31,7 @@ import redis.clients.jedis.search.*;
 import redis.clients.jedis.search.aggr.*;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands json.*")
 public class RedisModulesPipelineTest extends RedisModuleCommandsTestBase {
 
   private static final Gson gson = new Gson();

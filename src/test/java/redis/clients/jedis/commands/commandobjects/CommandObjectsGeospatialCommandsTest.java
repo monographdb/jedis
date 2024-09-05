@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.GeoCoordinate;
 import redis.clients.jedis.RedisProtocol;
@@ -27,6 +28,7 @@ import redis.clients.jedis.resps.GeoRadiusResponse;
 /**
  * Tests related to <a href="https://redis.io/commands/?group=geo">Geospatial</a> commands.
  */
+@Ignore("Unsupport commands geo.*")
 public class CommandObjectsGeospatialCommandsTest extends CommandObjectsStandaloneTestBase {
 
   // Some coordinates for testing

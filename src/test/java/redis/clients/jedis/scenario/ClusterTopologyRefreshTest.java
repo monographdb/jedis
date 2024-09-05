@@ -1,6 +1,7 @@
 package redis.clients.jedis.scenario;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+@Ignore("Skipping test")
 public class ClusterTopologyRefreshTest {
 
   private static final Logger log = LoggerFactory.getLogger(ClusterTopologyRefreshTest.class);

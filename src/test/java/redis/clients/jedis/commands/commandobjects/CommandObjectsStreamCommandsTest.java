@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.StreamEntryID;
@@ -39,6 +40,7 @@ import redis.clients.jedis.resps.StreamPendingSummary;
 /**
  * Tests related to <a href="https://redis.io/commands/?group=stream">Stream</a> commands.
  */
+@Ignore("Unsupport commands xadd,x*")
 public class CommandObjectsStreamCommandsTest extends CommandObjectsStandaloneTestBase {
 
   public CommandObjectsStreamCommandsTest(RedisProtocol protocol) {

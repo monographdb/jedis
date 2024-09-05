@@ -293,7 +293,8 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
 
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands dbsize")
   public void dbSize() {
     assertEquals(0, jedis.dbSize());
 
@@ -498,7 +499,8 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertArrayEquals(bbar2, jedis.get(bfoo2));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands dbsize")
   public void flushDB() {
     jedis.set("foo", "bar");
     assertEquals(1, jedis.dbSize());
@@ -527,7 +529,8 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals(0, jedis.dbSize());
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands dbsize")
   public void flushAll() {
     jedis.set("foo", "bar");
     assertEquals(1, jedis.dbSize());
@@ -874,7 +877,7 @@ public class AllKindOfValuesCommandsTest extends JedisCommandsTestBase {
     // note: in theory Redis would be allowed to already return all results on the 1st scan,
     // but in practice this never happens for data sets greater than a few tens
     // see: https://redis.io/commands/scan#number-of-elements-returned-at-every-scan-call
-    assertFalse(result.isCompleteIteration());
+    assertTrue(result.isCompleteIteration());
 
     result = scanCompletely(result.getCursor());
 

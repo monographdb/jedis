@@ -9,6 +9,8 @@ import redis.clients.jedis.exceptions.*;
 import redis.clients.jedis.search.*;
 import redis.clients.jedis.search.aggr.*;
 import redis.clients.jedis.search.schemafields.*;
+
+import org.junit.Ignore;
 // REMOVE_START
 import org.junit.Test;
 
@@ -34,7 +36,8 @@ class Bicycle {
 
 public class SearchQuickstartExample {
 
-  @Test
+  // @Test
+  @Ignore("Unsupport command ft.*")
   public void run() {
     // STEP_START connect
     // UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379");

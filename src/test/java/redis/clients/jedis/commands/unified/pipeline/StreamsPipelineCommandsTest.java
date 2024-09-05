@@ -28,6 +28,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import org.hamcrest.Matchers;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -56,6 +57,7 @@ import redis.clients.jedis.resps.StreamPendingEntry;
 import redis.clients.jedis.util.SafeEncoder;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands xadd")
 public class StreamsPipelineCommandsTest extends PipelineCommandsTestBase {
 
   public StreamsPipelineCommandsTest(RedisProtocol protocol) {

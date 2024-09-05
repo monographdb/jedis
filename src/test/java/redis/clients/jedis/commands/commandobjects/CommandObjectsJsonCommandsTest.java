@@ -19,6 +19,7 @@ import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.json.JsonSetParams;
@@ -28,6 +29,7 @@ import redis.clients.jedis.json.Path2;
 /**
  * Tests related to <a href="https://redis.io/commands/?group=json">JSON</a> commands.
  */
+@Ignore("Unsupport commands json*")
 public class CommandObjectsJsonCommandsTest extends CommandObjectsModulesTestBase {
 
   public CommandObjectsJsonCommandsTest(RedisProtocol protocol) {

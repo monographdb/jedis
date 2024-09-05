@@ -13,6 +13,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.bloom.CFInsertParams;
@@ -21,6 +22,7 @@ import redis.clients.jedis.bloom.CFReserveParams;
 /**
  * Tests related to <a href="https://redis.io/commands/?group=cf">Cuckoo filter</a> commands.
  */
+@Ignore("Unsupport commands cf.*")
 public class CommandObjectsCuckooFilterCommandsTest extends CommandObjectsModulesTestBase {
 
   public CommandObjectsCuckooFilterCommandsTest(RedisProtocol protocol) {

@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -32,6 +33,7 @@ import redis.clients.jedis.resps.GeoRadiusResponse;
 import redis.clients.jedis.util.SafeEncoder;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport command geo*")
 public class GeoPipelineCommandsTest extends PipelineCommandsTestBase {
 
   protected final byte[] bfoo = { 0x01, 0x02, 0x03, 0x04 };

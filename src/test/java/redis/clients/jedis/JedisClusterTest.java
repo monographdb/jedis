@@ -27,6 +27,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.args.ClusterResetType;
@@ -36,6 +37,7 @@ import redis.clients.jedis.util.JedisClusterTestUtil;
 import redis.clients.jedis.util.JedisClusterCRC16;
 import redis.clients.jedis.util.Pool;
 
+@Ignore("Unsupport slave")
 public class JedisClusterTest extends JedisClusterTestBase {
 
   private static final int DEFAULT_TIMEOUT = 2000;

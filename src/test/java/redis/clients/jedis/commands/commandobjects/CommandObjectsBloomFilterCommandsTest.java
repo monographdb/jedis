@@ -9,6 +9,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.bloom.BFInsertParams;
@@ -17,6 +18,7 @@ import redis.clients.jedis.bloom.BFReserveParams;
 /**
  * Tests related to <a href="https://redis.io/commands/?group=bf">Bloom Filter</a> commands.
  */
+@Ignore("Unsupport commands bf.*")
 public class CommandObjectsBloomFilterCommandsTest extends CommandObjectsModulesTestBase {
 
   public CommandObjectsBloomFilterCommandsTest(RedisProtocol protocol) {

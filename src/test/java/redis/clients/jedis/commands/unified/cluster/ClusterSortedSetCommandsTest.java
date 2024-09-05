@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -151,7 +152,8 @@ public class ClusterSortedSetCommandsTest extends SortedSetCommandsTestBase {
         jedis.zrangeWithScores("dst{:}", 0, 100));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command bzpopmax")
   @Override
   public void bzpopmax() {
     jedis.zadd("f{:}oo", 1d, "a", ZAddParams.zAddParams().nx());
@@ -160,7 +162,8 @@ public class ClusterSortedSetCommandsTest extends SortedSetCommandsTestBase {
     assertEquals(new KeyValue<>("f{:}oo", new Tuple("b", 10d)), jedis.bzpopmax(0, "f{:}oo", "b{:}ar"));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command bzpopmin")
   @Override
   public void bzpopmin() {
     jedis.zadd("fo{:}o", 1d, "a", ZAddParams.zAddParams().nx());

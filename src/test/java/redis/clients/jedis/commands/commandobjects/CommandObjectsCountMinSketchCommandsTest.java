@@ -13,12 +13,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 
 /**
  * Tests related to <a href="https://redis.io/commands/?group=cms">Count-min sketch</a> commands.
  */
+@Ignore("Unsupport commands cms.*")
 public class CommandObjectsCountMinSketchCommandsTest extends CommandObjectsModulesTestBase {
 
   public CommandObjectsCountMinSketchCommandsTest(RedisProtocol protocol) {

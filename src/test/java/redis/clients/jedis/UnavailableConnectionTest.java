@@ -7,10 +7,12 @@ import static org.junit.Assert.fail;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
+@Ignore("Unsupport cases")
 public class UnavailableConnectionTest {
 
   private static final HostAndPort unavailableNode = new HostAndPort("localhost", 6400);

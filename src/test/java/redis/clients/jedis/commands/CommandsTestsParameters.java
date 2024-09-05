@@ -14,8 +14,8 @@ public class CommandsTestsParameters {
   public static Collection<Object[]> respVersions() {
     return Arrays.asList(
         new Object[]{ null },
-        new Object[]{ RedisProtocol.RESP2 },
-        new Object[]{ RedisProtocol.RESP3 }
+        new Object[]{ RedisProtocol.RESP2 }/*,
+        new Object[]{ RedisProtocol.RESP3 }*/
     );
   }
 

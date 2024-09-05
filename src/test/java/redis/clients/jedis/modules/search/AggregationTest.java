@@ -8,6 +8,7 @@ import static org.junit.Assert.fail;
 
 import org.hamcrest.Matchers;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -38,6 +39,7 @@ import redis.clients.jedis.search.schemafields.NumericField;
 import redis.clients.jedis.search.schemafields.TextField;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands ft.*")
 public class AggregationTest extends RedisModuleCommandsTestBase {
 
   private static final String index = "aggbindex";

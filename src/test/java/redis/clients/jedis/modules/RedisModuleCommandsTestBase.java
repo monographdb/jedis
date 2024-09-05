@@ -30,7 +30,7 @@ public abstract class RedisModuleCommandsTestBase {
     return CommandsTestsParameters.respVersions();
   }
 
-  private static final String address = System.getProperty("modulesDocker", Protocol.DEFAULT_HOST + ':' + 6479);
+  private static final String address = System.getProperty("modulesDocker", Protocol.DEFAULT_HOST + ':' + 6379);
   protected static final HostAndPort hnp = HostAndPort.from(address);
   protected final RedisProtocol protocol;
 

@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Set;
 import org.hamcrest.Matchers;
 import org.junit.Assume;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.RedisProtocol;
@@ -141,7 +142,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(0, jedis.del(bfoo1, bfoo2));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command unlink")
   public void unlink() {
     jedis.set("foo1", "bar1");
     jedis.set("foo2", "bar2");
@@ -213,7 +215,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(Collections.emptySet(), jedis.keys(bbarstar));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command randomkey")
   public void randomKey() {
     assertNull(jedis.randomKey());
 
@@ -227,7 +230,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(key.replace("foo", "bar"), jedis.get(key));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command rename")
   public void rename() {
     jedis.set("foo", "bar");
     String status = jedis.rename("foo", "bar");
@@ -247,7 +251,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertArrayEquals(bbar, jedis.get(bbar));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command rename")
   public void renameOldAndNewAreTheSame() {
     assertEquals("OK", jedis.set("foo", "bar"));
     assertEquals("OK", jedis.rename("foo", "foo"));
@@ -257,7 +262,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals("OK", jedis.rename(bfoo, bfoo));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command renamenx")
   public void renamenx() {
     jedis.set("foo", "bar");
     assertEquals(1, jedis.renamenx("foo", "bar"));
@@ -285,7 +291,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(2, jedis.dbSize());
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command expire")
   public void expire() {
     assertEquals(0, jedis.expire("foo", 20L));
 
@@ -301,7 +308,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(0, jedis.expire(bfoo, 20L, ExpiryOption.NX));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command expireat")
   public void expireAt() {
     long unixTime = (System.currentTimeMillis() / 1000L) + 20;
 
@@ -321,7 +329,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(1, jedis.expireAt(bfoo, unixTime, ExpiryOption.XX));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command expireat")
   public void expireTime() {
     long unixTime;
 
@@ -337,7 +346,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(unixTime, jedis.expireTime(bfoo), 0.0001);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command ttl")
   public void ttl() {
     assertEquals(-2, jedis.ttl("foo"));
 
@@ -359,7 +369,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertTrue(bttl >= 0 && bttl <= 20);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command touch")
   public void touch() throws Exception {
     assertEquals(0, jedis.touch("foo1", "foo2", "foo3"));
 
@@ -399,7 +410,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(3, jedis.touch(bfoo1, bfoo2, bfoo3));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command setex")
   public void persist() {
     jedis.setex("foo", 60 * 60, "bar");
     assertTrue(jedis.ttl("foo") > 0);
@@ -426,7 +438,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertArrayEquals(bbar, jedis.get(bfoo2));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command pttl")
   public void restoreParams() {
     jedis.set("foo", "bar");
     jedis.set("from", "a");
@@ -457,7 +470,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(1000, jedis.objectIdletime("bar1").longValue());
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command pexpire")
   public void pexpire() {
     assertEquals(0, jedis.pexpire("foo", 10000));
 
@@ -482,7 +496,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(0, jedis.pexpire(bfoo, 10000, ExpiryOption.NX));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command pexpireat")
   public void pexpireAt() {
     long unixTime = (System.currentTimeMillis()) + 10000;
 
@@ -498,7 +513,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(1, jedis.pexpireAt(bfoo, unixTime));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command pexpireat")
   public void pexpireTime() {
     long unixTime = (System.currentTimeMillis()) + 10000;
 
@@ -512,7 +528,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertEquals(unixTime, jedis.pexpireTime(bfoo), 0.0001);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command pttl")
   public void pttl() {
     assertEquals(-2, jedis.pttl("foo"));
 
@@ -534,7 +551,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     assertTrue(pttl >= 0 && pttl <= 20000);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command psetex")
   public void psetex() {
     long pttl;
 
@@ -710,7 +728,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     return scanResult;
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command ttl")
   public void setNxExAndGet() {
     assertEquals("OK", jedis.set("hello", "world", SetParams.setParams().nx().ex(expireSeconds)));
     assertEquals("world", jedis.get("hello"));
@@ -837,7 +856,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     });
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command xadd")
   public void encodeCompleteResponseXinfoStream() {
     Assume.assumeFalse(protocol == RedisProtocol.RESP3);
 
@@ -908,7 +928,8 @@ public abstract class AllKindOfValuesCommandsTestBase extends UnifiedJedisComman
     return null;
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command copy")
   public void copy() {
     assertFalse(jedis.copy("unknown", "foo", false));
 

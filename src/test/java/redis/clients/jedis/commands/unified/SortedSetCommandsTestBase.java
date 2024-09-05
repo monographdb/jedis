@@ -7,6 +7,8 @@ import static redis.clients.jedis.params.ScanParams.SCAN_POINTER_START_BINARY;
 import static redis.clients.jedis.util.AssertUtil.assertByteArrayListEquals;
 
 import java.util.*;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.RedisProtocol;
@@ -1511,7 +1513,8 @@ public abstract class SortedSetCommandsTestBase extends UnifiedJedisCommandsTest
     assertEquals(Double.POSITIVE_INFINITY, itr.next().getScore(), 0d);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command bzpopmax")
   public void bzpopmax() {
     jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
     jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
@@ -1528,6 +1531,7 @@ public abstract class SortedSetCommandsTestBase extends UnifiedJedisCommandsTest
   }
 
   @Test
+  @Ignore("Unsupport command bzpopmin")
   public void bzpopmin() {
     jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
     jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
@@ -1650,7 +1654,8 @@ public abstract class SortedSetCommandsTestBase extends UnifiedJedisCommandsTest
     assertNull(jedis.zmpop(SortedSetOption.MAX, "foo"));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command bzmpop")
   public void bzmpopSimple() {
     jedis.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
     jedis.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());

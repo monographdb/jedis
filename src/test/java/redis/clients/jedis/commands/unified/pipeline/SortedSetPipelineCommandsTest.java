@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -1657,7 +1658,8 @@ public class SortedSetPipelineCommandsTest extends PipelineCommandsTestBase {
         contains(Double.NEGATIVE_INFINITY, 0d, Double.POSITIVE_INFINITY));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command bzmpopmax")
   public void bzpopmax() {
     pipe.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
     pipe.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
@@ -1683,7 +1685,8 @@ public class SortedSetPipelineCommandsTest extends PipelineCommandsTestBase {
     assertThat(bitem1.get().getValue(), equalTo(new Tuple(bb, 10d)));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command bzmpopmin")
   public void bzpopmin() {
     pipe.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
     pipe.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());
@@ -1862,7 +1865,8 @@ public class SortedSetPipelineCommandsTest extends PipelineCommandsTestBase {
     assertThat(nullRange.get(), nullValue());
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command bzmpop")
   public void bzmpopSimple() {
     pipe.zadd("foo", 1d, "a", ZAddParams.zAddParams().nx());
     pipe.zadd("foo", 10d, "b", ZAddParams.zAddParams().nx());

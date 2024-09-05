@@ -21,8 +21,10 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore("Unsupport SSL")
 public class SSLJedisTest {
 
   protected static final EndpointConfig endpoint = HostAndPorts.getRedisEndpoint("standalone0-tls");

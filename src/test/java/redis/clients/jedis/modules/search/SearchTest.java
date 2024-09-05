@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.hamcrest.Matchers;
 import org.junit.Assume;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -20,6 +21,7 @@ import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
 import redis.clients.jedis.util.SafeEncoder;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands ft.*")
 public class SearchTest extends RedisModuleCommandsTestBase {
 
   private static final String index = "testindex";

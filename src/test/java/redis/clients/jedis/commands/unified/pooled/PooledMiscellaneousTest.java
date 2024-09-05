@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import org.junit.runner.RunWith;
@@ -119,7 +120,8 @@ public class PooledMiscellaneousTest extends UnifiedJedisCommandsTestBase {
     }
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupported command in MULTI")
   public void publishInTransaction() {
     try (AbstractTransaction tx = jedis.multi()) {
       Response<Long> p1 = tx.publish("foo", "bar");
@@ -147,7 +149,8 @@ public class PooledMiscellaneousTest extends UnifiedJedisCommandsTestBase {
     assertEquals(Arrays.asList(false, false), jedis.scriptExists(Arrays.asList(sha1_1, sha1_2)));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command function")
   public void broadcastWithError() {
     JedisDataException error = assertThrows(JedisDataException.class,
         () -> jedis.functionDelete("xyz"));

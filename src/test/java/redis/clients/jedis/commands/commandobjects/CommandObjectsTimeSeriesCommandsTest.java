@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.timeseries.AggregationType;
@@ -34,6 +35,7 @@ import redis.clients.jedis.timeseries.TSRangeParams;
 /**
  * Tests related to <a href="https://redis.io/commands/?group=timeseries">Time series</a> commands.
  */
+@Ignore("Unsupport commands ts.*")
 public class CommandObjectsTimeSeriesCommandsTest extends CommandObjectsModulesTestBase {
 
   public CommandObjectsTimeSeriesCommandsTest(RedisProtocol protocol) {

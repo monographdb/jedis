@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.json.JSONObject;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -20,6 +21,7 @@ import redis.clients.jedis.search.SearchResult;
 import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands ft.*")
 public class JsonSearchTest extends RedisModuleCommandsTestBase {
 
   public static final String JSON_ROOT = "$";

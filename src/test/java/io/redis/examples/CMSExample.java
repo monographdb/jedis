@@ -5,6 +5,8 @@ package io.redis.examples;
 
 //REMOVE_START
 import redis.clients.jedis.UnifiedJedis;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -14,7 +16,8 @@ import java.util.Map;
 
 public class CMSExample {
 
-  @Test
+  //@Test
+  @Ignore("Unsupport commands cms.*")
   public void run() {
 
     //HIDE_START

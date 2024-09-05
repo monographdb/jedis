@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Collections;
 import java.util.List;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -15,6 +17,7 @@ import redis.clients.jedis.commands.ProtocolCommand;
 import redis.clients.jedis.util.SafeEncoder;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands module*")
 public class ModuleTest extends JedisCommandsTestBase {
 
   static enum ModuleCommand implements ProtocolCommand {

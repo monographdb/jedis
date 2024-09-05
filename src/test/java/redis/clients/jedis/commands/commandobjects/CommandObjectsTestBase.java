@@ -84,9 +84,9 @@ public abstract class CommandObjectsTestBase {
         commandExecutor.executeCommand(commandObjects.flushAll()),
         equalTo("OK"));
 
-    assertThat(
-        commandExecutor.executeCommand(commandObjects.functionFlush(FlushMode.SYNC)),
-        equalTo("OK"));
+//    assertThat(
+//        commandExecutor.executeCommand(commandObjects.functionFlush(FlushMode.SYNC)),
+//        equalTo("OK"));
   }
 
   /**

@@ -5,13 +5,15 @@ package io.redis.examples;
 
 //REMOVE_START
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.UnifiedJedis;
 import java.util.List;
 //REMOVE_END
 
 public class TDigestExample {
-    @Test
+    // @Test
+	@Ignore("Unsupport command tdigest.*")
     public void run(){
         //HIDE_START
         UnifiedJedis unifiedJedis = new UnifiedJedis("redis://127.0.0.1:6379");

@@ -5,12 +5,14 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 
 /**
  * Tests related to <a href="https://redis.io/commands/?group=hyperloglog">HyperLogLog</a> commands.
  */
+@Ignore("Unsupport commands pf*")
 public class CommandObjectsHyperloglogCommandsTest extends CommandObjectsStandaloneTestBase {
 
   public CommandObjectsHyperloglogCommandsTest(RedisProtocol protocol) {

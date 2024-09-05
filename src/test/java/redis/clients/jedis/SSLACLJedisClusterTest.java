@@ -12,12 +12,14 @@ import javax.net.ssl.SSLSocketFactory;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.JedisClusterOperationException;
 import redis.clients.jedis.SSLJedisTest.BasicHostnameVerifier;
 import redis.clients.jedis.util.RedisVersionUtil;
 
+@Ignore("Unsupport SSL")
 public class SSLACLJedisClusterTest extends JedisClusterTestBase {
 
   private static final int DEFAULT_REDIRECTIONS = 5;

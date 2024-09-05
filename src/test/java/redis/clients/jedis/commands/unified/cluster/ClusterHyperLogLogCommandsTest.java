@@ -12,6 +12,7 @@ import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.commands.unified.HyperLogLogCommandsTestBase;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands pfadd, pf*")
 public class ClusterHyperLogLogCommandsTest extends HyperLogLogCommandsTestBase {
 
   public ClusterHyperLogLogCommandsTest(RedisProtocol protocol) {

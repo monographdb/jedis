@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -17,6 +18,7 @@ import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
 import redis.clients.jedis.resps.Tuple;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands ft.*")
 public class SuggestionTest extends RedisModuleCommandsTestBase {
 
   private static final String key = "suggest";

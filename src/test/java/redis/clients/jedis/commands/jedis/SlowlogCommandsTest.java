@@ -10,6 +10,7 @@ import java.util.List;
 import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -20,6 +21,7 @@ import redis.clients.jedis.resps.Slowlog;
 import redis.clients.jedis.util.SafeEncoder;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport command slowlog")
 public class SlowlogCommandsTest extends JedisCommandsTestBase {
 
   private static final List<String> LOCAL_IPS = Arrays.asList("127.0.0.1", "[::1]");

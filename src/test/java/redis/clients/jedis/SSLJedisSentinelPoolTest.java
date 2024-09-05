@@ -4,8 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore("Unsupport SSL")
 public class SSLJedisSentinelPoolTest {
 
   private static final String MASTER_NAME = "aclmaster";

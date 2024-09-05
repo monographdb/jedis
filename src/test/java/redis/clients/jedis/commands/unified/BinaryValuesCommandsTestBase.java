@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.Protocol;
@@ -98,21 +99,24 @@ public abstract class BinaryValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertNull(jedis.set(bfoo, binaryValue, setParams().xx().ex(expireSeconds)));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command ttl")
   public void setAndExpireMillis() {
     assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().px(expireMillis)));
     long ttl = jedis.ttl(bfoo);
     assertTrue(ttl > 0 && ttl <= expireSeconds);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command ttl")
   public void setAndExpire() {
     assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().ex(expireSeconds)));
     long ttl = jedis.ttl(bfoo);
     assertTrue(ttl > 0 && ttl <= expireSeconds);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport set params")
   public void setAndKeepttl() {
     assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().nx().ex(expireSeconds)));
     assertEquals("OK", jedis.set(bfoo, binaryValue, setParams().keepttl()));
@@ -124,7 +128,8 @@ public abstract class BinaryValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertTrue(ttl < 0);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport set params")
   public void setAndPxat() {
     assertEquals("OK", jedis.set(bfoo, binaryValue,
         setParams().nx().pxAt(System.currentTimeMillis() + expireMillis)));
@@ -132,7 +137,8 @@ public abstract class BinaryValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertTrue(ttl > 0 && ttl <= expireSeconds);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport set params")
   public void setAndExat() {
     assertEquals("OK", jedis.set(bfoo, binaryValue,
         setParams().nx().exAt(System.currentTimeMillis() / 1000 + expireSeconds)));
@@ -155,7 +161,8 @@ public abstract class BinaryValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertNull(jedis.get(bfoo));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command getex")
   public void getEx() {
     assertNull(jedis.getEx(bfoo, GetExParams.getExParams().ex(1)));
     jedis.set(bfoo, bbar);
@@ -213,7 +220,8 @@ public abstract class BinaryValuesCommandsTestBase extends UnifiedJedisCommandsT
     assertArrayEquals(binaryValue, jedis.get(bfoo));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command setex")
   public void setex() {
     assertEquals("OK", jedis.setex(bfoo, 20, binaryValue));
     long ttl = jedis.ttl(bfoo);

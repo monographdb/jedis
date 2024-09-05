@@ -44,6 +44,9 @@ public abstract class JedisCommandsTestBase {
   public void setUp() throws Exception {
     jedis = new Jedis(endpoint.getHostAndPort(), endpoint.getClientConfigBuilder()
         .protocol(protocol).timeoutMillis(500).build());
+    if(endpoint.getPassword()!=null&&!endpoint.getPassword().isEmpty()) {    	
+    	jedis.auth(endpoint.getPassword());
+    }
     jedis.flushAll();
   }
 

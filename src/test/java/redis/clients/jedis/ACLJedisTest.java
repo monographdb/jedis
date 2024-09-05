@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.net.URISyntaxException;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -35,7 +36,8 @@ public class ACLJedisTest extends JedisCommandsTestBase {
     super(redisProtocol);
   }
 
-  @Test
+  // @Test
+  @Ignore("Unsupport Default User")
   public void useWithoutConnecting() {
     try (Jedis j = new Jedis()) {
       assertEquals("OK", j.auth(endpoint.getUsername(), endpoint.getPassword()));
@@ -54,7 +56,8 @@ public class ACLJedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+//  @Test
+  @Ignore("Unsupport Default User")
   public void connectWithConfigInterface() {
     try (Jedis jedis = new Jedis(endpoint.getHostAndPort(), new JedisClientConfig() {
     })) {
@@ -76,7 +79,8 @@ public class ACLJedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+//  @Test
+  @Ignore("Unsupport Default User")
   public void startWithUrl() {
     try (Jedis j = new Jedis(endpoint.getHostAndPort())) {
       assertEquals("OK", j.auth(endpoint.getUsername(), endpoint.getPassword()));
@@ -90,7 +94,8 @@ public class ACLJedisTest extends JedisCommandsTestBase {
     }
   }
 
-  @Test
+//  @Test
+  @Ignore("Unsupport Default User")
   public void startWithUri() throws URISyntaxException {
     try (Jedis j = new Jedis(endpoint.getHostAndPort())) {
       assertEquals("OK", j.auth(endpoint.getUsername(), endpoint.getPassword()));

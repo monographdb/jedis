@@ -21,6 +21,7 @@ import redis.clients.jedis.params.GeoRadiusParam;
 import redis.clients.jedis.params.GeoRadiusStoreParam;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands geo.*")
 public class ClusterGeoCommandsTest extends GeoCommandsTestBase {
 
   public ClusterGeoCommandsTest(RedisProtocol protocol) {

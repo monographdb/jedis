@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.EndpointConfig;
@@ -13,6 +14,7 @@ import redis.clients.jedis.exceptions.JedisDataException;
 import redis.clients.jedis.params.FailoverParams;
 import redis.clients.jedis.HostAndPorts;
 
+@Ignore("Unsupport replica")
 public class FailoverCommandsTest {
 
   private static final int INVALID_PORT = 6000;

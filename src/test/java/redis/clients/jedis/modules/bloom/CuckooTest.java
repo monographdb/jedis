@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -24,6 +25,7 @@ import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
  * Tests for the Cuckoo Filter Implementation
  */
 @RunWith(Parameterized.class)
+@Ignore("Unsupport command cf*")
 public class CuckooTest extends RedisModuleCommandsTestBase {
 
   @BeforeClass

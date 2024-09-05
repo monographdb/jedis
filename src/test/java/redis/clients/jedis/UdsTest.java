@@ -3,6 +3,8 @@ package redis.clients.jedis;
 import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.newsclub.net.unix.AFUNIXSocket;
 import org.newsclub.net.unix.AFUNIXSocketAddress;
@@ -10,6 +12,7 @@ import redis.clients.jedis.exceptions.JedisConnectionException;
 
 import static org.junit.Assert.assertEquals;
 
+@Ignore("Unsupport UDS_SOCKET")
 public class UdsTest {
 
   @Test

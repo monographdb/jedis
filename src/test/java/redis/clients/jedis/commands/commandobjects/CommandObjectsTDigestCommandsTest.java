@@ -13,6 +13,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.bloom.TDigestMergeParams;
@@ -20,6 +21,7 @@ import redis.clients.jedis.bloom.TDigestMergeParams;
 /**
  * Tests related to <a href="https://redis.io/commands/?group=tdigest">T-Digest</a> commands.
  */
+@Ignore("Unsupport commands tdigest.create")
 public class CommandObjectsTDigestCommandsTest extends CommandObjectsModulesTestBase {
 
   public CommandObjectsTDigestCommandsTest(RedisProtocol protocol) {

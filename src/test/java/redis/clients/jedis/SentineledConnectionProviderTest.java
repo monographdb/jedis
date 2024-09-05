@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
@@ -18,6 +19,7 @@ import redis.clients.jedis.providers.SentineledConnectionProvider;
 /**
  * @see JedisSentinelPoolTest
  */
+@Ignore("Unsupport Sentinel")
 public class SentineledConnectionProviderTest {
 
   private static final String MASTER_NAME = "mymaster";

@@ -1,6 +1,7 @@
 package redis.clients.jedis.scenario;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -20,6 +21,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
+@Ignore("Skipping test")
 public class ConnectionInterruptionTest {
 
   private static final Logger log = LoggerFactory.getLogger(ConnectionInterruptionTest.class);

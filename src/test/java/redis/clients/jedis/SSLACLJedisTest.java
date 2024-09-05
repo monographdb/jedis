@@ -11,6 +11,7 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.*;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.util.RedisVersionUtil;
@@ -20,6 +21,7 @@ import redis.clients.jedis.util.RedisVersionUtil;
  * <p>
  * This test is only executed when the server/cluster is Redis 6. or more.
  */
+@Ignore("Unsupport SSL")
 public class SSLACLJedisTest {
 
   protected static final EndpointConfig endpoint = HostAndPorts.getRedisEndpoint("standalone0-acl-tls");

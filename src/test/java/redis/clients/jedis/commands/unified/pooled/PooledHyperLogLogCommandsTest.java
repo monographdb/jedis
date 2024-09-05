@@ -2,6 +2,7 @@ package redis.clients.jedis.commands.unified.pooled;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -9,6 +10,7 @@ import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.commands.unified.HyperLogLogCommandsTestBase;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands pf*")
 public class PooledHyperLogLogCommandsTest extends HyperLogLogCommandsTestBase {
 
   public PooledHyperLogLogCommandsTest(RedisProtocol protocol) {

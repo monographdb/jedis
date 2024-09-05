@@ -43,7 +43,7 @@ public class StringValuesCommandsTest extends JedisCommandsTestBase {
     assertEquals("bar", value);
   }
 
-  @Ignore("eloqkv does not support getDel command yet")
+  @Test
   public void getDel() {
     String status = jedis.set("foo", "bar");
     assertEquals("OK", status);

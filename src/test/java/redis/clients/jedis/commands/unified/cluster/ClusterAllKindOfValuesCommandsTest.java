@@ -12,6 +12,7 @@ import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -74,7 +75,8 @@ public class ClusterAllKindOfValuesCommandsTest extends AllKindOfValuesCommandsT
     assertEquals(0L, jedis.del("{foo}1", "{foo}2"));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command unlink")
   @Override
   public void unlink() {
     jedis.set("{foo}1", "bar1");
@@ -114,8 +116,9 @@ public class ClusterAllKindOfValuesCommandsTest extends AllKindOfValuesCommandsT
     assertEquals(expected, keys);
   }
 
-  @Test
+  //@Test
   @Override
+  @Ignore("Unsupport command rename")
   public void rename() {
     jedis.set("foo{#}", "bar");
     String status = jedis.rename("foo{#}", "bar{#}");
@@ -126,7 +129,8 @@ public class ClusterAllKindOfValuesCommandsTest extends AllKindOfValuesCommandsT
     assertEquals("bar", jedis.get("bar{#}"));
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command renamenx")
   @Override
   public void renamenx() {
     jedis.set("foo{&}", "bar");
@@ -142,7 +146,8 @@ public class ClusterAllKindOfValuesCommandsTest extends AllKindOfValuesCommandsT
     super.dbSize();
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command touch")
   @Override
   public void touch() throws Exception {
     assertEquals(0, jedis.touch("{foo}1", "{foo}2", "{foo}3"));
@@ -246,7 +251,8 @@ public class ClusterAllKindOfValuesCommandsTest extends AllKindOfValuesCommandsT
     super.scanIsCompleteIteration();
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command copy")
   @Override
   public void copy() {
     assertFalse(jedis.copy("unkn{o}wn", "f{o}o", false));

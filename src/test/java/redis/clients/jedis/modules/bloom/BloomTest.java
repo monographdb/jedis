@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -20,6 +21,7 @@ import redis.clients.jedis.exceptions.JedisDataException;
 import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands bf.*")
 public class BloomTest extends RedisModuleCommandsTestBase {
 
   @BeforeClass

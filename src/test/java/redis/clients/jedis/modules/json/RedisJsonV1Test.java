@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.RedisProtocol;
@@ -29,6 +30,7 @@ import redis.clients.jedis.util.JsonObjectMapperTestUtil;
 /**
  * V1 of the RedisJSON is only supported with RESP2, hence this test is not parameterized.
  */
+@Ignore("Unsupport commands json.*")
 public class RedisJsonV1Test extends RedisModuleCommandsTestBase {
 
   private final Gson gson = new Gson();

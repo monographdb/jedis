@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Collections;
 import java.util.Map;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -14,6 +15,7 @@ import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands ft.*")
 public class SearchConfigTest extends RedisModuleCommandsTestBase {
 
   @BeforeClass

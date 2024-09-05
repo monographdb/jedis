@@ -13,6 +13,7 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -21,6 +22,7 @@ import redis.clients.jedis.commands.jedis.JedisCommandsTestBase;
 import redis.clients.jedis.exceptions.JedisDataException;
 import redis.clients.jedis.params.MigrateParams;
 
+@Ignore("Unsupport command migrate")
 @RunWith(Parameterized.class)
 public class MigratePipeliningTest extends JedisCommandsTestBase {
 

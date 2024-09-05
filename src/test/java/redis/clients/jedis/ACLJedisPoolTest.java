@@ -9,6 +9,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.exceptions.InvalidURIException;
@@ -25,11 +26,12 @@ public class ACLJedisPoolTest {
 
   private static final EndpointConfig endpointWithDefaultUser = HostAndPorts.getRedisEndpoint("standalone0");
 
-  @BeforeClass
+  //Now Eloqkv only has one version 
+  //@BeforeClass
   public static void prepare() throws Exception {
     // Use to check if the ACL test should be ran. ACL are available only in 6.0 and later
-    org.junit.Assume.assumeTrue("Not running ACL test on this version of Redis",
-        RedisVersionUtil.checkRedisMajorVersionNumber(6, endpoint));
+    //org.junit.Assume.assumeTrue("Not running ACL test on this version of Redis",
+    //    RedisVersionUtil.checkRedisMajorVersionNumber(6, endpoint));
   }
 
   @Test
@@ -184,7 +186,8 @@ public class ACLJedisPoolTest {
     }
   }
 
-  @Test
+  // @Test
+  @Ignore("Unsupport defaut user")
   public void startWithUrl() throws URISyntaxException {
     try (Jedis j = new Jedis(endpoint.getHost(), endpoint.getPort())) {
       j.auth(endpoint.getUsername(), endpoint.getPassword());
@@ -256,7 +259,8 @@ public class ACLJedisPoolTest {
     }
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport defaut user")
   public void testCloseConnectionOnMakeObject() {
     JedisPoolConfig config = new JedisPoolConfig();
     config.setTestOnBorrow(true);

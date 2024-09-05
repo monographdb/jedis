@@ -17,6 +17,7 @@ import java.util.List;
 import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -37,17 +38,18 @@ import redis.clients.jedis.util.SafeEncoder;
  * TODO: properly define and test exceptions
  */
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands acl*")
 public class AccessControlListCommandsTest extends JedisCommandsTestBase {
 
   public static final String USER_NAME = "newuser";
   public static final String USER_PASSWORD = "secret";
 
-  @BeforeClass
-  public static void prepare() throws Exception {
-    // Use to check if the ACL test should be ran. ACL are available only in 6.0 and later
-    org.junit.Assume.assumeTrue("Not running ACL test on this version of Redis",
-        RedisVersionUtil.checkRedisMajorVersionNumber(6, endpoint));
-  }
+//  @BeforeClass
+//  public static void prepare() throws Exception {
+//    // Use to check if the ACL test should be ran. ACL are available only in 6.0 and later
+//    org.junit.Assume.assumeTrue("Not running ACL test on this version of Redis",
+//        RedisVersionUtil.checkRedisMajorVersionNumber(6, endpoint));
+//  }
 
   public AccessControlListCommandsTest(RedisProtocol protocol) {
     super(protocol);

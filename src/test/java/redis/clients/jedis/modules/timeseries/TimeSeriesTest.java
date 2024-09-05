@@ -10,6 +10,7 @@ import static redis.clients.jedis.util.AssertUtil.assertEqualsByProtocol;
 
 import java.util.*;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -21,6 +22,7 @@ import redis.clients.jedis.timeseries.*;
 import redis.clients.jedis.util.KeyValue;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands ts.*")
 public class TimeSeriesTest extends RedisModuleCommandsTestBase {
 
   @BeforeClass

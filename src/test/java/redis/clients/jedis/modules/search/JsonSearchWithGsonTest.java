@@ -7,6 +7,7 @@ import static redis.clients.jedis.util.AssertUtil.assertOK;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -16,6 +17,7 @@ import redis.clients.jedis.search.*;
 import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands ft.*")
 public class JsonSearchWithGsonTest extends RedisModuleCommandsTestBase {
 
   private static final String index = "gson-index";

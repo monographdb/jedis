@@ -19,6 +19,7 @@ import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.hamcrest.Matchers;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -37,6 +38,7 @@ import redis.clients.jedis.resps.*;
 import redis.clients.jedis.util.SafeEncoder;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport command xadd")
 public class StreamsCommandsTest extends JedisCommandsTestBase {
 
   public StreamsCommandsTest(RedisProtocol protocol) {

@@ -9,6 +9,7 @@ import static redis.clients.jedis.Protocol.Command.SET;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.util.Hashing;
 
@@ -29,7 +30,8 @@ public class ShardingTest {
     }
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command dbsize")
   public void trySharding() {
     List<HostAndPort> shards = new ArrayList<>();
     shards.add(redis1.getHostAndPort());
@@ -56,7 +58,8 @@ public class ShardingTest {
     assertEquals(1000, totalDbSize);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command dbsize")
   public void tryShardingWithMurmur() {
     List<HostAndPort> shards = new ArrayList<>();
     shards.add(redis1.getHostAndPort());
@@ -83,7 +86,8 @@ public class ShardingTest {
     assertEquals(1000, totalDbSize);
   }
 
-  @Test
+  //@Test
+  @Ignore("Unsupport command dbsize")
   public void tryShardingWithMD5() {
     List<HostAndPort> shards = new ArrayList<>();
     shards.add(redis1.getHostAndPort());

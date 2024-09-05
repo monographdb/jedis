@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.GeoCoordinate;
@@ -20,6 +22,7 @@ import redis.clients.jedis.params.GeoRadiusParam;
 import redis.clients.jedis.params.GeoRadiusStoreParam;
 import redis.clients.jedis.util.SafeEncoder;
 
+@Ignore("Unsupport command CLUSTER MEET")
 public class ClusterBinaryValuesCommandsTest extends ClusterJedisCommandsTestBase {
 
   @Test

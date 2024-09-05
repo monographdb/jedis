@@ -1,5 +1,6 @@
 {
   "standalone0": {
+    "password": "foobared",
     "tls": false,
     "endpoints": [
       "redis://localhost:6379"
@@ -34,7 +35,7 @@
     "password": "foobared",
     "tls": false,
     "endpoints": [
-      "redis://localhost:6380"
+      "redis://localhost:6379"
     ]
   },
   "standalone2-primary": {
@@ -78,11 +79,9 @@
     ]
   },
   "standalone7-with-lfu-policy": {
-    "username": "default",
-    "password": "foobared",
     "tls": false,
     "endpoints": [
-      "redis://localhost:6386"
+      "redis://localhost:6379"
     ]
   },
   "standalone9": {
@@ -98,9 +97,11 @@
     ]
   },
   "modules-docker": {
+    "username": "default",
+    "password": "foobared",
     "tls": false,
     "endpoints": [
-      "redis://localhost:6479"
+      "redis://localhost:6379"
     ]
   }
 }

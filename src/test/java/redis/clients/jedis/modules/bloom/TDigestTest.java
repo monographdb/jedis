@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -16,6 +17,7 @@ import redis.clients.jedis.bloom.TDigestMergeParams;
 import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands tdigest.*")
 public class TDigestTest extends RedisModuleCommandsTestBase {
 
   private static final Random random = new Random();

@@ -34,6 +34,7 @@ import redis.clients.jedis.search.schemafields.VectorField.VectorAlgorithm;
 import redis.clients.jedis.modules.RedisModuleCommandsTestBase;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands ft.*")
 public class SearchWithParamsTest extends RedisModuleCommandsTestBase {
 
   private static final String index = "testindex";

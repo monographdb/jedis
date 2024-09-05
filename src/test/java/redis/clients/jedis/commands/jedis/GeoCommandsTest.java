@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -22,6 +24,7 @@ import redis.clients.jedis.params.GeoRadiusStoreParam;
 import redis.clients.jedis.util.SafeEncoder;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands geo.*")
 public class GeoCommandsTest extends JedisCommandsTestBase {
   final byte[] bfoo = { 0x01, 0x02, 0x03, 0x04 };
   final byte[] bA = { 0x0A };

@@ -9,6 +9,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -25,6 +26,7 @@ import redis.clients.jedis.search.aggr.Reducers;
 import redis.clients.jedis.search.aggr.Row;
 
 @RunWith(Parameterized.class)
+@Ignore("Unsupport commands ft.*")
 public class SearchDefaultDialectTest extends RedisModuleCommandsTestBase {
 
   private static final String INDEX = "dialect-INDEX";

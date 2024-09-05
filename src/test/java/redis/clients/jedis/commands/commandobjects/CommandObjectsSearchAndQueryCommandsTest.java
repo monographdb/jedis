@@ -27,6 +27,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.json.JSONObject;
+import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.RedisProtocol;
 import redis.clients.jedis.args.SortingOrder;
@@ -53,6 +54,7 @@ import redis.clients.jedis.search.schemafields.TextField;
 /**
  * Tests related to <a href="https://redis.io/commands/?group=search">Search and query</a> commands.
  */
+@Ignore("Unsupport commands ft*")
 public class CommandObjectsSearchAndQueryCommandsTest extends CommandObjectsModulesTestBase {
 
   public CommandObjectsSearchAndQueryCommandsTest(RedisProtocol protocol) {
